@@ -735,13 +735,6 @@
 
 
 <script>
-    localStorage.setItem('token', result.token);
-    localStorage.setItem('userId', result.userId);
-    localStorage.setItem('phone', result.userName);
-    localStorage.setItem('headUrl', result.headUrl || '');
-    localStorage.setItem('mail', result.mail || '');
-
-
     if ('null' != decodeURI(getUrlParam('token'))) {
         localStorage.setItem('token', decodeURI(getUrlParam('token')) || '');
         localStorage.setItem('userId', decodeURI(getUrlParam('userId')) || '');
