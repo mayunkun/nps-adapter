@@ -735,6 +735,25 @@
 
 
 <script>
+    localStorage.setItem('token', result.token);
+    localStorage.setItem('userId', result.userId);
+    localStorage.setItem('phone', result.userName);
+    localStorage.setItem('headUrl', result.headUrl || '');
+    localStorage.setItem('mail', result.mail || '');
+
+
+    if ('null' != decodeURI(getUrlParam('token'))) {
+        localStorage.setItem('token', decodeURI(getUrlParam('token')) || '');
+        localStorage.setItem('userId', decodeURI(getUrlParam('userId')) || '');
+        localStorage.setItem('phone', decodeURI(getUrlParam('userName')) || '');
+        if ('null' != decodeURI(getUrlParam('headUrl'))) {
+            localStorage.setItem('headUrl', decodeURI(getUrlParam('headUrl')) || '');
+        }
+        if ('null' != decodeURI(getUrlParam('mail'))) {
+            localStorage.setItem('mail', decodeURI(getUrlParam('mail')) || false);
+        }
+    }
+
     var downloadTypes = [];//客户端枚举
     var mealList = []; // 套餐列表
     var engineList = []; // 机房列表
@@ -2075,6 +2094,13 @@
                 searchPage();
             },
         });
+    }
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; //返回参数值
     }
 
 </script>
