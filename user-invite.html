@@ -729,7 +729,8 @@
             success: function (results) {
                 if (0 == results.code) {
                     if (null == results.data.zfbUrl || '' == results.data.zfbUrl) {
-                        $.showAlert({title: "提示", body: "提现地址未设置，请 <a href=\"user-perfect.html\">前往设置</a>"})
+                        $.showAlert({title: "提示", body: "提现地址未设置，请 <a href=\"user-perfect.html\">前往设置</a>"});
+                        return;
                     }
                     $.showConfirm({
                         title: "提现确认",
