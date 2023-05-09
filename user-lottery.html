@@ -507,10 +507,10 @@
     }
     // 等级
     if (null != localStorage.getItem('consumptionPoints') && '' !== localStorage.getItem('consumptionPoints')) {
-        var crown = parseInt(localStorage.getItem('consumptionPoints') / 1000);                 //  皇冠
-        var sun = parseInt((localStorage.getItem('consumptionPoints') % 1000) / 300);           //  太阳
-        var moon = parseInt((localStorage.getItem('consumptionPoints') % 300) / 100);           //  月亮
-        var star = parseInt((localStorage.getItem('consumptionPoints') % 100) / 30);            //  星星
+        var crown = parseInt(localStorage.getItem('consumptionPoints') / 1000);                         //  皇冠
+        var sun = parseInt((localStorage.getItem('consumptionPoints') % 1000) / 300);                   //  太阳
+        var moon = parseInt((localStorage.getItem('consumptionPoints') %1000 % 300) / 100);             //  月亮
+        var star = parseInt((localStorage.getItem('consumptionPoints') %1000 % 300 % 100) / 30);        //  星星
         $('#vip').html('');
         let vip = '会员等级: ';
         for (var i = 0; i < crown; i++) {
