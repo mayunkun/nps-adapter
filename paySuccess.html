@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小蝴蝶内网穿透-支付成功</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" type="text/css" href="admin/static/css/payStyle.min.css"/>
+</head>
+<body>
+<section class="aui-flexView">
+    <header class="aui-navBar aui-navBar-fixed ">
+    </header>
+    <section class="aui-scrollView">
+
+
+        <div class="aui-chang-box">
+            <div class="aui-sept-box">
+                <ul class="aui-sept-cell">
+                    <li>
+                        <em></em>
+                        <p>选择商品</p>
+                    </li>
+                    <li>
+                        <em></em>
+                        <p>商品下单</p>
+                    </li>
+                    <li>
+                        <em></em>
+                        <p>支付成功</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="aui-content-box">
+            <div class="aui-yes">
+                <img src="images/yes.png" alt="">
+            </div>
+            <h1>恭喜支付成功</h1>
+        </div>
+        <div class="aui-Card-box" id="aui-Card-box">
+            <p>恭喜获得抽奖机会</p>
+            <div class="aui-flex">
+                <div class="aui-text">
+                    <h1 id="ct">9</h1>
+                </div>
+                <div class="aui-flex-box">
+                    <h2>恭喜获得积分</h2>
+                    <p>积分可参与系统抽奖活动，综合中奖率约20%!</p>
+                </div>
+                <div class="aui-get-box">
+                    <button id="go">去抽奖</button>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+</section>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+    $('.aui-current-item').click(function (e) {
+
+        $(this).addClass('this-card').siblings().removeClass('this-card');
+
+        $('#type-amount').html($(this).find('.cardAmount').html());
+
+    })
+
+    $("#ct").html(getQueryVariable("price") * 2);
+
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return (false);
+    };
+
+    document.getElementById("go").onclick = function () {
+        window.parent.paySuccess();
+    };
+
+</script>
+<script src="admin/static/js/dbg.min.js"></script>
+</body>
+</html>
