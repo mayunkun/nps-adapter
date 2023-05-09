@@ -1,0 +1,1218 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>控制台-实例管理</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description"
+          content="内网穿透 NAT穿透 小蝴蝶内网穿透 高速稳定内网穿透，是一款轻量级、高性能、功能强大的内网穿透代理服务器。目前支持tcp、udp流量转发，可支持任何tcp、udp上层协议（访问内网网站、本地>支付接口调试、ssh访问、远程桌面，内网dns解析等等……），此外还支持内网http代理、内网socks5代理、p2p等，并带有功能强大的web管理端。">
+    <meta name="keywords" content="内网穿透 小蝴蝶内网穿透 NAT穿透 高速稳定内网穿透 映射端口 TCP UDP SOCKS5 内网网站 支付接口调试 SSH 远程桌面 VPN 全平台兼容内网穿透">
+    <meta name="author" content="">
+    <meta name="MobileOptimized" content="320">
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/fonts.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/icofont.min.css">
+    <link rel="stylesheet" href="admin/assets/css/swiper.min.css">
+    <!--Page Specific -->
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/nice-select.min.css">
+    <!--Custom Style -->
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/style.min.css">
+    <!-- Favicon Link -->
+    <link rel="shortcut icon" type="image/png" href="web/images/slider/head-logo.jpg">
+
+    <style>
+        body .demo-class .layui-layer-btn0 {
+            border-color: #E6E3E6;
+            background-color: #FFF;
+            color: black;
+        }
+
+        body .demo-class .layui-layer-btn1 {
+            border-color: #4898d5;
+            background-color: #2e8ded;
+            color: #fff;
+        }
+
+        body .table-responsive {
+            overflow-x: visible;
+        }
+
+        body .label-info {
+            background-color: #11a1fd;
+        }
+
+        .zindex100 {
+            z-index: 100 !important;
+        }
+
+        .fileInput, .sfz2, .sfz1 {
+            display: block;
+            height: 1px;
+            overflow: hidden;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+
+        .previewBox {
+            margin: 15px 0;
+        }
+
+        .previewBox img {
+            margin-right: 10px;
+        }
+
+        .prevclass1 img {
+            margin-right: 10px;
+        }
+
+        .prevclass2 img {
+            margin-right: 10px;
+        }
+
+        .uploadBtn {
+            border: 1px solid #eee;
+            background: #fff;
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            padding: 6px 15px;
+
+        }
+
+
+        .slider {
+            background-color: #fff;
+            width: 278px;
+            height: 285px;
+            z-index: 999;
+            box-sizing: border-box;
+            padding: 9px;
+            border-radius: 6px;
+            box-shadow: 0 0 11px 0 #999999;
+        }
+
+        .slider .content {
+            width: 100%;
+            height: 159px;
+            position: relative;
+        }
+
+        .bg-img-div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform: translate(0px, 0px);
+        }
+
+        .slider-img-div {
+            height: 100%;
+            position: absolute;
+            transform: translate(0px, 0px);
+        }
+
+        .bg-img-div img {
+            width: 100%;
+        }
+
+        .slider-img-div img {
+            height: 100%;
+        }
+
+        .slider .slider-move {
+            height: 60px;
+            width: 100%;
+            margin: 11px 0;
+            position: relative;
+        }
+
+        .slider .bottom {
+            height: 19px;
+            width: 100%;
+        }
+
+        .refresh-btn, .close-btn, .slider-move-track, .slider-move-btn {
+            background: url(https://static.geetest.com/static/ant/sprite.1.2.4.png) no-repeat;
+        }
+
+        .refresh-btn, .close-btn {
+            display: inline-block;
+        }
+
+        .slider-move .slider-move-track {
+            line-height: 38px;
+            font-size: 14px;
+            text-align: center;
+            white-space: nowrap;
+            color: #88949d;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .slider {
+            user-select: none;
+        }
+
+        .slider-move .slider-move-btn {
+            transform: translate(0px, 0px);
+            background-position: -5px 11.79625%;
+            position: absolute;
+            top: -12px;
+            left: 0;
+            width: 66px;
+            height: 66px;
+        }
+
+        .slider-move-btn:hover, .close-btn:hover, .refresh-btn:hover {
+            cursor: pointer
+        }
+
+        .bottom .close-btn {
+            width: 20px;
+            height: 20px;
+            background-position: 0 44.86874%;
+        }
+
+        .bottom .refresh-btn {
+            width: 20px;
+            height: 20px;
+            background-position: 0 81.38425%;
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="loader">
+    <div class="spinner">
+        <img src="admin/assets/images/loader.gif" alt=""/>
+    </div>
+</div>
+<!-- Main Body -->
+<div class="page-wrapper">
+    <!-- Header Start -->
+    <header class="header-wrapper main-header">
+        <div class="header-inner-wrapper">
+            <div class="logo-wrapper">
+                <a href="index.html" class="admin-logo">
+                    <img src="admin/static/image/logo.png" alt="">
+                </a>
+            </div>
+            <div class="header-right">
+                <div class="serch-wrapper">
+                    <form>
+                        <input type="text" placeholder="Search Here...">
+                    </form>
+                    <a class="search-close" href="javascript:void(0);"><span class="icofont-close-line"></span></a>
+                </div>
+                <div class="header-left">
+                    <div class="header-links">
+                        <a href="javascript:void(0);" class="toggle-btn">
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="header-links search-link">
+                        <a class="search-toggle" href="javascript:void(0);">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                 x="0px" y="0px" viewBox="0 0 56.966 56.966"
+                                 style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve">
+                                    <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23
+                                    s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92
+                                    c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17
+                                    s-17-7.626-17-17S14.61,6,23.984,6z"/>
+                                </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-controls">
+                    <div id="notification-wrapper" class="notification-wrapper header-links">
+                        <a href="javascript:void(0);" class="notification-info">
+                                <span class="header-icon">
+                                    <svg enable-background="new 0 0 512 512" viewBox="0 0 512 512"
+                                         xmlns="http://www.w3.org/2000/svg"><path
+                                            d="m450.201 407.453c-1.505-.977-12.832-8.912-24.174-32.917-20.829-44.082-25.201-106.18-25.201-150.511 0-.193-.004-.384-.011-.576-.227-58.589-35.31-109.095-85.514-131.756v-34.657c0-31.45-25.544-57.036-56.942-57.036h-4.719c-31.398 0-56.942 25.586-56.942 57.036v34.655c-50.372 22.734-85.525 73.498-85.525 132.334 0 44.331-4.372 106.428-25.201 150.511-11.341 24.004-22.668 31.939-24.174 32.917-6.342 2.935-9.469 9.715-8.01 16.586 1.473 6.939 7.959 11.723 15.042 11.723h109.947c.614 42.141 35.008 76.238 77.223 76.238s76.609-34.097 77.223-76.238h109.947c7.082 0 13.569-4.784 15.042-11.723 1.457-6.871-1.669-13.652-8.011-16.586zm-223.502-350.417c0-14.881 12.086-26.987 26.942-26.987h4.719c14.856 0 26.942 12.106 26.942 26.987v24.917c-9.468-1.957-19.269-2.987-29.306-2.987-10.034 0-19.832 1.029-29.296 2.984v-24.914zm29.301 424.915c-25.673 0-46.614-20.617-47.223-46.188h94.445c-.608 25.57-21.549 46.188-47.222 46.188zm60.4-76.239c-.003 0-213.385 0-213.385 0 2.595-4.044 5.236-8.623 7.861-13.798 20.104-39.643 30.298-96.129 30.298-167.889 0-63.417 51.509-115.01 114.821-115.01s114.821 51.593 114.821 115.06c0 .185.003.369.01.553.057 71.472 10.25 127.755 30.298 167.286 2.625 5.176 5.267 9.754 7.861 13.798z"/></svg>
+                                </span>
+                            <span class="count-notification"></span>
+                        </a>
+                        <div id="notice" class="recent-notification">
+                            <div class="drop-down-header">
+                                <h4>通知</h4>
+                                <p id="noticeCt"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-info-wrapper header-links">
+                        <a href="javascript:void(0);" class="user-info">
+                            <img id="headUrl" src="admin/assets/images/user.jpg" alt="" class="user-img">
+                            <div class="blink-animation">
+                                <span class="blink-circle"></span>
+                                <span class="main-circle"></span>
+                            </div>
+                        </a>
+                        <div class="user-info-box">
+                            <div class="drop-down-header">
+                                <h5 id="mail"></h5>
+                                <p id="vip">客服QQ: 1163363720</p>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a onclick="recharge()">
+                                        <svg t="1683263149600" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="3738" width="16" height="16">
+                                            <path d="M512 750.51c-19.08 0-31.801-12.721-31.801-31.802V432.497c0-19.08 12.72-31.801 31.801-31.801s31.801 12.72 31.801 31.8v286.212c-6.36 19.08-19.08 31.801-31.801 31.801z"
+                                                  p-id="3739" fill="#007bff"></path>
+                                            <path d="M651.925 534.26h-286.21c-19.081 0-31.802-12.72-31.802-31.8 0-19.081 12.72-31.802 31.801-31.802h286.211c19.081 0 31.802 12.72 31.802 31.802 0 19.08-12.72 31.8-31.802 31.8zM651.925 648.745h-286.21c-19.081 0-31.802-12.72-31.802-31.8 0-19.082 12.72-31.802 31.801-31.802h286.211c19.081 0 31.802 12.72 31.802 31.801 0 19.08-12.72 31.801-31.802 31.801zM512 464.298c-6.36 0-19.08 0-25.441-6.36L352.994 324.373c-12.72-12.72-12.72-31.802 0-44.522 12.72-12.72 31.801-12.72 44.522 0L531.08 413.416c12.72 12.72 12.72 31.801 0 44.522-6.36 6.36-12.72 6.36-19.081 6.36z"
+                                                  p-id="3740" fill="#007bff"></path>
+                                            <path d="M512 464.298c-6.36 0-19.08 0-25.441-6.36-12.72-12.72-12.72-31.801 0-44.522l133.565-133.565c12.72-12.72 31.801-12.72 44.522 0 12.72 12.72 12.72 31.801 0 44.522L531.081 457.938c-6.36 6.36-12.72 6.36-19.081 6.36z"
+                                                  p-id="3741" fill="#007bff"></path>
+                                            <path d="M512 1017.64c-279.85 0-508.82-228.97-508.82-508.82S232.15 0 512 0s508.82 228.969 508.82 508.82c0 25.44 0 50.882-6.36 82.683 0 19.08-19.081 31.801-38.162 25.441-19.08 0-31.801-19.08-25.44-38.161 6.36-25.441 6.36-44.522 6.36-69.963C957.217 260.77 760.05 63.602 512 63.602S66.783 267.13 66.783 515.18 263.95 960.398 512 960.398c25.441 0 57.242 0 82.683-6.36 19.081-6.361 31.801 6.36 38.162 25.44 6.36 19.081-6.36 31.802-25.441 38.162H512z"
+                                                  p-id="3742" fill="#007bff"></path>
+                                            <path d="M989.019 864.994H671.006c-19.08 0-31.801-12.72-31.801-31.801s12.72-31.802 31.801-31.802H989.02c19.08 0 31.8 12.72 31.8 31.802s-19.08 31.8-31.8 31.8z"
+                                                  p-id="3743" fill="#007bff"></path>
+                                            <path d="M830.012 1024c-19.08 0-31.8-12.72-31.8-31.801V674.186c0-19.08 12.72-31.8 31.8-31.8s31.802 12.72 31.802 31.8V992.2c0 12.72-19.081 31.801-31.802 31.801z"
+                                                  p-id="3744" fill="#007bff"></path>
+                                        </svg>
+                                        账户充值
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="user-perfect.html">
+                                        <svg t="1683263210564" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="4841" width="16" height="16">
+                                            <path d="M427.985455 526.894545a125.207273 125.207273 0 1 0-157.789091 0A186.181818 186.181818 0 0 0 162.909091 695.389091a23.272727 23.272727 0 0 0 46.545454 0 139.636364 139.636364 0 1 1 279.272728 0 23.272727 23.272727 0 0 0 46.545454 0 186.181818 186.181818 0 0 0-107.287272-168.494546z m-157.556364-96.34909A78.661818 78.661818 0 1 1 349.090909 509.207273a78.894545 78.894545 0 0 1-78.661818-78.661818zM698.181818 372.363636h93.090909a23.272727 23.272727 0 0 0 0-46.545454h-93.090909a23.272727 23.272727 0 0 0 0 46.545454z"
+                                                  p-id="4842" fill="#007bff"></path>
+                                            <path d="M942.545455 548.072727V302.545455a93.090909 93.090909 0 0 0-93.09091-93.09091h-698.181818a93.090909 93.090909 0 0 0-93.090909 93.09091v418.90909a93.090909 93.090909 0 0 0 93.090909 93.09091H651.636364a197.352727 197.352727 0 0 0 290.909091-266.472728zM151.272727 768a46.545455 46.545455 0 0 1-46.545454-46.545455V302.545455a46.545455 46.545455 0 0 1 46.545454-46.545455h698.181818a46.545455 46.545455 0 0 1 46.545455 46.545455v204.8a197.585455 197.585455 0 0 0-302.545455 167.563636 195.258182 195.258182 0 0 0 23.272728 93.090909zM791.272727 826.181818a150.807273 150.807273 0 0 1-112.407272-50.501818 151.272727 151.272727 0 0 1 223.650909-203.403636A151.272727 151.272727 0 0 1 791.272727 826.181818z"
+                                                  p-id="4843" fill="#007bff"></path>
+                                            <path d="M834.094545 628.363636l-57.483636 57.483637-16.523636-16.290909a23.272727 23.272727 0 0 0-33.047273 0 23.272727 23.272727 0 0 0 0 32.814545l33.047273 33.047273a23.272727 23.272727 0 0 0 32.814545 0l74.24-74.24a23.272727 23.272727 0 0 0 0-32.814546 23.272727 23.272727 0 0 0-33.047273 0z"
+                                                  p-id="4844" fill="#007bff"></path>
+                                        </svg>
+                                        账户详情
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onclick="logout()">
+                                        <i class="fas fa-sign-out-alt"></i>登出
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Sidebar Start -->
+    <aside class="sidebar-wrapper">
+        <div class="side-menu-wrap">
+            <ul class="main-menu">
+                <li>
+                    <a href="user-data.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-layers"><polygon
+                                        points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline
+                                        points="2 17 12 22 22 17"></polyline><polyline
+                                        points="2 12 12 17 22 12"></polyline></svg>
+                            </span>
+                        <span class="menu-text">
+                                实例管理
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="user-order.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-truck"><rect x="1" y="3" width="15"
+                                                                                                 height="13"></rect><polygon
+                                        points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5"
+                                                                                                    r="2.5"></circle><circle
+                                        cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                            </span>
+                        <span class="menu-text">
+                                订单管理
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="user-invite.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-users"><path
+                                        d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7"
+                                                                                                     r="4"></circle><path
+                                        d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path
+                                        d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            </span>
+                        <span class="menu-text">
+                                推广返利
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="user-lottery.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-grid nav-icon"><rect x="3" y="3"
+                                                                                                         width="7"
+                                                                                                         height="7"></rect><rect
+                                        x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7"
+                                                                                       height="7"></rect><rect x="3"
+                                                                                                               y="14"
+                                                                                                               width="7"
+                                                                                                               height="7"></rect></svg>
+                            </span>
+                        <span class="menu-text">
+                                积分抽奖
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11"
+                                                                                                y2="13"></line><polygon
+                                        points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </span>
+                        <span class="menu-text">
+                                系统管理
+                            </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="user-perfect.html">
+                                    <span class="icon-dash">
+                                    </span>
+                                <span class="menu-text">
+                                        账户设置
+                                    </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="notice.html">
+                                    <span class="icon-dash">
+                                    </span>
+                                <span class="menu-text">
+                                        系统通知
+                                    </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <!-- Container Start -->
+    <div class="page-wrapper">
+        <div class="main-content">
+            <div class="row">
+                <!-- Styled Table Card-->
+                <div class="col-xl-6 col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>账户信息</h4>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="mail" class="col-form-label">QQ头像</label>
+                                            <img id="formHead" style="width: 20%; height: 20%;"
+                                                 src="admin/assets/images/user.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-10 col-lg-10">
+                                        <div class="form-group">
+                                            <label for="formMail" class="col-form-label">QQ邮箱</label>
+                                            <input id="formMail" class="form-control" disabled type="text"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-2">
+                                        <div class="form-group" style="padding-top: 65px;">
+                                            <a href="javascript:void(0)" id="perfectMail" onclick="perfectMail()"
+                                               style="text-decoration:underline;">立即绑定</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-10 col-lg-10">
+                                        <div class="form-group">
+                                            <label for="password" class="col-form-label">密码</label>
+                                            <input class="form-control" value="********" disabled type="text"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-2">
+                                        <div class="form-group" style="padding-top: 65px;">
+                                            <a href="javascript:void(0)" onclick="changePass()"
+                                               style="text-decoration:underline;">修改密码</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-10 col-lg-10">
+                                        <div class="form-group">
+                                            <label for="zfbUrl" class="col-form-label">支付宝</label>
+                                            <input class="form-control" id="zfbUrl" type="text" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-2">
+                                        <div class="form-group" style="padding-top: 65px;">
+                                            <a href="javascript:void(0)" onclick="changeUrl()"
+                                               style="text-decoration:underline;">提现变更</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6">
+                    <div class="card table-card ">
+                        <div class="card-header pb-0">
+                            <div class="d-flex">
+                                <h4 style="flex:1;">实名认证</h4>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-holder">
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <p style="font-size:13px;font-weight:300;text-align:left;">
+                                            🎁️&nbsp; 实名认证审核通过后，赠送 <span
+                                                style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><strong>1个月会员免费券</strong>、<strong>30抽奖积分</strong>、<strong>永久消费积分翻倍</strong></span>
+                                        </p>
+                                        <p style="font-size:13px;font-weight:300;text-align:left;">
+                                            <span style="font-size:14px;">🔐&nbsp; 所有上传证件，系统自动加上水印，无需担心信息滥用，</span><span
+                                                style="font-family:微软雅黑, &quot;vertical-align:baseline;font-size:11pt;">平台承诺绝不会向除国家网络安全部门外任何三方泄漏用户任何信息</span>
+                                        </p>
+                                        <p style="font-size:13px;font-weight:300;text-align:left;">
+                                            ⚠️&nbsp;
+                                            请上传有效期内的二代身份证原件照片（复印件、翻拍件、临时身份证等均不能通过验证）。确保照片内身份证四角边框完整，文字图案清晰可见，背景简洁，无遮挡、无反光。具体可&nbsp;<a
+                                                href="example.html" target="_blank">查看示例</a>
+                                        </p>
+                                    </div>
+
+                                    <form action="" id="register-form">
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                <div class="ad-checkout-tab">
+                                                    <label for="password">身份证人像面</label>
+                                                    <div class="input-group">
+                                                        <div class="picBox" style="width: 100px;height: 100px"></div>
+                                                    </div>
+                                                    <input id="zIdcard" name="zIdcard" class="form-control"
+                                                           placeholder=""
+                                                           type="hidden">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                <div class="ad-checkout-tab text-left">
+                                                    <label for="password">上传示例</label>
+                                                    <div class="input-group">
+                                                        <img style="width: 200px;height: 120px;"
+                                                             src="admin/static/image/z.jpeg">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                <div class="ad-checkout-tab">
+                                                    <label for="password">身份证国徽面</label>
+                                                    <div class="input-group">
+                                                        <div class="picBox1" style="width: 100px;height: 100px"></div>
+                                                        <input id="fIdcard" name="fIdcard" class="form-control"
+                                                               placeholder="" type="hidden">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                <div class="ad-checkout-tab text-left">
+                                                    <label for="password">上传示例</label>
+                                                    <div class="input-group">
+                                                        <img style="width: 200px;height: 120px;"
+                                                             src="admin/static/image/f.jpeg">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12">
+                                                <div class="form-group">
+                                                    <label for="reason" class="col-form-label">审核结果</label>
+                                                    <input class="form-control" id="reason" type="text" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-0">
+                                                <a class="btn btn-primary squer-btn mt-2 mr-2" id="apply"
+                                                   href="javascript:void(0);" onclick="apply()">提交审核</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-footer-btm">
+                <p>本平台所有技术产品仅供个人学习、测试使用，不得用于违法违规内容，如有违反和本平台无关，平台将依法积极配合公安部门追责 &nbsp;&nbsp;&nbsp;
+                    友链: <a style="color: #f56108;" target="_blank"
+                           href="https://www.downdemo.com">前端模板</a>
+                    <a style="color: #f56108;" target="_blank"
+                       href="https://pay.npsvip.cn">免签支付</a>
+                    <a style="color: #f56108;" target="_blank"
+                       href="https://www.zwapi.cn">HTTPS证书</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 绑定邮箱 -->
+<div id="qqLayer" style="display: none;">
+    <form action="" id="qqForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><br/>
+            <div class="form-group has-feedback">
+                <label for="email">QQ邮箱</label>
+                <div class="input-group">
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-envelope"></span></span>
+                    <input id="email" name="email" class="form-control" placeholder="请输入QQ数字邮箱,例:888888@qq.com"
+                           maxlength="32" type="text">
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <div class="form-group has-feedback">
+                    <label for="idcode-btn">邮箱验证码</label>
+                    <div class="input-group">
+                                        <span class="input-group-addon"><span
+                                                class="glyphicon glyphicon-qrcode"></span></span>
+                        <input id="idcode-btn" name="code" class="form-control" placeholder="请输入验证码"
+                               maxlength="6" type="text">
+
+                        <a class="sms-btn" style="cursor: pointer;padding-top: 30px;" onclick="getSms()">获取验证码</a>
+                        <span style="display: none;padding-top: 30px;" class="time-reget">30s重新获取</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <label for="password">密码</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                    <input id="password" name="password" class="form-control" placeholder="请输入密码" maxlength="16"
+                           type="password">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div id="changePassLayer" style="display: none;">
+    <form action="" id="changePassForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><br/>
+            <div class="form-group has-feedback">
+                <label for="oldPassWd">旧密码</label>
+                <div class="input-group">
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-lock"></span></span>
+                    <input id="oldPassWd" name="oldPassWd" class="form-control" placeholder="请输入旧密码" maxlength="32"
+                           type="password">
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <label for="passWd">新密码</label>
+                <div class="input-group">
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-lock"></span></span>
+                    <input id="passWd" name="passWd" class="form-control" placeholder="请输入新密码" maxlength="32"
+                           type="password">
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <label for="passWdRepay">确认密码</label>
+                <div class="input-group">
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-lock"></span></span>
+                    <input id="passWdRepay" name="passWdRepay" class="form-control" placeholder="请确认密码" maxlength="32"
+                           type="password">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 滑块验证码 -->
+<div class="modal fade" id="captchaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content slider" id="captchaModal" tabindex="-1" role="dialog" style="margin:0 auto"
+             aria-labelledby="myModalLabel">
+            <div class="content">
+                <div class="bg-img-div">
+                    <img id="bg-img" src="" alt/>
+                </div>
+                <div class="slider-img-div" id="slider-img-div">
+                    <img id="slider-img" src="" alt/>
+                </div>
+            </div>
+            <div class="slider-move">
+                <div class="slider-move-track">
+                    拖动滑块完成拼图
+                </div>
+                <div class="slider-move-btn" id="slider-move-btn"></div>
+            </div>
+            <div class="bottom">
+                <div class="close-btn" id="slider-close-btn"></div>
+                <div class="refresh-btn" id="slider-refresh-btn"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 账户充值 -->
+<div id="rechargeLayer" style="display: none;">
+    <form action="" id="rechargeForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><br/>
+            <div class="form-group has-feedback">
+                <h5>
+                    <svg t="1683357211967" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="2451" width="16" height="16">
+                        <path d="M512.512 47.616c-254.464 0-460.8 206.336-460.8 460.8s206.336 460.8 460.8 460.8 460.8-206.336 460.8-460.8-206.336-460.8-460.8-460.8z m144.896 445.952v46.592h-114.176v64.512h114.176v47.616h-114.176v93.696H484.352v-93.696H365.568v-47.616h118.272v-64.512H365.568v-46.592h100.864l-122.88-211.456H409.6c57.856 104.96 92.672 172.032 104.96 200.192h1.024c4.096-11.776 15.872-34.816 34.304-70.144l70.656-130.048h62.464l-124.416 211.968h98.816z"
+                              fill="#FE9C01" p-id="2452"></path>
+                    </svg>
+                    账户余额 &nbsp; <i id="balance"></i></h5>
+            </div>
+            <br/>
+            <div class="form-group has-feedback">
+                <label class="col-form-label" for="amount">充值金额</label>
+                <input type="text" autocomplete='off' onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')"
+                       class="form-control createContainer" list="amountSelect" name="amount"
+                       placeholder="支持手输或选择">
+                <datalist id="amountSelect">
+                    <option value="100">100</option>
+                    <option value="300">300</option>
+                    <option value="500">500</option>
+                    <option value="1000">1000</option>
+                </datalist>
+            </div>
+
+            <div class="form-group has-feedback">
+                <label for="payType">支付方式</label>
+                <div class="input-group" style="width: 100%;">
+                        <span class="btn-group" style="margin-left: 20px;">
+                                <label title="支付宝" class="radio-inline">
+                                    <input checked type="radio" name="payType" value="2">
+                                   <svg t="1625817310203" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="11153" width="64" height="64"><path
+                                           d="M902.095 652.871l-250.96-84.392s19.287-28.87 39.874-85.472c20.59-56.606 23.539-87.689 23.539-87.689l-162.454-1.339v-55.487l196.739-1.387v-39.227H552.055v-89.29h-96.358v89.294H272.133v39.227l183.564-1.304v59.513h-147.24v31.079h303.064s-3.337 25.223-14.955 56.606c-11.615 31.38-23.58 58.862-23.58 58.862s-142.3-49.804-217.285-49.804c-74.985 0-166.182 30.123-175.024 117.55-8.8 87.383 42.481 134.716 114.728 152.139 72.256 17.513 138.962-0.173 197.04-28.607 58.087-28.391 115.081-92.933 115.081-92.933l292.486 142.041c-11.932 69.3-72.067 119.914-142.387 119.844H266.37c-79.714 0.078-144.392-64.483-144.466-144.194V266.374c-0.074-79.72 64.493-144.399 144.205-144.47h491.519c79.714-0.073 144.396 64.49 144.466 144.203v386.764z m-365.76-48.895s-91.302 115.262-198.879 115.262c-107.623 0-130.218-54.767-130.218-94.155 0-39.34 22.373-82.144 113.943-88.333 91.519-6.18 215.2 67.226 215.2 67.226h-0.047z"
+                                           fill="#02A9F1" p-id="11154"></path></svg>
+                                </label>
+                                <label title="微信" class="radio-inline">
+                                    <input type="radio" name="payType" value="1">
+                                <svg t="1625817180424" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg" p-id="9001" width="64" height="64"><path
+                                        d="M683.058 364.695c11 0 22 1.016 32.943 1.976C686.564 230.064 538.896 128 370.681 128c-188.104 0.66-342.237 127.793-342.237 289.226 0 93.068 51.379 169.827 136.725 229.256L130.72 748.43l119.796-59.368c42.918 8.395 77.37 16.79 119.742 16.79 11 0 21.46-0.48 31.914-1.442a259.168 259.168 0 0 1-10.455-71.358c0.485-148.002 128.744-268.297 291.403-268.297l-0.06-0.06z m-184.113-91.992c25.99 0 42.913 16.79 42.913 42.575 0 25.188-16.923 42.579-42.913 42.579-25.45 0-51.38-16.85-51.38-42.58 0-25.784 25.93-42.574 51.38-42.574z m-239.544 85.154c-25.384 0-51.374-16.85-51.374-42.58 0-25.784 25.99-42.574 51.374-42.574 25.45 0 42.918 16.79 42.918 42.575 0 25.188-16.924 42.579-42.918 42.579z m736.155 271.655c0-135.647-136.725-246.527-290.983-246.527-162.655 0-290.918 110.88-290.918 246.527 0 136.128 128.263 246.587 290.918 246.587 33.972 0 68.423-8.395 102.818-16.85l93.809 50.973-25.93-84.677c68.907-51.93 120.286-119.815 120.286-196.033z m-385.275-42.58c-16.923 0-34.452-16.79-34.452-34.179 0-16.79 17.529-34.18 34.452-34.18 25.99 0 42.918 16.85 42.918 34.18 0 17.39-16.928 34.18-42.918 34.18z m188.165 0c-16.984 0-33.972-16.79-33.972-34.179 0-16.79 16.927-34.18 33.972-34.18 25.93 0 42.913 16.85 42.913 34.18 0 17.39-16.983 34.18-42.913 34.18z"
+                                        fill="#09BB07" p-id="9002"></path></svg>
+                                </label>
+                            </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Script Start -->
+<script src="admin/assets/js/jquery.min.js"></script>
+<script src="admin/assets/js/popper.min.js"></script>
+<script src="admin/assets/js/datatables.min.js"></script>
+<script src="admin/assets/js/dataTables.responsive.min.js"></script>
+<script src="admin/assets/js/bootstrap.min.js"></script>
+<script src="admin/assets/js/swiper.min.js"></script>
+<!-- Page Specific -->
+<script src="admin/assets/js/nice-select.min.js"></script>
+<!-- Custom Script -->
+<script src="admin/assets/js/custom.min.js"></script>
+<script src="admin/assets/js/dataTables.fixedColumns.min.js"></script>
+<script src="admin/static/plugins/layer/layer.min.js"></script>
+<script src="admin/static/js/bootstrap-show-modal.min.js"></script>
+<script src="admin/static/js/dbg.min.js"></script>
+<script src="admin/static/js/uploadImg.min.js"></script>
+<script src="admin/static/js/captcha.min.js"></script>
+
+
+<script>
+    // 头像
+    if (null != localStorage.getItem('headUrl') && '' !== localStorage.getItem('headUrl')) {
+        $('#headUrl').attr('src', localStorage.getItem('headUrl'));
+    }
+    // 邮箱
+    if (null != localStorage.getItem('mail') && '' !== localStorage.getItem('mail')) {
+        $('#mail').html(localStorage.getItem('mail'));
+    }
+
+    var timer = null;
+
+    $(document).ready(function () {
+        notice();
+
+        $('.captchaPic').on('click', function () {
+            getPicSms();
+        })
+
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/api/userInfo",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
+                if (0 == result.code) {
+                    if (null != result.data.mail && result.data.mail.length > 0 && result.data.mail.lastIndexOf('@') != -1) {
+                        $('#formMail').val(result.data.mail);
+                        $('#perfectMail').hide();
+                        $('#formHead').attr('src', head(result.data.mail));
+                    } else {
+                        $('#formMail').val("请绑定QQ邮箱");
+                        $('#perfectMail').show();
+                    }
+                    if (null != result.data.zfbUrl && result.data.zfbUrl.length > 0) {
+                        $('#zfbUrl').val(result.data.zfbUrl);
+                    } else {
+                        $('#zfbUrl').val('请绑定提现支付宝');
+                    }
+
+                    if (result.data.auth == 0 && null != result.data.reason && '' != result.data.reason) {
+                        $('#reason').val("审核未通过：" + result.data.reason);
+                    }
+
+                    if (result.data.auth == 1) {
+                        $('#reason').val("证件审核中，工作日内预计10min可完成审核");
+                        $('#apply').hide();
+                    }
+                    if (result.data.auth == 2) {
+                        $('#reason').val("恭喜，实名认证已通过！");
+                        $('#apply').hide();
+                    }
+                } else {
+                    $.showAlert({title: "提示", options: {backdrop: false}, body: result.msg});
+                }
+            }
+        });
+
+        $(".picBox").uploadImg({
+            "picStyle": 1,//1、表示可以自定义图片宽度跟长度；0、表示只能上传固定像素（200*200）的图片
+            "width": 100,//限定的高跟宽
+            "height": 100,
+            "classname": 'sfz1',
+            "prevclass": 'prevclass1',
+            "success": function (res) {
+                $("#zIdcard").val(res.url);
+            }
+        });
+        $(".picBox1").uploadImg({
+            "picStyle": 1,//1、表示可以自定义图片宽度跟长度；0、表示只能上传固定像素（200*200）的图片
+            "width": 100,//限定的高跟宽
+            "height": 100,
+            "classname": 'sfz2',
+            "prevclass": 'prevclass2',
+            "success": function (res) {
+                $("#fIdcard").val(res.url);
+            }
+        });
+    });
+
+    function head(str) {
+        if (null == str || str == '' || str.lastIndexOf('@qq.com') == -1) {
+            return null;
+        }
+        return 'https://q1.qlogo.cn/g?b=qq&nk=' + str.replace('@qq.com', '') + '&s=100';
+    }
+
+    function changePass() {
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['修改密码', 'text-align:left;background:#11a1fd'],
+            area: ['30%', '60%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['2%', '40%'],
+            maxmin: true, //允许全屏最小化
+            content: $('#changePassLayer'),
+            btn: ["取消", "提交"],
+            yes: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+                $.ajax({
+                    type: "POST",
+                    url: baseUrl + "/api/updatePassWd",
+                    headers: {
+                        token: localStorage.getItem('token')
+                    },
+                    data: $("#changePassForm").serialize(),
+                    success: function (result) {
+                        if (result.code == 0) {
+                            localStorage.removeItem('token')
+                            window.location.href = 'login.html';
+                            $.showAlert({title: "提示", body: '密码已重置，请重新登录'});
+                        } else {
+                            $.showAlert({title: "提示", body: result.msg});
+                            return false;
+                        }
+                    }
+                })
+            }
+        });
+    }
+
+    function changeUrl() {
+        var zfbUrl = $('#zfbUrl').val();
+        if (null == zfbUrl || '' == zfbUrl) {
+            $.showAlert({title: "提示", body: '请填写正确的支付宝收款地址'});
+            return;
+        }
+
+        $.showConfirm({
+            title: "提现变更",
+            body: "确认为本人正常状态支付宝收款帐号，推广返利的提现会自动打到该账户",
+            textTrue: "同意",
+            textFalse: "拒绝",
+            onSubmit: function (result) { // callback on confirm
+                if (result) {
+                    $.ajax({
+                        type: "GET",
+                        url: baseUrl + "/api/changeUrl?zfbUrl=" + zfbUrl,
+                        headers: {
+                            token: localStorage.getItem('token')
+                        },
+                        success: function (result) {
+                            if (result.code == 0) {
+                                $.showAlert({title: "提示", body: '提现地址更新成功'});
+                            } else {
+                                $.showAlert({title: "提示", body: result.msg});
+                                return false;
+                            }
+                        }
+                    })
+                } else {
+                    return;
+                }
+            },
+            onDispose: function () {
+            }
+        });
+    }
+
+    function apply() {
+        let val = decodeURIComponent($('#register-form').serialize())
+        let params = {}
+        let arr = val.split('&').forEach(item => {
+            let kv = item.split('=')
+            params[kv[0]] = kv[1]
+        });
+
+        if (params['zIdcard'].length == 0) {
+            $.showAlert({title: "提示", body: "请上传身份证人像面"});
+            return;
+        }
+        if (params['fIdcard'].length == 0) {
+            $.showAlert({title: "提示", body: "请上传身份证国徽面"});
+            return;
+        }
+        $.ajax({
+            type: "post",
+            url: baseUrl + "/api/perfect", //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            data: JSON.stringify(params),
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
+                if (0 == result.code) {
+                    $.showAlert({title: "提示", body: "已提交后台审核，工作日内约10min即可审核完毕"});
+                    window.location.reload();
+                } else {
+                    $.showAlert({title: "提示", body: result.msg});
+                }
+            }
+        });
+    }
+
+    function perfectMail() {
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['QQ邮箱绑定', 'text-align:left;background:#11a1fd'],
+            area: ['30%', '60%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['2%', '40%'],
+            maxmin: true, //允许全屏最小化
+            content: $('#qqLayer'),
+            btn: ["取消", "提交"],
+            yes: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+                let val = decodeURIComponent($('#qqForm').serialize())
+                let params = {}
+                let arr = val.split('&').forEach(item => {
+                    let kv = item.split('=')
+                    params[kv[0]] = kv[1]
+                })
+                params.mail = params.email
+                $.ajax({
+                    type: "post",
+                    url: baseUrl + "/api/perfect", //url
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(params),
+                    headers: {
+                        token: localStorage.getItem('token')
+                    },
+                    success: function (result) {
+                        if (result.code) {
+                            $.showAlert({title: "提示", body: result.msg});
+                        } else {
+                            localStorage.setItem('token', result.token)
+                            localStorage.setItem('userId', result.userId)
+                            localStorage.setItem('phone', result.userName)
+                            localStorage.setItem('headUrl', result.headUrl || '')
+                            localStorage.setItem('enterprise', result.enterprise || false)
+                            window.location.reload();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    function getSms() {
+        clearAllPreventDefault($(".slider"));
+        refreshCaptcha();
+        $('#captchaModal').modal('toggle');
+    }
+
+    function refreshCaptcha() {
+        $.get(baseUrl + "/api/captcha", function (data) {
+            $("#slider-move-btn").css("background-position", "-5px 11.79625%")
+            $("#slider-move-btn").css("transform", "translate(0px, 0px)")
+            $("#slider-img-div").css("transform", "translate(0px, 0px)")
+            currentCaptchaId = data.id;
+            const bgImg = $("#bg-img");
+            const sliderImg = $("#slider-img");
+            bgImg.attr("src", data.captcha.backgroundImage);
+            sliderImg.attr("src", data.captcha.sliderImage);
+            initConfig(bgImg.width(), bgImg.height(), sliderImg.width(), sliderImg.height(), 206);
+        })
+    }
+
+    function getPicSms() {
+        var url = baseUrl + "/api/captchaJpg"
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = "blob";
+        xhr.onload = function (response) {
+            if (this.status == 200) {
+                let blob = new Blob([this.response], {type: 'image/jpeg'})
+                let url = URL.createObjectURL(blob)
+                $(".captchaPic").attr('src', url);
+                $(".captchaPic").show()
+            }
+        }
+        xhr.send();
+    }
+
+    let currentCaptchaId = null;
+    $("#slider-move-btn").mousedown(down);
+    $("#slider-move-btn").on("touchstart", down);
+
+    $("#slider-close-btn").click(() => {
+
+    });
+
+    $("#slider-refresh-btn").click(() => {
+        refreshCaptcha();
+    });
+
+    function valid(captchaConfig) {
+        let data = {
+            bgImageWidth: captchaConfig.bgImageWidth,
+            bgImageHeight: captchaConfig.bgImageHeight,
+            sliderImageWidth: captchaConfig.sliderImageWidth,
+            sliderImageHeight: captchaConfig.sliderImageHeight,
+            startSlidingTime: captchaConfig.startTime,
+            entSlidingTime: captchaConfig.stopTime,
+            trackList: captchaConfig.trackArr
+        };
+        $.ajax({
+            type: "POST",
+            url: baseUrl + "/api/check?id=" + currentCaptchaId,
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(data),
+            success: function (res) {
+                if (res) {
+                    $('#captchaModal').modal('hide');
+
+                    $.ajax({
+                        type: "get",
+                        url: baseUrl + "/api/checkMailWithRepeat?mail=" + $('#email').val(), //url
+                        dataType: "json",
+                        contentType: "application/json;charset=utf-8",
+                        success: function (result) {
+                            if (result.code) {
+                                $.showAlert({title: "提示", body: result.msg});
+                            } else {
+                                $.showAlert({title: "提示", body: '发送成功'});
+                                $('.sms-btn').hide()
+                                clearInterval(timer)
+                                let num = 29
+                                let el = $('.time-reget')
+                                el.show()
+                                timer = setInterval(function () {
+                                    el.text(num + 's重新获取')
+                                    num -= 1
+                                    if (num <= 0) {
+                                        $('.sms-btn').show()
+                                        el.hide()
+                                    }
+                                }, 1000)
+                            }
+                        }
+                    });
+                }
+                refreshCaptcha();
+            }
+
+        })
+    }
+
+    function doDown() {
+        $("#slider-move-btn").css("background-position", "-5px 31.0092%")
+    }
+
+    function doMove(currentCaptchaConfig) {
+        const moveX = currentCaptchaConfig.moveX;
+        $("#slider-move-btn").css("transform", "translate(" + moveX + "px, 0px)")
+        $("#slider-img-div").css("transform", "translate(" + moveX + "px, 0px)")
+    }
+
+    function reset() {
+        $("#slider-move-btn").css("background-position", "-5px 11.79625%")
+        $("#slider-move-btn").css("transform", "translate(0px, 0px)")
+        $("#slider-img-div").css("transform", "translate(0px, 0px)")
+        currentCaptchaId = null;
+    }
+
+    function recharge() {
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/api/userInfo", //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
+                if (result.code == '0') {
+                    $("#balance").html(result.data.balance);
+                }
+            }
+        });
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['账户充值', 'text-align:left;background:#11a1fd'],
+            area: ['30%', '50%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['10%', '40%'],
+            maxmin: true, //允许全屏最小化
+            content: $('#rechargeLayer'),
+            btn: ["取消", "提交"],
+            yes: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+
+                let val = decodeURIComponent($('#rechargeForm').serialize(), true)
+                let params = {}
+                let arr = val.split('&').forEach(item => {
+                    let kv = item.split('=')
+                    params[kv[0]] = kv[1]
+                });
+                if (null == params['amount'] || '' == params['amount']) {
+                    $.showAlert({title: "提示", body: "充值金额不可为空"});
+                    return;
+                }
+
+                $.showConfirm({
+                    title: "充值协议",
+                    body: "● 充值后余额仅支持本站使用不再支持提现</br>" +
+                        "● 开票需提前联系管理员确认",
+                    textTrue: "同意",
+                    textFalse: "拒绝",
+                    onSubmit: function (result) { // callback on confirm
+                        if (result) {
+                            $.ajax({
+                                type: "get",
+                                url: baseUrl + "/order/recharge?payType=" + params['payType'] + "&amount=" + params['amount'], //url
+                                dataType: "json",
+                                contentType: "application/json;charset=utf-8",
+                                headers: {
+                                    token: localStorage.getItem('token')
+                                },
+                                success: function (result) {
+                                    if (result.code) {
+                                        $.showAlert({title: "提示", body: result.msg})
+                                    } else {
+                                        if (result.msg != 'success') {
+                                            pay(result.msg);
+                                        }
+                                    }
+                                }
+                            });
+                        } else {
+                            return;
+                        }
+                    },
+                    onDispose: function () {
+                    }
+                })
+            }
+        });
+    }
+
+
+</script>
+</body>
+
+</html>

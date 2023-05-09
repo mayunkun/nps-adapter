@@ -1,0 +1,791 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link class="header-small-icon" rel="icon" type="image/x-icon"
+          href="images/slider/head-logo.jpg" media="screen">
+    <title>小蝴蝶内网穿透服务协议</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        input,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Raleway", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-weight: 300;
+            font-size: 18px;
+        }
+
+        body {
+            line-height: 2;
+            color: #444;
+            background: #ededed;
+        }
+
+        img, iframe {
+            max-width: 100%;
+        }
+
+        iframe {
+            max-height: 100%;
+        }
+
+        img {
+            height:auto;
+        }
+
+        .btn {background:#135571;color:#fff;
+
+            -webkit-transition: all 250ms;
+            -moz-transition: all 250ms;
+            -o-transition: all  250ms;
+            transition: all  250ms;
+
+        }
+
+        .btn:hover {background:#333; }
+
+        .btn-download { border-radius:0 4px 0 0; font-weight:bold; width: 25px;  overflow: hidden;}
+
+        .btn-download  img {  width: 25px;
+            float: left;
+            margin-top: 18px;
+            margin-right: 15px
+        }
+
+        .btn-download:hover { width:165px;}
+
+        iframe {
+            border: 0 !important;
+        }
+
+        .wrapper { margin:20px 40px ; border-radius:4px; box-shadow:0 0 2px 2px rgba(155,155,155,0.1); border:1px solid #d3d3d3;}
+        header {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 650px;
+            position: relative;
+        }
+
+        strong, dt, h3, h4 {
+            font-weight: 700;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 10px 0;
+            line-height: 20px;
+            color: inherit;
+            text-rendering: optimizelegibility;
+        }
+
+
+        h1,
+        h2,
+        h3 {
+            line-height: 40px;
+        }
+
+        h2 {
+            font-size: 22px;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-size: 24.5px;
+        }
+
+        h4 {
+            font-size: 17.5px;
+        }
+
+        h5 {
+            font-size: 14px;
+        }
+
+        h6 {
+            font-size: 11.9px;
+        }
+
+        hr {
+            background: #EEE;
+            border: 0;
+            height: 1px;
+            margin: 40px 0 40px;
+        }
+
+        blockquote {
+            margin: 1em 0;
+            border-left: 3px solid #ccc;
+            padding-left: 20px;
+            text-align: left;
+        }
+
+        .copyrights{
+            text-indent:-9999px;
+            height:0;
+            line-height:0;
+            font-size:0;
+            overflow:hidden;
+        }
+
+        dt {
+        }
+
+        dd {
+            padding: 0;
+            margin: 0 0 25px 0;
+        }
+
+        a {
+            -webkit-transition: all ease 150ms;
+            -moz-transition: all ease 150ms;
+            -o-transition: all ease 150ms;
+            transition: all ease 150ms;
+            text-decoration: none;
+            color: #26abe2;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: #47b5e2;
+        }
+
+        /* Header Styles */
+
+        header {
+            padding: 2em 0 2em 0;
+
+            background: #26abe2;
+            color: #fff;
+        }
+
+
+        h1 {
+            margin: 0;
+            padding: 0;
+            float: left;
+        }
+
+        header h2 {
+            margin: 0 0 1em 0;
+        }
+
+        header h2.lone-header {
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5em 0;
+            background:#fff;
+            border-radius:0 0 4px 4px;
+        }
+
+        footer p {
+            margin: 0;
+            color: #999;
+        }
+
+        .pull-right{ float:right;}
+        .pull-left { float:left; }
+
+        /* Navigation Styles */
+        nav {
+            background: #fff;
+            padding: 0;
+            min-height: 60px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        nav ul, nav li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav a {
+            padding: 0 1em;
+            text-decoration:none !important;
+            font-size: .9em;
+            height: 60px;
+            line-height: 60px;
+            display: block;
+        }
+
+        nav h1 a {
+            padding: 7px 1em;
+            height: 46px;
+            line-height: 0;
+            height: 45px;
+            line-height: 60px;
+            color: #000;
+        }
+
+        nav h1 a img {   margin-right: 10px;
+            float: left;
+            margin-top: 9px;
+        }
+
+        nav h1 a  span {  float: left;
+            margin-top: -5px;}
+
+        nav a:active {
+            color: #fff;
+            cursor: default;
+        }
+
+
+
+        nav ul.site {
+            padding: 20px 0 0 0;
+        }
+
+        nav #menu {
+            overflow: hidden;
+            max-height: 0;
+            clear: left;
+        }
+
+
+        nav #menu-toggle {
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 1.5em;
+            padding: 0 16px;
+        }
+
+
+        @media only screen and (min-width: 680px) {
+            nav, nav #menu {
+                height: 60px !important;
+            }
+
+            nav li, nav a {
+                float: left;
+            }
+
+
+            nav ul.site {
+                float: left;
+                padding: 0;
+                clear: none;
+            }
+
+            nav ul.site li {
+                margin: 0 0 0 10px;
+            }
+
+            nav #menu-toggle {
+                display: none !important;
+            }
+
+            nav #menu {
+                max-height: 9999px;
+                clear: none;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        /* Content Styles */
+        section { padding: 1em 0 3em; text-align: center; }
+        section.vibrant { background: #222; color: #fff; }
+        section.vibrant h4{
+            line-height: 2;
+            font-weight: normal;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        nav:before,
+        nav:after,
+        header:before,
+        header:after,
+        section:before,
+        section:after {
+            content: " ";
+            display: table;
+        }
+
+        nav:after, header:after, section:after  { clear: both; }
+        nav, header, section { *zoom: 1; }
+
+
+
+        /* Form Styles */
+        input {
+            display: block;
+            vertical-align: middle;
+            line-height: 30px;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 400px;
+
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+
+            -webkit-transition: all linear 0.2s;
+            -moz-transition: all linear 0.2s;
+            -o-transition: all linear 0.2s;
+            transition: all linear 0.2s;
+        }
+
+
+
+
+
+
+
+        input:focus {
+            border-color: #007eb2;
+            outline: 0;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .docs-nav {
+            background-color: #f5f5f5;
+            list-style: none;
+            margin: 0 0 0 20px;
+            padding: 15px 20px;
+            font-size: 0.97em;
+        }
+
+        .docs-nav a {
+            display: block;
+            margin: 0 -20px;
+            padding: 0 20px;
+            text-decoration: none;
+            border-right: 2px solid transparent;
+        }
+
+        @media only screen and (min-width: 400px) {
+
+        }
+
+        @media only screen and (min-width: 600px) {
+
+        }
+
+        @media only screen and (min-width: 960px) {
+            .docs-nav {
+                position: absolute;
+                top: 0;
+                width: 220px;
+
+                -webkit-transition: top linear 50ms;
+                -moz-transition: top linear 50ms;
+                -o-transition: top linear 50ms;
+                transition: top linear 50ms;
+            }
+
+            .docs-nav.fixed {
+                position: fixed;
+                top: 49px;
+                width: 220px;
+            }
+
+            .docs-nav a:hover {
+                background: #26ABE2;
+                color:#fff;
+            }
+
+            .docs-nav a:active,
+            .docs-nav .active {
+                background: #26ABE2;
+                color:#fff;
+                border-right: 2px solid #ccc;
+            }
+
+            .docs-nav .separator {
+                height: 20px;
+            }
+
+            .docs-content {
+                padding-left: 310px;
+            }
+
+
+
+            header {
+                padding: 1em 0 1em 0;
+            }
+
+            .container {
+                max-width: 1000px;
+                padding: 0 20px;
+            }
+
+            section { padding: 3em 0; text-align: left;   background: #fff;}
+            section.centered {
+                text-align: center;
+            }
+
+
+
+
+
+
+
+
+
+            input {
+                display: inline-block;
+            }
+
+
+
+        }
+
+
+        /* GitHub Theme */
+        /* Pretty printing styles. Used with prettify.js. */
+        /* SPAN elements with the classes below are added by prettyprint. */
+        /* plain text */
+        .pln {
+            color: #333333;
+        }
+        .prettyprint{overflow:auto!important;}
+
+        @media screen {
+            /* string content */
+            .str {
+                color: #dd1144;
+            }
+
+            /* a keyword */
+            .kwd {
+                color: #333333;
+            }
+
+            /* a comment */
+            .com {
+                color: #999988;
+            }
+
+            /* a type name */
+            .typ {
+                color: #445588;
+            }
+
+            /* a literal value */
+            .lit {
+                color: #445588;
+            }
+
+            /* punctuation */
+            .pun {
+                color: #333333;
+            }
+
+            /* lisp open bracket */
+            .opn {
+                color: #333333;
+            }
+
+            /* lisp close bracket */
+            .clo {
+                color: #333333;
+            }
+
+            /* a markup tag name */
+            .tag {
+                color: navy;
+            }
+
+            /* a markup attribute name */
+            .atn {
+                color: teal;
+            }
+
+            /* a markup attribute value */
+            .atv {
+                color: #dd1144;
+            }
+
+            /* a declaration */
+            .dec {
+                color: #333333;
+            }
+
+            /* a variable name */
+            .var {
+                color: teal;
+            }
+
+            /* a function name */
+            .fun {
+                color: #990000;
+            }
+        }
+        /* Use higher contrast and text-weight for printable form. */
+        @media print, projection {
+            .str {
+                color: #006600;
+            }
+
+            .kwd {
+                color: #006;
+                font-weight: bold;
+            }
+
+            .com {
+                color: #600;
+                font-style: italic;
+            }
+
+            .typ {
+                color: #404;
+                font-weight: bold;
+            }
+
+            .lit {
+                color: #004444;
+            }
+
+            .pun, .opn, .clo {
+                color: #444400;
+            }
+
+            .tag {
+                color: #006;
+                font-weight: bold;
+            }
+
+            .atn {
+                color: #440044;
+            }
+
+            .atv {
+                color: #006600;
+            }
+        }
+        /* Style */
+        pre.prettyprint {
+            background: #F0F0F0;
+            font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            border: 1px solid #cccccc;
+            padding: 0;
+        }
+
+        /* Specify class=linenums on a pre to get line numbering */
+        ol.linenums {
+            margin-top: 0;
+            margin-bottom: 0;
+            color: #888;
+        }
+
+        .linenums li {
+            background: #FAFAFA;
+            padding-left: 10px;
+            border-left: 1px solid #CCC;
+        }
+
+        .linenums li {
+            padding-top: 5px;
+        }
+
+        .linenums li + li {
+            padding-top: 0;
+        }
+
+        .linenums li:last-child {
+            padding-bottom: 5px;
+        }
+
+
+
+        /* IE indents via margin-left */
+        li.L0,
+        li.L1,
+        li.L2,
+        li.L3,
+        li.L4,
+        li.L5,
+        li.L6,
+        li.L7,
+        li.L8,
+        li.L9 {
+            /* */
+        }
+
+        /* Alternate shading for lines */
+        li.L1,
+        li.L3,
+        li.L5,
+        li.L7,
+        li.L9 {
+            /* */
+        }
+
+    </style>
+    <script src="js/home.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <div class="container">
+            <h2 class="lone-header">小蝴蝶内网穿透服务协议</h2>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <ul class="docs-nav">
+                <li><strong>协议相关</strong></li>
+                <li><a href="#welcome" class="cc-active">一、协议总则</a></li>
+                <li><a href="#benefits" class="cc-active">二、协议范围</a></li>
+                <li><a href="#features" class="cc-active">三、禁止事项</a></li>
+                <li><a href="#license" class="cc-active">四、使用规则</a></li>
+                <li><a href="#behavier" class="cc-active">五、违法违规行为</a></li>
+                <li><a href="#risk" class="cc-active">六、使用风险</a></li>
+                <li><a href="#disclaimer" class="cc-active">七、免责事由</a></li>
+                <li class="separator"></li>
+                <li><strong>售后相关</strong></li>
+                <li><a href="#view_type" class="cc-active">一、适用退款</a></li>
+                <li><a href="#inappropriate" class="cc-active">二、不适用退款</a></li>
+                <li><a href="#civilization" class="cc-active">三、文明友善</a></li>
+            </ul>
+            <div class="docs-content">
+                <!--      <h2> Getting Started</h2>-->
+                <h3 id="welcome"> 协议总则</h3>
+                <p>欢迎使用"小蝴蝶内网穿透",以下简称"小蝴蝶",小蝴蝶的所有权和运营权归小蝴蝶所有。</p>
+                <h3 id="benefits"> 协议范围</h3>
+                <p>本协议是用户与“小蝴蝶”
+                    关于其使用“小蝴蝶”的服务所订立的协议，可由小蝴蝶随时更新，用户应当及时关注并同意，本站不承担通知义务。本站的通知、公告、声明或其它类似内容是本协议的一部分。小蝴蝶包括计算机软件，以及联机的电子文档(下称"软件产品"或"软件")。一旦安装、复制或以其他方式使用本软件产品，即表示同意接受协议各项条件的约束。如果您不同意协议的条件，则不能获得使用本软件产品的权力</p>
+                <h3 id="features"> 禁止事项</h3>
+                <ul>
+                    <li>不可删除本软件及其他副本上一切关于版权的信息</li>
+                    <li>不可销售、出租此软件产品的任何部分</li>
+                    <li>不可制作和提供该软件的注册机及破解程序</li>
+                    <li>不可对本软件进行反向工程，如反汇编、反编译等</li>
+                    <li>不可为任何非法目的而使用网络服务系统</li>
+                    <li>不可利用本站进行任何可能对互联网的正常运转造成不利影响的行为</li>
+                    <li>不可利用本站进行任何不利于本站的行为</li>
+                    <li>遵守所有与网络服务有关的网络协议、规定和程序</li>
+                </ul>
+                <h3 id="license"> 使用规则</h3>
+                <p>
+                    遵守中华人民共和国相关法律法规，包括但不限于《中华人民共和国计算机信息系统安全保护条例》、《计算机软件保护条例》、《最高人民法院关于审理涉及计算机网络著作权纠纷案件适用法律若干问题的解释(法释[2004]1号)》、《全国人大常委会关于维护互联网安全的决定》、《互联网电子公告服务管理规定》、《互联网新闻信息服务管理规定》、《互联网著作权行政保护办法》和《信息网络传播权保护条例》等有关计算机互联网规定和知识产权的法律和法规、实施办法。 </p>
+                <p>用户对其自行发表、上传或传送的内容负全部责任，所有用户不得在本站任何页面发布、转载、传送含有下列内容之一的信息，否则本站有权自行处理并不通知用户。</p>
+                <h3 id="behavier"> 违法违规行为</h3>
+                <ul>
+                    <li>使用本服务时须遵守法律法规，不得映射、制作、复制、发布、传播含有下列内容的信息或从事相关行为，也不得为映射、制作、复制、发布、传播含有下列内容的信息或从事相关行为提供便利</li>
+                    <li>违反宪法确定的基本原则的</li>
+                    <li>危害国家安全，泄漏国家机密，颠覆国家政权，破坏国家统一的</li>
+                    <li>损害国家荣誉和利益的</li>
+                    <li>煽动民族仇恨、民族歧视，破坏民族团结的</li>
+                    <li>破坏国家宗教政策，宣扬邪教和封建迷信的</li>
+                    <li>散布谣言，扰乱社会秩序，破坏社会稳定的</li>
+                    <li>散布淫秽、色情、赌博、暴力、恐怖或者教唆犯罪的</li>
+                    <li>侮辱或者诽谤他人，侵害他人合法权益的</li>
+                    <li>煽动非法集会、结社、游行、示威、聚众扰乱社会秩序的</li>
+                    <li>以非法民间组织名义活动的；含有法律、行政法规禁止的其他内容的</li>
+                </ul>
+                <h3 id="risk"> 使用风险</h3>
+                <p>使用本软件产品的免费版本由您自己承担风险。在适用法律允许的范围内，软件作者在任何情况下不就因使用或不能使用本软件产品的免费版本所发生的特殊的、意外的、直接或间接的损失承担赔偿责任。即使已事先被告知该损害发生的可能性。因此，免费版用户在使用本软件时由于意外事故、操作不当或使用错误所引起的故障甚至损坏，软件作者及共享版提供者均不承担任何责任。</p>
+                <h3 id="disclaimer"> 免责事由</h3>
+                <p>您理解并同意，在使用本服务的过程中，可能会遇到不可抗力等风险因素，使本服务受到影响。不可抗力是指不能预见、不能克服并不能避免且对一方或双方造成重大影响的客观事件，包括但不限于自然灾害如洪水、地震、瘟疫流行和风暴等以及社会事件如战争、动乱、政府行为等。出现上述情况时，小蝴蝶将努力在第一时间与相关单位配合，争取及时进行处理，但是由此给您造成的损失小蝴蝶在法律允许的范围内免责。</p>
+                <h3 id="view_type"> 适用退款</h3>
+                <ul>
+                    <li>非香港机房，延时异常高，无法正常使用</li>
+                    <li>客户端不兼容系统，确实无法使用</li>
+                </ul>
+                <h3 id="inappropriate"> 不适用退款</h3>
+                <ul>
+                    <li>一个实例无法开多个端口(本平台一个实例一个端口,定位不同于市场捆绑销售，主打高配低价)</li>
+                    <li>非香港机房域名未按要求备案</li>
+                    <li>选择错了实例类型(提示、文档都介绍了,还有免费试用的)</li>
+                    <li>不限量的机房看高清4K视频会卡顿(不限量区目前开放400-500KB/S,超过带宽可以选择高带宽3M/S的机房套餐)</li>
+                    <li>不使用用本站下载的客户端而无法运行</li>
+                    <li>SOCKS5模式不使用本站推荐的客户端代理</li>
+                    <li>代理内容违规，机房拦截无法访问的</li>
+                    <li>存在攻击行为，被服务器拦截进黑名单的</li>
+                </ul>
+
+                <h3 id="civilization"> 文明友善</h3>
+                <p>尊重他人就是尊重自己，使用过程中，任何问题可以友善协商，但是出现辱骂、恐吓、威胁管理人员等行为，本站有权利对用户进行任何处理，包括但不限于停止服务、冻结账号甚至协助公安机关处理违法行为。</p>
+            </div>
+        </div>
+    </section>
+    <section class="vibrant centered">
+        <div class="">
+            <h4> 以上所有协议及内容最终解释权归本站所有，请所有用户积极遵守，否则无权使用本站服务</h4>
+        </div>
+    </section>
+    <footer>
+        <div class="">
+            <p> &copy; 本平台所有技术产品仅供个人学习、测试使用，不得用于违法违规内容 友链：
+                <a style="color: #f56108;" target="_blank" href="https://www.downdemo.com">DOWN源码</a>
+                <a style="color: #f56108;" target="_blank" href="https://pay.npsvip.cn">蓝鲸支付</a>
+                <a style="color: #f56108;" target="_blank" href="https://www.zwapi.cn">ZW-API智能证书</a>
+                <a style="color: #f56108;" target="_blank" href="https://www.fastpc.shop">FastPC智能装机</a>
+            </p>
+        </div>
+    </footer>
+</div>
+<script src="js/bs/jquery.min.js"></script>
+<script src="js/layout.min.js"></script>
+</body>
+</html>

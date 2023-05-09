@@ -1,0 +1,2083 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>控制台-实例管理</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description"
+          content="内网穿透 NAT穿透 小蝴蝶内网穿透 高速稳定内网穿透，是一款轻量级、高性能、功能强大的内网穿透代理服务器。目前支持tcp、udp流量转发，可支持任何tcp、udp上层协议（访问内网网站、本地>支付接口调试、ssh访问、远程桌面，内网dns解析等等……），此外还支持内网http代理、内网socks5代理、p2p等，并带有功能强大的web管理端。">
+    <meta name="keywords" content="内网穿透 小蝴蝶内网穿透 NAT穿透 高速稳定内网穿透 映射端口 TCP UDP SOCKS5 内网网站 支付接口调试 SSH 远程桌面 VPN 全平台兼容内网穿透">
+    <meta name="author" content="">
+    <meta name="MobileOptimized" content="320">
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/fonts.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/icofont.min.css">
+    <link rel="stylesheet" href="admin/assets/css/swiper.min.css">
+    <!--Page Specific -->
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/nice-select.min.css">
+    <!--Custom Style -->
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/style.min.css">
+    <!-- Favicon Link -->
+    <link rel="shortcut icon" type="image/png" href="web/images/slider/head-logo.jpg">
+
+    <style>
+        body .demo-class .layui-layer-btn0 {
+            border-color: #E6E3E6;
+            background-color: #FFF;
+            color: black;
+        }
+
+        body .demo-class .layui-layer-btn1 {
+            border-color: #4898d5;
+            background-color: #2e8ded;
+            color: #fff;
+        }
+
+        body .table-responsive {
+            overflow-x: visible;
+        }
+
+        body .label-info {
+            background-color: #11a1fd;
+        }
+
+        .zindex100 {
+            z-index: 100 !important;
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="loader">
+    <div class="spinner">
+        <img src="admin/assets/images/loader.gif" alt=""/>
+    </div>
+</div>
+<!-- Main Body -->
+<div class="page-wrapper">
+    <!-- Header Start -->
+    <header class="header-wrapper main-header">
+        <div class="header-inner-wrapper">
+            <div class="logo-wrapper">
+                <a href="index.html" class="admin-logo">
+                    <img src="admin/static/image/logo.png" alt="">
+                </a>
+            </div>
+            <div class="header-right">
+                <div class="serch-wrapper">
+                    <form>
+                        <input type="text" placeholder="Search Here...">
+                    </form>
+                    <a class="search-close" href="javascript:void(0);"><span class="icofont-close-line"></span></a>
+                </div>
+                <div class="header-left">
+                    <div class="header-links">
+                        <a href="javascript:void(0);" class="toggle-btn">
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="header-links search-link">
+                        <a class="search-toggle" href="javascript:void(0);">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                 x="0px" y="0px" viewBox="0 0 56.966 56.966"
+                                 style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve">
+                                    <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23
+                                    s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92
+                                    c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17
+                                    s-17-7.626-17-17S14.61,6,23.984,6z"/>
+                                </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-controls">
+                    <div id="notification-wrapper" class="notification-wrapper header-links">
+                        <a href="javascript:void(0);" class="notification-info">
+                                <span class="header-icon">
+                                    <svg enable-background="new 0 0 512 512" viewBox="0 0 512 512"
+                                         xmlns="http://www.w3.org/2000/svg"><path
+                                            d="m450.201 407.453c-1.505-.977-12.832-8.912-24.174-32.917-20.829-44.082-25.201-106.18-25.201-150.511 0-.193-.004-.384-.011-.576-.227-58.589-35.31-109.095-85.514-131.756v-34.657c0-31.45-25.544-57.036-56.942-57.036h-4.719c-31.398 0-56.942 25.586-56.942 57.036v34.655c-50.372 22.734-85.525 73.498-85.525 132.334 0 44.331-4.372 106.428-25.201 150.511-11.341 24.004-22.668 31.939-24.174 32.917-6.342 2.935-9.469 9.715-8.01 16.586 1.473 6.939 7.959 11.723 15.042 11.723h109.947c.614 42.141 35.008 76.238 77.223 76.238s76.609-34.097 77.223-76.238h109.947c7.082 0 13.569-4.784 15.042-11.723 1.457-6.871-1.669-13.652-8.011-16.586zm-223.502-350.417c0-14.881 12.086-26.987 26.942-26.987h4.719c14.856 0 26.942 12.106 26.942 26.987v24.917c-9.468-1.957-19.269-2.987-29.306-2.987-10.034 0-19.832 1.029-29.296 2.984v-24.914zm29.301 424.915c-25.673 0-46.614-20.617-47.223-46.188h94.445c-.608 25.57-21.549 46.188-47.222 46.188zm60.4-76.239c-.003 0-213.385 0-213.385 0 2.595-4.044 5.236-8.623 7.861-13.798 20.104-39.643 30.298-96.129 30.298-167.889 0-63.417 51.509-115.01 114.821-115.01s114.821 51.593 114.821 115.06c0 .185.003.369.01.553.057 71.472 10.25 127.755 30.298 167.286 2.625 5.176 5.267 9.754 7.861 13.798z"/></svg>
+                                </span>
+                            <span class="count-notification"></span>
+                        </a>
+                        <div id="notice" class="recent-notification">
+                            <div class="drop-down-header">
+                                <h4>通知</h4>
+                                <p id="noticeCt"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-info-wrapper header-links">
+                        <a href="javascript:void(0);" class="user-info">
+                            <img id="headUrl" src="admin/assets/images/user.jpg" alt="" class="user-img">
+                            <div class="blink-animation">
+                                <span class="blink-circle"></span>
+                                <span class="main-circle"></span>
+                            </div>
+                        </a>
+                        <div class="user-info-box">
+                            <div class="drop-down-header">
+                                <h5 id="mail"></h5>
+                                <p id="vip">客服QQ: 1163363720</p>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a onclick="recharge()">
+                                        <svg t="1683263149600" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="3738" width="16" height="16">
+                                            <path d="M512 750.51c-19.08 0-31.801-12.721-31.801-31.802V432.497c0-19.08 12.72-31.801 31.801-31.801s31.801 12.72 31.801 31.8v286.212c-6.36 19.08-19.08 31.801-31.801 31.801z"
+                                                  p-id="3739" fill="#007bff"></path>
+                                            <path d="M651.925 534.26h-286.21c-19.081 0-31.802-12.72-31.802-31.8 0-19.081 12.72-31.802 31.801-31.802h286.211c19.081 0 31.802 12.72 31.802 31.802 0 19.08-12.72 31.8-31.802 31.8zM651.925 648.745h-286.21c-19.081 0-31.802-12.72-31.802-31.8 0-19.082 12.72-31.802 31.801-31.802h286.211c19.081 0 31.802 12.72 31.802 31.801 0 19.08-12.72 31.801-31.802 31.801zM512 464.298c-6.36 0-19.08 0-25.441-6.36L352.994 324.373c-12.72-12.72-12.72-31.802 0-44.522 12.72-12.72 31.801-12.72 44.522 0L531.08 413.416c12.72 12.72 12.72 31.801 0 44.522-6.36 6.36-12.72 6.36-19.081 6.36z"
+                                                  p-id="3740" fill="#007bff"></path>
+                                            <path d="M512 464.298c-6.36 0-19.08 0-25.441-6.36-12.72-12.72-12.72-31.801 0-44.522l133.565-133.565c12.72-12.72 31.801-12.72 44.522 0 12.72 12.72 12.72 31.801 0 44.522L531.081 457.938c-6.36 6.36-12.72 6.36-19.081 6.36z"
+                                                  p-id="3741" fill="#007bff"></path>
+                                            <path d="M512 1017.64c-279.85 0-508.82-228.97-508.82-508.82S232.15 0 512 0s508.82 228.969 508.82 508.82c0 25.44 0 50.882-6.36 82.683 0 19.08-19.081 31.801-38.162 25.441-19.08 0-31.801-19.08-25.44-38.161 6.36-25.441 6.36-44.522 6.36-69.963C957.217 260.77 760.05 63.602 512 63.602S66.783 267.13 66.783 515.18 263.95 960.398 512 960.398c25.441 0 57.242 0 82.683-6.36 19.081-6.361 31.801 6.36 38.162 25.44 6.36 19.081-6.36 31.802-25.441 38.162H512z"
+                                                  p-id="3742" fill="#007bff"></path>
+                                            <path d="M989.019 864.994H671.006c-19.08 0-31.801-12.72-31.801-31.801s12.72-31.802 31.801-31.802H989.02c19.08 0 31.8 12.72 31.8 31.802s-19.08 31.8-31.8 31.8z"
+                                                  p-id="3743" fill="#007bff"></path>
+                                            <path d="M830.012 1024c-19.08 0-31.8-12.72-31.8-31.801V674.186c0-19.08 12.72-31.8 31.8-31.8s31.802 12.72 31.802 31.8V992.2c0 12.72-19.081 31.801-31.802 31.801z"
+                                                  p-id="3744" fill="#007bff"></path>
+                                        </svg>
+                                        账户充值
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="user-perfect.html">
+                                        <svg t="1683263210564" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="4841" width="16" height="16">
+                                            <path d="M427.985455 526.894545a125.207273 125.207273 0 1 0-157.789091 0A186.181818 186.181818 0 0 0 162.909091 695.389091a23.272727 23.272727 0 0 0 46.545454 0 139.636364 139.636364 0 1 1 279.272728 0 23.272727 23.272727 0 0 0 46.545454 0 186.181818 186.181818 0 0 0-107.287272-168.494546z m-157.556364-96.34909A78.661818 78.661818 0 1 1 349.090909 509.207273a78.894545 78.894545 0 0 1-78.661818-78.661818zM698.181818 372.363636h93.090909a23.272727 23.272727 0 0 0 0-46.545454h-93.090909a23.272727 23.272727 0 0 0 0 46.545454z"
+                                                  p-id="4842" fill="#007bff"></path>
+                                            <path d="M942.545455 548.072727V302.545455a93.090909 93.090909 0 0 0-93.09091-93.09091h-698.181818a93.090909 93.090909 0 0 0-93.090909 93.09091v418.90909a93.090909 93.090909 0 0 0 93.090909 93.09091H651.636364a197.352727 197.352727 0 0 0 290.909091-266.472728zM151.272727 768a46.545455 46.545455 0 0 1-46.545454-46.545455V302.545455a46.545455 46.545455 0 0 1 46.545454-46.545455h698.181818a46.545455 46.545455 0 0 1 46.545455 46.545455v204.8a197.585455 197.585455 0 0 0-302.545455 167.563636 195.258182 195.258182 0 0 0 23.272728 93.090909zM791.272727 826.181818a150.807273 150.807273 0 0 1-112.407272-50.501818 151.272727 151.272727 0 0 1 223.650909-203.403636A151.272727 151.272727 0 0 1 791.272727 826.181818z"
+                                                  p-id="4843" fill="#007bff"></path>
+                                            <path d="M834.094545 628.363636l-57.483636 57.483637-16.523636-16.290909a23.272727 23.272727 0 0 0-33.047273 0 23.272727 23.272727 0 0 0 0 32.814545l33.047273 33.047273a23.272727 23.272727 0 0 0 32.814545 0l74.24-74.24a23.272727 23.272727 0 0 0 0-32.814546 23.272727 23.272727 0 0 0-33.047273 0z"
+                                                  p-id="4844" fill="#007bff"></path>
+                                        </svg>
+                                        账户详情
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onclick="logout()">
+                                        <i class="fas fa-sign-out-alt"></i>登出
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Sidebar Start -->
+    <aside class="sidebar-wrapper">
+        <div class="side-menu-wrap">
+            <ul class="main-menu">
+                <li>
+                    <a href="user-data.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-layers"><polygon
+                                        points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline
+                                        points="2 17 12 22 22 17"></polyline><polyline
+                                        points="2 12 12 17 22 12"></polyline></svg>
+                            </span>
+                        <span class="menu-text">
+                                实例管理
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="user-order.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-truck"><rect x="1" y="3" width="15"
+                                                                                                 height="13"></rect><polygon
+                                        points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5"
+                                                                                                    r="2.5"></circle><circle
+                                        cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                            </span>
+                        <span class="menu-text">
+                                订单管理
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="user-invite.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-users"><path
+                                        d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7"
+                                                                                                     r="4"></circle><path
+                                        d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path
+                                        d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            </span>
+                        <span class="menu-text">
+                                推广返利
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="user-lottery.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-grid nav-icon"><rect x="3" y="3"
+                                                                                                         width="7"
+                                                                                                         height="7"></rect><rect
+                                        x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7"
+                                                                                       height="7"></rect><rect x="3"
+                                                                                                               y="14"
+                                                                                                               width="7"
+                                                                                                               height="7"></rect></svg>
+                            </span>
+                        <span class="menu-text">
+                                积分抽奖
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11"
+                                                                                                y2="13"></line><polygon
+                                        points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </span>
+                        <span class="menu-text">
+                                系统管理
+                            </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="user-perfect.html">
+                                    <span class="icon-dash">
+                                    </span>
+                                <span class="menu-text">
+                                        账户设置
+                                    </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="notice.html">
+                                    <span class="icon-dash">
+                                    </span>
+                                <span class="menu-text">
+                                        系统通知
+                                    </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <!-- Container Start -->
+    <div class="page-wrapper">
+        <div class="main-content">
+            <div class="row">
+                <div class="colxl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-title-wrapper">
+                        <div class="page-title-box ad-title-box-use">
+                            &nbsp;&nbsp;<svg t="1683262992131" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="2685" width="16" height="16">
+                            <path d="M911.194 151.785v539.172L730.253 845.451h-589.66V151.785h770.601zM679.765 614.021H255.706v76.936h424.059v-76.936zM795.479 460.15H255.706v76.936h539.773V460.15z m0-154.494H255.706v77.559h539.773v-77.559z m0 0"
+                                  fill="#595A5A" p-id="2686"></path>
+                        </svg>
+                            <a href="https://docs.qq.com/doc/p/a6a9d6ee4387623c9ec68dfed1dd9ad98ebf0cf0?dver=2.1.27413708"
+                               style="text-decoration: underline;" target="_blank">使用说明</a>
+                        </div>
+                        <div class="ad-breadcrumb">
+                            <ul>
+                                <li>
+                                    <div class="ad-user-btn">
+                                        <input class="form-control" type="text" placeholder="请输入关键字" id="search">
+                                        <a class="search-link" onclick="searchPage()" href="javascript:void(0);">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="" width="20" fill="none"
+                                                 viewbox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      stroke-width="2"
+                                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="add-group">
+                                        <a class="ad-btn" href="javascript:void(0);" onclick="add()">
+                                            <svg t="1682693748657" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                                 xmlns="http://www.w3.org/2000/svg" p-id="2766" width="16" height="16">
+                                                <path d="M102.4 558.353067h819.2a51.2 51.2 0 1 0 0-102.4H102.4a51.2 51.2 0 0 0 0 102.4z"
+                                                      fill="#ffffff" p-id="2767"></path>
+                                                <path d="M460.8 916.753067v-819.2a51.2 51.2 0 1 1 102.4 0v819.2a51.2 51.2 0 0 1-102.4 0z"
+                                                      fill="#ffffff" p-id="2768"></path>
+                                            </svg>
+                                            新建实例
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Styled Table Card-->
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card table-card">
+                        <div class="card-body">
+                            <table id="example" class="table table-striped table-bordered dt-responsive nowrap"
+                                   style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th>代理地址</th>
+                                    <th>本地端口</th>
+                                    <th>所属机房</th>
+                                    <th>到期时间</th>
+                                    <th>套餐流量</th>
+                                    <th>运行状态</th>
+                                    <th>在线状态</th>
+                                    <th>Docker参数</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-footer-btm">
+                <p>本平台所有技术产品仅供个人学习、测试使用，不得用于违法违规内容，如有违反和本平台无关，平台将依法积极配合公安部门追责 &nbsp;&nbsp;&nbsp;
+                    友链: <a style="color: #f56108;" target="_blank"
+                           href="https://www.downdemo.com">前端模板</a>
+                    <a style="color: #f56108;" target="_blank"
+                       href="https://pay.npsvip.cn">免签支付</a>
+                    <a style="color: #f56108;" target="_blank"
+                       href="https://www.zwapi.cn">HTTPS证书</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 创建实例 -->
+<div id="createOrderLayer" style="display: none;">
+    <form id="createOrderForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><br/>
+            <div class="form-group has-feedback edit-engine-select1">
+                <label for="partitionId">机房选择
+                    <svg id="partitionTips" style="padding-bottom: 4px;" t="1683273415215" class="icon"
+                         viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="5141" width="16" height="16">
+                        <path d="M512.007314 0a512 512 0 0 0-512 512 503.222857 503.222857 0 0 0 98.742857 302.08l-6.582857 146.285714a57.782857 57.782857 0 0 0 57.782857 59.977143H512.007314A512 512 0 0 0 512.007314 0z m0 950.857143H166.0416l5.851429-133.851429v-26.331428l-16.091429-21.211429A430.08 430.08 0 0 1 73.150171 512a438.857143 438.857143 0 1 1 438.857143 438.857143z"
+                              p-id="5142" fill="#11a1fd"></path>
+                        <path d="M460.075886 691.2h107.52V804.571429H460.075886zM506.155886 219.428571a172.617143 172.617143 0 0 0-118.491429 41.691429 183.588571 183.588571 0 0 0-58.514286 146.285714h103.862858a117.028571 117.028571 0 0 1 25.6-73.142857A73.142857 73.142857 0 0 1 512.007314 314.514286a73.142857 73.142857 0 0 1 48.274286 16.091428 79.725714 79.725714 0 0 1 24.868571 63.634286 99.474286 99.474286 0 0 1-46.08 79.725714 190.171429 190.171429 0 0 0-62.902857 73.142857 247.954286 247.954286 0 0 0-11.702857 90.697143h96.548572a141.165714 141.165714 0 0 1 10.971428-62.171428 112.64 112.64 0 0 1 33.645714-35.84 331.337143 331.337143 0 0 0 66.56-65.828572 146.285714 146.285714 0 0 0 22.674286-83.382857 157.257143 157.257143 0 0 0-49.005714-123.611428A198.217143 198.217143 0 0 0 506.155886 219.428571z"
+                              p-id="5143" fill="#11a1fd"></path>
+                    </svg>
+                </label>
+                <div class="input-group" style="width: 100%;">
+                    <select style="width: 100%;" name="partitionId" class="form-control form-engine-select">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group has-feedback edit-instance-select1">
+                <label for="tunnelType">实例类型
+                    <svg id="tunnelTips" style="padding-bottom: 4px;" t="1683273415215" class="icon"
+                         viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="5141" width="16" height="16">
+                        <path d="M512.007314 0a512 512 0 0 0-512 512 503.222857 503.222857 0 0 0 98.742857 302.08l-6.582857 146.285714a57.782857 57.782857 0 0 0 57.782857 59.977143H512.007314A512 512 0 0 0 512.007314 0z m0 950.857143H166.0416l5.851429-133.851429v-26.331428l-16.091429-21.211429A430.08 430.08 0 0 1 73.150171 512a438.857143 438.857143 0 1 1 438.857143 438.857143z"
+                              p-id="5142" fill="#11a1fd"></path>
+                        <path d="M460.075886 691.2h107.52V804.571429H460.075886zM506.155886 219.428571a172.617143 172.617143 0 0 0-118.491429 41.691429 183.588571 183.588571 0 0 0-58.514286 146.285714h103.862858a117.028571 117.028571 0 0 1 25.6-73.142857A73.142857 73.142857 0 0 1 512.007314 314.514286a73.142857 73.142857 0 0 1 48.274286 16.091428 79.725714 79.725714 0 0 1 24.868571 63.634286 99.474286 99.474286 0 0 1-46.08 79.725714 190.171429 190.171429 0 0 0-62.902857 73.142857 247.954286 247.954286 0 0 0-11.702857 90.697143h96.548572a141.165714 141.165714 0 0 1 10.971428-62.171428 112.64 112.64 0 0 1 33.645714-35.84 331.337143 331.337143 0 0 0 66.56-65.828572 146.285714 146.285714 0 0 0 22.674286-83.382857 157.257143 157.257143 0 0 0-49.005714-123.611428A198.217143 198.217143 0 0 0 506.155886 219.428571z"
+                              p-id="5143" fill="#11a1fd"></path>
+                    </svg>
+                </label>
+                <div class="input-group" style="width: 100%;">
+                    <select style="width: 100%;" name="tunnelType" class="form-control form-select-create">
+                        <option value="3">域名</option>
+                        <option value="1">TCP</option>
+                        <option value="4">SOCKS5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <label for="mealId">套餐选择</label>
+                <div class="input-group" style="width: 100%;">
+                    <select style="width: 100%;" name="mealId" class="form-control meal-select">
+                        <!-- <option>1</option> -->
+                    </select>
+                </div>
+            </div>
+            <div class="form-group has-feedback host-input host-input1" style="display: none;">
+                <label for="host">域名
+                    <svg id="hostTips" style="padding-bottom: 4px;" t="1683273415215" class="icon"
+                         viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="5141" width="16" height="16">
+                        <path d="M512.007314 0a512 512 0 0 0-512 512 503.222857 503.222857 0 0 0 98.742857 302.08l-6.582857 146.285714a57.782857 57.782857 0 0 0 57.782857 59.977143H512.007314A512 512 0 0 0 512.007314 0z m0 950.857143H166.0416l5.851429-133.851429v-26.331428l-16.091429-21.211429A430.08 430.08 0 0 1 73.150171 512a438.857143 438.857143 0 1 1 438.857143 438.857143z"
+                              p-id="5142" fill="#11a1fd"></path>
+                        <path d="M460.075886 691.2h107.52V804.571429H460.075886zM506.155886 219.428571a172.617143 172.617143 0 0 0-118.491429 41.691429 183.588571 183.588571 0 0 0-58.514286 146.285714h103.862858a117.028571 117.028571 0 0 1 25.6-73.142857A73.142857 73.142857 0 0 1 512.007314 314.514286a73.142857 73.142857 0 0 1 48.274286 16.091428 79.725714 79.725714 0 0 1 24.868571 63.634286 99.474286 99.474286 0 0 1-46.08 79.725714 190.171429 190.171429 0 0 0-62.902857 73.142857 247.954286 247.954286 0 0 0-11.702857 90.697143h96.548572a141.165714 141.165714 0 0 1 10.971428-62.171428 112.64 112.64 0 0 1 33.645714-35.84 331.337143 331.337143 0 0 0 66.56-65.828572 146.285714 146.285714 0 0 0 22.674286-83.382857 157.257143 157.257143 0 0 0-49.005714-123.611428A198.217143 198.217143 0 0 0 506.155886 219.428571z"
+                              p-id="5143" fill="#11a1fd"></path>
+                    </svg>
+                </label>
+                <span class="btn-group" style="margin-left: 10px;height: 20px;">
+                                <label class="radio-inline">
+                                    <input checked style="height: auto;" type="radio" name="ymRadioOptions"
+                                           id="inlineRadio2" value="system">
+                                    系统赠送
+                                </label>
+                    &nbsp;&nbsp;
+                                <label id="isCustom" class="radio-inline">
+                                    <input style="height: auto;" type="radio" name="ymRadioOptions" id="inlineRadio1"
+                                           value="myself"> 我有域名
+                                </label>
+                            </span>
+                <div class="input-group ym-system-input"
+                     style="width: 100%;display: flex;align-items: center;">
+                    <input id="targetEditHost" name="host" class="form-control"
+                           placeholder="例: www ,域名前缀仅支持小写字母和数字" type="text">
+                    <div style="display: inline-block;width: 120px;" class="info">.
+                        <img style="width: 40px;height: 16px;"
+                             src="admin/static/image/msk.png"/>
+                        .com
+                    </div>
+                </div>
+                <div class="input-group ym-my-input"
+                     style="width: 100%;display: flex;align-items: center;display: none;">
+                    <input id="targetSelfEditHost" name="myHost" class="form-control"
+                           placeholder="例: www.npsvip.com ,自定义域名需按机房要求备案或选择香港机房"
+                           type="text">
+                </div>
+            </div>
+            <div class="form-group has-feedback port-input port-input1">
+                <label for="targetIpPort">内网服务
+                    <svg id="targetIpPortTips" style="padding-bottom: 4px;" t="1683273415215" class="icon"
+                         viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="5141" width="16" height="16">
+                        <path d="M512.007314 0a512 512 0 0 0-512 512 503.222857 503.222857 0 0 0 98.742857 302.08l-6.582857 146.285714a57.782857 57.782857 0 0 0 57.782857 59.977143H512.007314A512 512 0 0 0 512.007314 0z m0 950.857143H166.0416l5.851429-133.851429v-26.331428l-16.091429-21.211429A430.08 430.08 0 0 1 73.150171 512a438.857143 438.857143 0 1 1 438.857143 438.857143z"
+                              p-id="5142" fill="#11a1fd"></path>
+                        <path d="M460.075886 691.2h107.52V804.571429H460.075886zM506.155886 219.428571a172.617143 172.617143 0 0 0-118.491429 41.691429 183.588571 183.588571 0 0 0-58.514286 146.285714h103.862858a117.028571 117.028571 0 0 1 25.6-73.142857A73.142857 73.142857 0 0 1 512.007314 314.514286a73.142857 73.142857 0 0 1 48.274286 16.091428 79.725714 79.725714 0 0 1 24.868571 63.634286 99.474286 99.474286 0 0 1-46.08 79.725714 190.171429 190.171429 0 0 0-62.902857 73.142857 247.954286 247.954286 0 0 0-11.702857 90.697143h96.548572a141.165714 141.165714 0 0 1 10.971428-62.171428 112.64 112.64 0 0 1 33.645714-35.84 331.337143 331.337143 0 0 0 66.56-65.828572 146.285714 146.285714 0 0 0 22.674286-83.382857 157.257143 157.257143 0 0 0-49.005714-123.611428A198.217143 198.217143 0 0 0 506.155886 219.428571z"
+                              p-id="5143" fill="#11a1fd"></path>
+                    </svg>
+                </label>
+                <div class="input-group" style="width: 100%;">
+                    <input id="targetIpPort" name="targetIpPort" class="form-control" value="127.0.0.1:80"
+                           placeholder="例: 10.123.21.233:8080 ,本机可直接填写端口,端口必填,支持后期随意编辑" type="text">
+                </div>
+            </div>
+            <div id="coupon" class="form-group has-feedback">
+                <label for="prizeRecordId">优惠</label>
+                <select style="width: 100%;" name="prizeRecordId" class="form-control coupon-select">
+                    <!-- <option>1</option> -->
+                </select>
+            </div>
+            <div id="pay" class="form-group has-feedback">
+                <label for="payType">支付方式</label>
+                <div class="input-group" style="width: 100%;">
+                        <span class="btn-group" style="margin-left: 20px;">
+                                <label title="支付宝" class="radio-inline">
+                                    <input checked type="radio" name="payType" value="2">
+                                   <svg t="1625817310203" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="11153" width="64" height="64"><path
+                                           d="M902.095 652.871l-250.96-84.392s19.287-28.87 39.874-85.472c20.59-56.606 23.539-87.689 23.539-87.689l-162.454-1.339v-55.487l196.739-1.387v-39.227H552.055v-89.29h-96.358v89.294H272.133v39.227l183.564-1.304v59.513h-147.24v31.079h303.064s-3.337 25.223-14.955 56.606c-11.615 31.38-23.58 58.862-23.58 58.862s-142.3-49.804-217.285-49.804c-74.985 0-166.182 30.123-175.024 117.55-8.8 87.383 42.481 134.716 114.728 152.139 72.256 17.513 138.962-0.173 197.04-28.607 58.087-28.391 115.081-92.933 115.081-92.933l292.486 142.041c-11.932 69.3-72.067 119.914-142.387 119.844H266.37c-79.714 0.078-144.392-64.483-144.466-144.194V266.374c-0.074-79.72 64.493-144.399 144.205-144.47h491.519c79.714-0.073 144.396 64.49 144.466 144.203v386.764z m-365.76-48.895s-91.302 115.262-198.879 115.262c-107.623 0-130.218-54.767-130.218-94.155 0-39.34 22.373-82.144 113.943-88.333 91.519-6.18 215.2 67.226 215.2 67.226h-0.047z"
+                                           fill="#02A9F1" p-id="11154"></path></svg>
+                                </label>
+                                <label title="微信" class="radio-inline">
+                                    <input type="radio" name="payType" value="1">
+                                <svg t="1625817180424" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg" p-id="9001" width="64" height="64"><path
+                                        d="M683.058 364.695c11 0 22 1.016 32.943 1.976C686.564 230.064 538.896 128 370.681 128c-188.104 0.66-342.237 127.793-342.237 289.226 0 93.068 51.379 169.827 136.725 229.256L130.72 748.43l119.796-59.368c42.918 8.395 77.37 16.79 119.742 16.79 11 0 21.46-0.48 31.914-1.442a259.168 259.168 0 0 1-10.455-71.358c0.485-148.002 128.744-268.297 291.403-268.297l-0.06-0.06z m-184.113-91.992c25.99 0 42.913 16.79 42.913 42.575 0 25.188-16.923 42.579-42.913 42.579-25.45 0-51.38-16.85-51.38-42.58 0-25.784 25.93-42.574 51.38-42.574z m-239.544 85.154c-25.384 0-51.374-16.85-51.374-42.58 0-25.784 25.99-42.574 51.374-42.574 25.45 0 42.918 16.79 42.918 42.575 0 25.188-16.924 42.579-42.918 42.579z m736.155 271.655c0-135.647-136.725-246.527-290.983-246.527-162.655 0-290.918 110.88-290.918 246.527 0 136.128 128.263 246.587 290.918 246.587 33.972 0 68.423-8.395 102.818-16.85l93.809 50.973-25.93-84.677c68.907-51.93 120.286-119.815 120.286-196.033z m-385.275-42.58c-16.923 0-34.452-16.79-34.452-34.179 0-16.79 17.529-34.18 34.452-34.18 25.99 0 42.918 16.85 42.918 34.18 0 17.39-16.928 34.18-42.918 34.18z m188.165 0c-16.984 0-33.972-16.79-33.972-34.179 0-16.79 16.927-34.18 33.972-34.18 25.93 0 42.913 16.85 42.913 34.18 0 17.39-16.983 34.18-42.913 34.18z"
+                                        fill="#09BB07" p-id="9002"></path></svg>
+                                </label>
+                                <label title="账户余额" class="radio-inline">
+                                    <input type="radio" name="payType" value="3">
+                               <svg t="1664258859967" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="10733" width="64" height="64"><path
+                                       d="M921.6 518.6624a77.824 77.824 0 0 0-6.4-0.2624h-153.6c-42.4128 0-76.8 34.3872-76.8 76.8s34.3872 76.8 76.8 76.8h153.6c2.1568 0 4.288-0.0896 6.4-0.2624V800c0 42.4128-34.3872 76.8-76.8 76.8H179.2c-42.4128 0-76.8-34.3872-76.8-76.8V390.4c0-42.4128 34.3872-76.8 76.8-76.8h665.6c42.4128 0 76.8 34.3872 76.8 76.8v128.2624zM861.5168 275.2H216.5248a76.9792 76.9792 0 0 1 25.9648-12.3776l500.3008-132.224c40.9344-10.816 83.008 13.1392 93.984 53.5168L861.5168 275.2zM761.6 544h134.4a25.6 25.6 0 0 1 25.6 25.6v51.2a25.6 25.6 0 0 1-25.6 25.6h-134.4a51.2 51.2 0 1 1 0-102.4z m6.4 83.2a32 32 0 1 0 0-64 32 32 0 0 0 0 64z"
+                                       fill="#59AAFF" p-id="10734"></path></svg>
+                                </label>
+                            </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 编辑实例 -->
+<div id="editLayer" style="display: none;">
+    <form action="" id="editForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><br/>
+            <div class="form-group has-feedback edit-instance-select2">
+                <label for="tunnelType">实例类型</label>
+                <div class="input-group" style="width: 100%;">
+                    <select style="width: 100%;" name="tunnelType" class="form-control form-select-edit">
+                        <option value="3">域名</option>
+                        <option value="1">TCP</option>
+                        <option value="4">SOCKS5</option>
+                    </select>
+                </div>
+            </div>
+            <label id="hostLabel" for="host">域名</label>
+            <div class="form-group has-feedback ym-edit-system-input"
+                 style="display: flex;align-items: center;">
+                <input id="targetEditSysHost" name="host" class="form-control"
+                       placeholder="例: www ,域名前缀仅支持小写字母和数字" type="text">
+                <div style="display: inline-block;width: 120px;" class="info">.
+                    <img style="width: 40px;height: 16px;"
+                         src="admin/static/image/msk.png"/>
+                    .com
+                </div>
+            </div>
+            <div class="form-group has-feedback ym-edit-my-input"
+                 style="display: flex;align-items: center;display: none;">
+                <input id="targetEditSelfHost" name="myHost" class="form-control"
+                       placeholder="例: www.npsvip.com ,未阿里云备案域名请选择香港机房"
+                       type="text">
+            </div>
+            <div class="form-group has-feedback port-input">
+                <label for="targetIpPort">内网服务</label>
+                <div class="input-group" style="width: 100%;">
+                    <input id="targetEditIpPort" name="targetIpPort" class="form-control"
+                           placeholder="例如：10.123.21.233:80" type="text">
+                </div>
+            </div>
+
+            <div class="form-group has-feedback edit-instance-select3">
+                <label for="partitionMarge">合并客户端</label>
+                <span class="glyphicon glyphicon-question-sign" style="color: #f7792e;"
+                      data-toggle="tooltip5" data-placement="right"></span>
+                <div class="input-group" style="width: 100%;">
+                    <select style="width: 100%;" name="partitionMarge"
+                            class="form-control form-select-edit partitionMarge">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group has-feedback port-remark">
+                <label for="remarks">备注</label>
+                <div class="input-group" style="width: 100%;">
+                    <input id="targetEditRemarks" name="remarks" class="form-control" placeholder="请输入备注"
+                           type="text">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 安全密码 -->
+<div id="passWordLayer" style="display: none;">
+    <form action="" id="passWordForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><br/>
+            <p>⚠️ 密码并非绑定实例而是客户端，仅支持HTTP和SOCKS5的实例</p>
+            <div class="form-group has-feedback">
+                <label for="userName">账户</label>
+                <div class="input-group" style="width: 100%;">
+                    <input id="userName" name="userName" class="form-control"
+                           placeholder="例：admin" type="text">
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <label for="passWord">密码</label>
+                <div class="input-group" style="width: 100%;">
+                    <input id="passWord" name="passWord" class="form-control"
+                           placeholder="例：123456" type="text">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 域名证书 -->
+<div id="sslLayer" style="display: none;">
+    <form action="" id="sslForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><br/>
+            <p>HTTPS证书可通过您的域名购买平台申请，也可前往 <a href="https://www.zwapi.cn" target="_blank"
+                                            style="text-decoration:underline;">下载证书</a> ，配置后若未生效，请联系网站底部管理员</p><br/>
+            <div class="form-group has-feedback">
+                <label for="certificate">证书</label>
+                <textarea name="certificate" id="certificate" style="width: 550px;height: 200px;"
+                          onblur="checkSsl()"
+                          placeholder="粘贴PEM格式的证书链（服务器证书+中间证书）。证书通常为“.pem”，“.crt”或“.cer”文件，也可直接拖拽证书文件上传"></textarea>
+            </div>
+            <div class="form-group has-feedback">
+                <label for="key">私钥</label>
+                <textarea name="key" id="key" style="width: 550px;height: 200px;"
+                          placeholder="粘贴PEM格式的私钥。私钥通常为“.pem”或“.key”文件，也可直接拖拽证书文件上传"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 流量充值 -->
+<div id="flowLayer" style="display: none;">
+    <form action="" id="flowForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><br/>
+            <div class="form-group has-feedback">
+                <label for="mealId">套餐选择</label>
+                <div class="input-group" style="width: 100%;">
+                    <select style="width: 100%;" name="mealId" class="form-control flow-meal-select">
+                        <!-- <option>1</option> -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group has-feedback">
+                <label for="payType">支付方式</label>
+                <div class="input-group" style="width: 100%;">
+                        <span class="btn-group" style="margin-left: 20px;">
+                                <label title="支付宝" class="radio-inline">
+                                    <input checked type="radio" name="payType" value="2">
+                                   <svg t="1625817310203" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="11153" width="64" height="64"><path
+                                           d="M902.095 652.871l-250.96-84.392s19.287-28.87 39.874-85.472c20.59-56.606 23.539-87.689 23.539-87.689l-162.454-1.339v-55.487l196.739-1.387v-39.227H552.055v-89.29h-96.358v89.294H272.133v39.227l183.564-1.304v59.513h-147.24v31.079h303.064s-3.337 25.223-14.955 56.606c-11.615 31.38-23.58 58.862-23.58 58.862s-142.3-49.804-217.285-49.804c-74.985 0-166.182 30.123-175.024 117.55-8.8 87.383 42.481 134.716 114.728 152.139 72.256 17.513 138.962-0.173 197.04-28.607 58.087-28.391 115.081-92.933 115.081-92.933l292.486 142.041c-11.932 69.3-72.067 119.914-142.387 119.844H266.37c-79.714 0.078-144.392-64.483-144.466-144.194V266.374c-0.074-79.72 64.493-144.399 144.205-144.47h491.519c79.714-0.073 144.396 64.49 144.466 144.203v386.764z m-365.76-48.895s-91.302 115.262-198.879 115.262c-107.623 0-130.218-54.767-130.218-94.155 0-39.34 22.373-82.144 113.943-88.333 91.519-6.18 215.2 67.226 215.2 67.226h-0.047z"
+                                           fill="#02A9F1" p-id="11154"></path></svg>
+                                </label>
+                                <label title="微信" class="radio-inline">
+                                    <input type="radio" name="payType" value="1">
+                                <svg t="1625817180424" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg" p-id="9001" width="64" height="64"><path
+                                        d="M683.058 364.695c11 0 22 1.016 32.943 1.976C686.564 230.064 538.896 128 370.681 128c-188.104 0.66-342.237 127.793-342.237 289.226 0 93.068 51.379 169.827 136.725 229.256L130.72 748.43l119.796-59.368c42.918 8.395 77.37 16.79 119.742 16.79 11 0 21.46-0.48 31.914-1.442a259.168 259.168 0 0 1-10.455-71.358c0.485-148.002 128.744-268.297 291.403-268.297l-0.06-0.06z m-184.113-91.992c25.99 0 42.913 16.79 42.913 42.575 0 25.188-16.923 42.579-42.913 42.579-25.45 0-51.38-16.85-51.38-42.58 0-25.784 25.93-42.574 51.38-42.574z m-239.544 85.154c-25.384 0-51.374-16.85-51.374-42.58 0-25.784 25.99-42.574 51.374-42.574 25.45 0 42.918 16.79 42.918 42.575 0 25.188-16.924 42.579-42.918 42.579z m736.155 271.655c0-135.647-136.725-246.527-290.983-246.527-162.655 0-290.918 110.88-290.918 246.527 0 136.128 128.263 246.587 290.918 246.587 33.972 0 68.423-8.395 102.818-16.85l93.809 50.973-25.93-84.677c68.907-51.93 120.286-119.815 120.286-196.033z m-385.275-42.58c-16.923 0-34.452-16.79-34.452-34.179 0-16.79 17.529-34.18 34.452-34.18 25.99 0 42.918 16.85 42.918 34.18 0 17.39-16.928 34.18-42.918 34.18z m188.165 0c-16.984 0-33.972-16.79-33.972-34.179 0-16.79 16.927-34.18 33.972-34.18 25.93 0 42.913 16.85 42.913 34.18 0 17.39-16.983 34.18-42.913 34.18z"
+                                        fill="#09BB07" p-id="9002"></path></svg>
+                                </label>
+                                <label title="账户余额" class="radio-inline">
+                                    <input type="radio" name="payType" value="3">
+                               <svg t="1664258859967" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="10733" width="64" height="64"><path
+                                       d="M921.6 518.6624a77.824 77.824 0 0 0-6.4-0.2624h-153.6c-42.4128 0-76.8 34.3872-76.8 76.8s34.3872 76.8 76.8 76.8h153.6c2.1568 0 4.288-0.0896 6.4-0.2624V800c0 42.4128-34.3872 76.8-76.8 76.8H179.2c-42.4128 0-76.8-34.3872-76.8-76.8V390.4c0-42.4128 34.3872-76.8 76.8-76.8h665.6c42.4128 0 76.8 34.3872 76.8 76.8v128.2624zM861.5168 275.2H216.5248a76.9792 76.9792 0 0 1 25.9648-12.3776l500.3008-132.224c40.9344-10.816 83.008 13.1392 93.984 53.5168L861.5168 275.2zM761.6 544h134.4a25.6 25.6 0 0 1 25.6 25.6v51.2a25.6 25.6 0 0 1-25.6 25.6h-134.4a51.2 51.2 0 1 1 0-102.4z m6.4 83.2a32 32 0 1 0 0-64 32 32 0 0 0 0 64z"
+                                       fill="#59AAFF" p-id="10734"></path></svg>
+                                </label>
+                            </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 账户充值 -->
+<div id="rechargeLayer" style="display: none;">
+    <form action="" id="rechargeForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><br/>
+            <div class="form-group has-feedback">
+                <h5>
+                    <svg t="1683357211967" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="2451" width="16" height="16">
+                        <path d="M512.512 47.616c-254.464 0-460.8 206.336-460.8 460.8s206.336 460.8 460.8 460.8 460.8-206.336 460.8-460.8-206.336-460.8-460.8-460.8z m144.896 445.952v46.592h-114.176v64.512h114.176v47.616h-114.176v93.696H484.352v-93.696H365.568v-47.616h118.272v-64.512H365.568v-46.592h100.864l-122.88-211.456H409.6c57.856 104.96 92.672 172.032 104.96 200.192h1.024c4.096-11.776 15.872-34.816 34.304-70.144l70.656-130.048h62.464l-124.416 211.968h98.816z"
+                              fill="#FE9C01" p-id="2452"></path>
+                    </svg>
+                    账户余额 &nbsp; <i id="balance"></i></h5>
+            </div>
+            <br/>
+            <div class="form-group has-feedback">
+                <label class="col-form-label" for="amount">充值金额</label>
+                <input type="text" autocomplete='off' onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')"
+                       class="form-control createContainer" list="amountSelect" name="amount"
+                       placeholder="支持手输或选择">
+                <datalist id="amountSelect">
+                    <option value="100">100</option>
+                    <option value="300">300</option>
+                    <option value="500">500</option>
+                    <option value="1000">1000</option>
+                </datalist>
+            </div>
+
+            <div class="form-group has-feedback">
+                <label for="payType">支付方式</label>
+                <div class="input-group" style="width: 100%;">
+                        <span class="btn-group" style="margin-left: 20px;">
+                                <label title="支付宝" class="radio-inline">
+                                    <input checked type="radio" name="payType" value="2">
+                                   <svg t="1625817310203" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="11153" width="64" height="64"><path
+                                           d="M902.095 652.871l-250.96-84.392s19.287-28.87 39.874-85.472c20.59-56.606 23.539-87.689 23.539-87.689l-162.454-1.339v-55.487l196.739-1.387v-39.227H552.055v-89.29h-96.358v89.294H272.133v39.227l183.564-1.304v59.513h-147.24v31.079h303.064s-3.337 25.223-14.955 56.606c-11.615 31.38-23.58 58.862-23.58 58.862s-142.3-49.804-217.285-49.804c-74.985 0-166.182 30.123-175.024 117.55-8.8 87.383 42.481 134.716 114.728 152.139 72.256 17.513 138.962-0.173 197.04-28.607 58.087-28.391 115.081-92.933 115.081-92.933l292.486 142.041c-11.932 69.3-72.067 119.914-142.387 119.844H266.37c-79.714 0.078-144.392-64.483-144.466-144.194V266.374c-0.074-79.72 64.493-144.399 144.205-144.47h491.519c79.714-0.073 144.396 64.49 144.466 144.203v386.764z m-365.76-48.895s-91.302 115.262-198.879 115.262c-107.623 0-130.218-54.767-130.218-94.155 0-39.34 22.373-82.144 113.943-88.333 91.519-6.18 215.2 67.226 215.2 67.226h-0.047z"
+                                           fill="#02A9F1" p-id="11154"></path></svg>
+                                </label>
+                                <label title="微信" class="radio-inline">
+                                    <input type="radio" name="payType" value="1">
+                                <svg t="1625817180424" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg" p-id="9001" width="64" height="64"><path
+                                        d="M683.058 364.695c11 0 22 1.016 32.943 1.976C686.564 230.064 538.896 128 370.681 128c-188.104 0.66-342.237 127.793-342.237 289.226 0 93.068 51.379 169.827 136.725 229.256L130.72 748.43l119.796-59.368c42.918 8.395 77.37 16.79 119.742 16.79 11 0 21.46-0.48 31.914-1.442a259.168 259.168 0 0 1-10.455-71.358c0.485-148.002 128.744-268.297 291.403-268.297l-0.06-0.06z m-184.113-91.992c25.99 0 42.913 16.79 42.913 42.575 0 25.188-16.923 42.579-42.913 42.579-25.45 0-51.38-16.85-51.38-42.58 0-25.784 25.93-42.574 51.38-42.574z m-239.544 85.154c-25.384 0-51.374-16.85-51.374-42.58 0-25.784 25.99-42.574 51.374-42.574 25.45 0 42.918 16.79 42.918 42.575 0 25.188-16.924 42.579-42.918 42.579z m736.155 271.655c0-135.647-136.725-246.527-290.983-246.527-162.655 0-290.918 110.88-290.918 246.527 0 136.128 128.263 246.587 290.918 246.587 33.972 0 68.423-8.395 102.818-16.85l93.809 50.973-25.93-84.677c68.907-51.93 120.286-119.815 120.286-196.033z m-385.275-42.58c-16.923 0-34.452-16.79-34.452-34.179 0-16.79 17.529-34.18 34.452-34.18 25.99 0 42.918 16.85 42.918 34.18 0 17.39-16.928 34.18-42.918 34.18z m188.165 0c-16.984 0-33.972-16.79-33.972-34.179 0-16.79 16.927-34.18 33.972-34.18 25.93 0 42.913 16.85 42.913 34.18 0 17.39-16.983 34.18-42.913 34.18z"
+                                        fill="#09BB07" p-id="9002"></path></svg>
+                                </label>
+                            </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Script Start -->
+<script src="admin/assets/js/jquery.min.js"></script>
+<script src="admin/assets/js/popper.min.js"></script>
+<script src="admin/assets/js/datatables.min.js"></script>
+<script src="admin/assets/js/dataTables.responsive.min.js"></script>
+<script src="admin/assets/js/bootstrap.min.js"></script>
+<script src="admin/assets/js/swiper.min.js"></script>
+<!-- Page Specific -->
+<script src="admin/assets/js/nice-select.min.js"></script>
+<!-- Custom Script -->
+<script src="admin/assets/js/custom.min.js"></script>
+<script src="admin/assets/js/dataTables.fixedColumns.min.js"></script>
+<script src="admin/static/plugins/layer/layer.min.js"></script>
+<script src="admin/static/js/bootstrap-show-modal.min.js"></script>
+<script src="admin/static/js/dbg.min.js"></script>
+
+
+<script>
+    var downloadTypes = [];//客户端枚举
+    var mealList = []; // 套餐列表
+    var engineList = []; // 机房列表
+    var ymType = 'system'; // 域名类型
+
+    // 头像
+    if (null != localStorage.getItem('headUrl') && '' !== localStorage.getItem('headUrl')) {
+        $('#headUrl').attr('src', localStorage.getItem('headUrl'));
+    }
+    // 邮箱
+    if (null != localStorage.getItem('mail') && '' !== localStorage.getItem('mail')) {
+        $('#mail').html(localStorage.getItem('mail'));
+    }
+
+    getEngineList();
+
+    var table;
+
+    $(document).ready(function () {
+        notice();
+
+        // 下载选项
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/file/downTypes", //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
+                downloadTypes = result || [];
+            }
+        });
+
+        table = $('#example').DataTable({
+            language: {  //将英文转换为中文
+                "sProcessing": "数据加载中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            processing: false,      //
+            searching: false,       //去掉search
+            pageLength: 5,          //页大小
+            bLengthChange: false,   //页大小调整
+            lengthMenu: [[5, 10, 20, -1], [5, 10, 20, "ALL"]],
+            bSort: false,           //排序
+            paging: true,           //分页
+            info: true,             //分页文字
+            autoWidth: true,        //自动计算宽度
+            deferRender: true,      //延迟渲染
+            serverSide: true,       //开启服务器模式
+            bAutoWidth: true,       //自动宽度
+
+            // responsive: false,      //关闭响应拓展
+            // scrollX: true,          //设置X轴滚动
+            // scrollCollapse: true,   //滚动折叠
+            // fixedColumns:   {       //固定列
+            //     left: 0,
+            //     right: 1
+            // },
+
+            ajax: {
+                url: baseUrl + "/nps/myAssets",
+                type: 'POST',
+                // contentType: 'application/json;charset=utf-8',
+                headers: {
+                    token: localStorage.getItem('token')
+                },
+                data: {
+                    // 'key': '123'
+                },
+                dataSrc: function (data) {
+                    if (data.code == 500) {
+                        window.location.href = "login.html";
+                    }
+                    return data.data;
+                }
+            },
+            fnRowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $('td:eq(0)', nRow).attr('style', 'text-align: right;');
+            },
+            columns: [
+                {
+                    data: "serverUrl",
+                    sDefaultContent: "",
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return '<svg t="1682780926244" class="icon" viewBox="0 0 1158 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4599" width="16" height="16"><path d="M1024 1024l-1157.44527 0L-133.44527 889.931778 1024 889.931778 1024 1024z m-391.214009-324.469126l-766.231261 0L-133.44527 565.106679 632.785991 565.106679 632.785991 699.57537z m0-253.897536l-766.231261 0L-133.44527 311.476122 632.785991 311.476122l0 134.201712zM1024 0l0 134.246209-1157.44527 0L-133.44527 0M762.404554 736.374049L1024 540.010603l-261.595446-257.724243L762.404554 736.374049z m0 0" p-id="4600" fill="#5cb85c"></path></svg>' +
+                            '&nbsp;&nbsp;<a href="' + data + '" target="_blank">' + data + '</a><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + (row.remarks || '');
+                    }
+                },
+                {
+                    data: null,
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return (row.targetIpPort || '--') + '<br/><br/><br/>';
+                    }
+                },
+                {
+                    data: "partitionName",
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return data + '<br/><br/>' + (1 == row.tunnelType ? '<label class="mb-0 badge badge-primary" title="" data-original-title="Pending">TCP</label>' : 3 == row.tunnelType ? '<label class="mb-0 badge badge-primary" title="" data-original-title="Pending">HTTP</label>' : '<label class="mb-0 badge badge-primary" title="" data-original-title="Pending">SOCKS5</label>');
+                    }
+                },
+                {
+                    data: "closingDate",
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return formatterDate(new Date(data)) + '<br/><br/><br/>';
+                    }
+                },
+                {
+                    data: "packageFlow",
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return '' + data + '<br/><br/>' + '                <div class="progress" style="height: 25px;width: 50px;">\n' +
+                            '                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70"\n' +
+                            '                  aria-valuemin="0" aria-valuemax="100" style="width:' + row.remainingPercentage + ';color: #333;">' + row.remainingPercentage + '</div>\n' +
+                            '                </div>';
+                    }
+                },
+                {
+                    data: "status",
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return data ? '<img style="width: 60px;height: 30px;" src=\'admin/static/image/on.png\'>' : '<img style="width: 60px;height: 30px;"  src=\'admin/static/image/off.png\'>';
+                    }
+                },
+                {
+                    data: "online",
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return data ? "<div class='online-circle'><div>" : "<div class='under-circle'><div>";
+                    }
+                },
+                {
+                    data: null,
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return 'prefix:&nbsp;' + row.prefix + '<br/><br/>' + 'vkey:&nbsp;' + row.vkey;
+                    }
+                },
+                {
+                    data: "id",
+                    defaultContent: "",
+                    sClass: "relative",
+                    sStyle: {overflow: "auto"},
+                    render: function (data, type, row, meta) {
+                        let btns = '<div class="justify-content-end align-items-center">\n' +
+                            '    <div class="btn-group">\n' +
+                            '        <button type="button"\n' +
+                            '                class="btn btn-primary dropdown-toggle"\n' +
+                            '                data-toggle="dropdown" aria-haspopup="true"\n' +
+                            '                aria-expanded="false">\n' +
+                            '            管理\n' +
+                            '        </button>\n' +
+                            '        <ul class="dropdown-menu download-dropdown-menu"\n' +
+                            '            style="min-width:100%;text-align: center;">\n' +
+                            '            <li onclick="editOrder(' + JSON.stringify(row).replace(/\"/g, "'") + ')"><a\n' +
+                            '                    href="javascript:;">\n' +
+                            '                <svg t="1682498121787" class="icon" viewBox="0 0 1024 1024" version="1.1"\n' +
+                            '                     xmlns="http://www.w3.org/2000/svg" p-id="2795" id="mx_n_1682498121789" width="16" height="16">\n' +
+                            '                    <path d="M908.785955 492.415966c-11.04966 0-20.008706 8.958022-20.008706 20.008706l0 338.328565c0 38.614459-31.416524 70.030983-70.030983 70.030983L202.707748 920.78422c-38.614459 0-70.030983-31.416524-70.030983-70.030983l0-676.303067c0-38.614459 31.416524-70.030983 70.030983-70.030983l362.378308 0c11.04966 0 20.008706-8.958022 20.008706-20.008706 0-11.050684-8.959046-20.008706-20.008706-20.008706L202.707748 64.401776c-60.681034 0-110.049418 49.367361-110.049418 110.049418l0 676.303067c0 60.681034 49.367361 110.049418 110.049418 110.049418l616.038518 0c60.681034 0 110.049418-49.367361 110.049418-110.049418L928.795685 512.425695C928.795685 501.373988 919.836639 492.415966 908.785955 492.415966z"\n' +
+                            '                          fill="#004ee6" p-id="2796"></path>\n' +
+                            '                    <path d="M942.576549 117.985158 907.20597 82.614579c-23.405059-23.405059-61.486376-23.400966-84.891436 0l-422.369633 422.36861c-1.295506 1.296529-2.407839 2.76395-3.304256 4.363378L269.318842 736.416166c-4.457522 7.951089-2.977821 17.909905 3.598968 24.221658 3.830235 3.675716 8.823969 5.572926 13.859659 5.572926 3.613294 0 7.247054-0.977257 10.488889-2.973728l219.285309-135.104047c1.327228-0.816598 2.552126-1.784646 3.654226-2.885723l422.369633-422.36861C965.979562 179.471534 965.979562 141.390217 942.576549 117.985158zM418.556794 552.080857l55.42124 55.279001-132.025942 81.343633L418.556794 552.080857zM914.279063 174.579107 505.926678 582.930469l-63.748906-63.586201L850.612021 110.912066c7.798617-7.800663 20.493753-7.804756 28.29544 0l35.371602 35.371602C922.081773 154.084331 922.081773 166.777421 914.279063 174.579107z"\n' +
+                            '                          fill="#004ee6" p-id="2797"></path>\n' +
+                            '                </svg>\n' +
+                            '                &nbsp;编辑实例</a></li>\n' +
+                            '            <li onclick="deleteOrder(' + row.id + ')"><a\n' +
+                            '                    href="javascript:;">\n' +
+                            '                <svg t="1682781955626" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5690" width="16" height="16"><path d="M202.666667 256h-42.666667a32 32 0 0 1 0-64h704a32 32 0 0 1 0 64H266.666667v565.333333a53.333333 53.333333 0 0 0 53.333333 53.333334h384a53.333333 53.333333 0 0 0 53.333333-53.333334V352a32 32 0 0 1 64 0v469.333333c0 64.8-52.533333 117.333333-117.333333 117.333334H320c-64.8 0-117.333333-52.533333-117.333333-117.333334V256z m224-106.666667a32 32 0 0 1 0-64h170.666666a32 32 0 0 1 0 64H426.666667z m-32 288a32 32 0 0 1 64 0v256a32 32 0 0 1-64 0V437.333333z m170.666666 0a32 32 0 0 1 64 0v256a32 32 0 0 1-64 0V437.333333z" fill="#0062cc" p-id="5691"></path></svg>\n' +
+                            '                &nbsp;删除实例</a></li>\n';
+
+                        if ('0' != row.vip) {
+                            btns += '            <li onclick="renewOrder(' + JSON.stringify(row).replace(/\"/g, "'") + ')"><a\n' +
+                                '                    href="javascript:;">\n' +
+                                '                <svg t="1682533837457" class="icon" viewBox="0 0 1024 1024" version="1.1"\n' +
+                                '                     xmlns="http://www.w3.org/2000/svg" p-id="3322" width="16" height="16">\n' +
+                                '                    <path d="M973.55320889 220.72888889h-116.50844444v125.47072c0 17.92455111-13.44398222 35.84910222-26.88682667 35.84910222S803.27111111 368.60472889 803.27111111 346.19960889V220.72888889H686.76266667c-22.40512 0-40.32967111-13.44284445-40.32967112-26.88568889s17.92455111-26.88796445 40.32967112-26.88796445H803.27111111v-116.50844444c0-22.40512 13.44284445-35.84796445 26.88568889-35.84796444s26.88796445 17.92455111 26.88796445 35.84796444v120.99015111h116.50844444c22.40512 0 40.32967111 13.44284445 40.32967111 26.88568889S995.95832889 220.72888889 973.55320889 220.72888889M646.43299555 337.23733333L520.96227555 467.18862222h103.0656c17.92341333 0 35.84796445 13.44398222 35.84796445 35.84910223 0 17.92455111-13.44284445 35.84910222-35.84796445 35.84910222h-103.0656v67.21649778h103.0656c17.92341333 0 35.84796445 13.44284445 35.84796445 35.84796444 0 17.92455111-13.44284445 35.84910222-35.84796445 35.84910222h-103.0656v98.58389334c0 17.92455111-13.44284445 35.84910222-35.84910222 35.84910222s-35.84796445-13.44284445-35.84796444-35.84910222v-98.58389334h-98.58503111c-17.92341333 0-35.84796445-13.44284445-35.84796445-35.84910222 0-17.92341333 13.44284445-35.84796445 35.84796445-35.84796444h98.58503111V538.88568889h-98.58503111c-17.92341333 0-35.84796445-13.44398222-35.84796445-35.84910222 0-17.92455111 13.44284445-35.84910222 35.84796445-35.84910222h98.58503111v-4.4805689L328.27505778 337.23733333c-13.44284445-13.44284445-13.44284445-35.84910222 0-49.29194666 13.44284445-13.44284445 35.84910222-13.44284445 49.29194667 0l112.02787555 112.02673778 107.54616889-112.02673778c13.44284445-13.44284445 35.84796445-13.44284445 49.29194666 0 13.44284445 17.92455111 13.44284445 35.84910222 0 49.29194666"\n' +
+                                '                          p-id="3323" fill="#0056ff"></path>\n' +
+                                '                    <path d="M498.55715555 131.10613333h-13.44398222c-224.05461333 0-407.77955555 183.72608-407.77955555 407.77955556s183.72494222 407.77955555 407.77955555 407.77955556 407.77955555-183.72380445 407.77955556-407.77955556c0-17.92341333 13.44398222-31.36625778 35.84910222-31.36625778 17.92455111 0 31.36853333 13.44284445 31.36853334 31.36739556V512v22.40512c0 259.90371555-210.61290667 474.99605333-474.99719112 474.99605333-259.90257778 0-474.99605333-210.61063111-474.99605333-474.99605333 0-255.42200889 215.09233778-470.51434667 474.99605333-470.51434667h13.44398222c17.92341333 0 35.84796445 13.44284445 35.84796445 35.84910222-4.48056889 17.92341333-17.92455111 31.36739555-35.84796445 31.36739556"\n' +
+                                '                          p-id="3324" fill="#0056ff"></path>\n' +
+                                '                </svg>\n' +
+                                '                &nbsp;续费实例</a></li>\n';
+                        }
+
+                        if ('3' == row.tunnelType || '4' == row.tunnelType) {
+                            btns += '            <li onclick="safe(' + JSON.stringify(row).replace(/\"/g, "'") + ')"><a\n' +
+                                '                    href="javascript:;">' +
+                                '<svg t="1683334940775" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2792"\n' +
+                                '     id="mx_n_1683334940777" width="16" height="16">\n' +
+                                '    <path d="M788.081778 435.2c41.585778 0 75.292444 34.389333 75.292444 76.8v358.4c0 42.410667-33.706667 76.8-75.292444 76.8H235.918222c-41.585778 0-75.292444-34.389333-75.292444-76.8V512c0-42.410667 33.706667-76.8 75.292444-76.8h552.163556z m0-76.8H235.918222C152.746667 358.4 85.333333 427.178667 85.333333 512v358.4C85.333333 955.221333 152.746667 1024 235.918222 1024h552.163556C871.253333 1024 938.666667 955.221333 938.666667 870.4V512c0-84.821333-67.413333-153.6-150.584889-153.6zM512 76.8c97.024 0 175.672889 80.213333 175.672889 179.2v102.4H336.327111V256c0-98.986667 78.648889-179.2 175.672889-179.2zM512 0c-138.609778 0-250.993778 114.631111-250.993778 256v179.2h501.987556V256c0-141.368889-112.355556-256-250.993778-256z m0 806.4c-20.792889 0-37.660444-17.180444-37.660444-38.4v-153.6c0-21.219556 16.867556-38.4 37.660444-38.4 20.792889 0 37.660444 17.180444 37.660444 38.4V768c0 21.219556-16.867556 38.4-37.660444 38.4z"\n' +
+                                '          fill="#007bff" p-id="2793"></path>\n' +
+                                '</svg>' +
+                                '                &nbsp;安全密码</a></li>\n';
+                        }
+
+                        if ('3' == row.tunnelType && '2' == row.tunnelTypeHttp && '0' != row.vip) {
+                            btns += '            <li onclick="ssl(' + JSON.stringify(row).replace(/\"/g, "'") + ')"><a\n' +
+                                '                    href="javascript:;">' +
+                                '<svg t="1683335620611" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4917"\n' +
+                                '     width="16" height="16">\n' +
+                                '    <path d="M513 110.27c-228.83 0-415 180.77-415 402.96s186.17 402.95 415 402.95 415-180.76 415-402.95-186.17-402.96-415-402.96z m0 737.28c-190.99 0-346.36-149.98-346.36-334.33S322.02 178.9 513 178.9c190.98 0 346.36 149.98 346.36 334.33S703.99 847.55 513 847.55z"\n' +
+                                '          fill="#007bff" p-id="4918"></path>\n' +
+                                '    <path d="M325.29 501.41l-30.25-4.32c-10.44-1.44-18.72-5.4-23.76-10.09-5.4-5.04-7.56-11.88-7.56-18.36 0-17.64 12.96-32.4 39.61-32.4 16.92 0 36.37 2.16 52.57 17.64l31.69-31.33c-21.97-21.24-47.53-29.89-82.82-29.89-55.45 0-89.31 32.05-89.31 77.78 0 21.6 6.12 38.17 18.36 50.41 11.52 11.16 27.73 18 49.69 21.25l30.97 4.32c11.88 1.8 17.65 4.32 22.69 9 5.4 5.04 7.92 12.6 7.92 21.6 0 20.52-15.84 31.69-45.37 31.69-23.76 0-45.73-5.4-61.94-21.6l-32.41 32.41c25.21 25.57 54.74 33.85 93.63 33.85 53.65 0 95.06-28.09 95.06-77.78 0-22.68-6.12-41.41-19.81-54.37-10.79-10.09-25.55-16.57-48.96-19.81zM535.95 501.41l-30.25-4.32c-10.44-1.44-18.72-5.4-23.76-10.09-5.4-5.04-7.56-11.88-7.56-18.36 0-17.64 12.96-32.4 39.61-32.4 16.92 0 36.36 2.16 52.57 17.64l31.69-31.33c-21.96-21.24-47.53-29.89-82.81-29.89-55.45 0-89.31 32.05-89.31 77.78 0 21.6 6.12 38.17 18.36 50.41 11.52 11.16 27.73 18 49.69 21.25l30.96 4.32c11.88 1.8 17.65 4.32 22.69 9 5.4 5.04 7.92 12.6 7.92 21.6 0 20.52-15.84 31.69-45.37 31.69-23.76 0-45.73-5.4-61.94-21.6l-32.41 32.41c25.21 25.57 54.74 33.85 93.63 33.85 53.65 0 95.06-28.09 95.06-77.78 0-22.68-6.13-41.41-19.81-54.37-10.79-10.09-25.55-16.57-48.96-19.81zM701.95 606.55V394.82H651.9V651.2h166.37v-44.65z"\n' +
+                                '          fill="#007bff" p-id="4919"></path>\n' +
+                                '</svg>' +
+                                '                &nbsp;上传证书</a></li>\n';
+                        }
+
+                        if ('2' == row.vip) {
+                            btns += '            <li onclick="flowOrder(' + JSON.stringify(row).replace(/\"/g, "'") + ')"><a\n' +
+                                '                    href="javascript:;">' +
+                                '<svg t="1683335729883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6085"\n' +
+                                '     width="16" height="16">\n' +
+                                '    <path d="M512 128l133.12 102.4 5.12 5.12 5.12 5.12c61.44 30.72 112.64 71.68 158.72 128 107.52 163.84 61.44 384-102.4 491.52-61.44 40.96-128 61.44-199.68 61.44-117.76 0-230.4-61.44-296.96-158.72-81.92-117.76-81.92-276.48 0-394.24 46.08-51.2 97.28-97.28 153.6-133.12l5.12-5.12 5.12-5.12L512 128M512 0L317.44 148.48C245.76 189.44 179.2 240.64 128 307.2c-102.4 153.6-102.4 358.4 0 512 87.04 133.12 235.52 204.8 384 204.8 87.04 0 179.2-25.6 256-76.8 209.92-143.36 266.24-430.08 128-640-51.2-66.56-117.76-117.76-189.44-158.72L512 0z"\n' +
+                                '          fill="#007bff" p-id="6086"></path>\n' +
+                                '    <path d="M512 716.8c-15.36 0-25.6-5.12-35.84-15.36L409.6 634.88l-66.56 66.56c-20.48 20.48-51.2 20.48-71.68 0s-20.48-51.2 0-71.68l102.4-102.4c20.48-20.48 51.2-20.48 71.68 0l66.56 66.56 168.96-168.96c20.48-20.48 51.2-20.48 71.68 0s20.48 51.2 0 71.68l-204.8 204.8c-10.24 10.24-20.48 15.36-35.84 15.36z"\n' +
+                                '          fill="#007bff" p-id="6087"></path>\n' +
+                                '</svg>' +
+                                '                &nbsp;流量充值</a></li>\n';
+                        }
+
+                        btns += '        </ul>\n' +
+                            '    </div>\n' +
+                            '    &nbsp;\n' +
+                            '    <div class="btn-group">\n' +
+                            '        <button type="button"\n' +
+                            '                class="btn btn-primary dropdown-toggle"\n' +
+                            '                data-toggle="dropdown" aria-haspopup="true"\n' +
+                            '                aria-expanded="false">\n' +
+                            '            下载\n' +
+                            '        </button>                    ' +
+                            '        <ul class="dropdown-menu download-dropdown-menu" style="padding-top: 100px;">' +
+                            downloadTypes.map(type => `<li onclick="ondownload('${row.status}','${type}', ${row.partitionId}, ${row.clientId})"><a href="javascript:;">${type}</a></li>`).join('')
+                            + '</ul>\n' +
+                            '    </div>';
+                        return btns;
+                    }
+                }
+            ],
+        });
+
+    });
+
+    function formatterDate(date) {
+        var seperator = "-";
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        return date.getFullYear() + seperator + month + seperator + strDate;
+    }
+
+
+    function ondownload(status, type, partitionId, id) {
+        if (status == 'false') {
+            $.showAlert({title: "提示", body: '当前实例不是运行状态，续费后刷新即可下载！'});
+            return;
+        } else {
+            if (type != 'Synology_群晖' && type != 'Android_安卓' && type != 'Socks5_windows' && type != 'Socks5_mac') {
+                let a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = baseUrl + `/file/down?partitionId=${partitionId}&clientId=${id}&typeEnum=${type}&token=${localStorage.getItem('token')}`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } else {
+                var xhr = new XMLHttpRequest()
+                xhr.open('GET', baseUrl + "/file/down?typeEnum=" + type + "&clientId=" + id + "&partitionId=" + partitionId + "&token=" + localStorage.getItem('token'), true);
+                xhr.responseType = 'blob';
+                xhr.setRequestHeader("token", localStorage.getItem('token')); // 请求头中的验证信息等（如果有）
+                xhr.onload = function (res) {
+                    if (this.status === 200) {
+                        if (this.response.type.indexOf('application/json') != -1) {
+                            let reader = new FileReader();
+                            reader.addEventListener('loadend', function (e) {
+                                let data = JSON.parse(e.target.result);
+                                if (data.msg.indexOf("http") != -1) {
+                                    var a = document.createElement("a");
+                                    a.href = data.msg;
+                                    a.target = '_blank';
+                                    $("body").append(a);
+                                    a.click();
+                                    $(a).remove();
+                                } else {
+                                    $.showAlert({title: "提示", body: data.msg})
+                                }
+                            });
+                            reader.readAsText(xhr.response);
+                        } else if (this.response.type.indexOf('application/octet-stream') != -1) {
+                            const url = window.URL.createObjectURL(new Blob([this.response]));
+                            var a = document.createElement("a");
+                            a.download = type + '.zip';
+                            a.href = url;
+                            a.target = '_blank';
+                            $("body").append(a);
+                            a.click();
+                            $(a).remove();
+                            URL.revokeObjectURL(url);
+                        }
+
+                    }
+                }
+                xhr.send()
+            }
+        }
+    }
+
+    // 新建实例
+    function add() {
+        let val = $('.form-select-create').children('option:selected').val();
+        if (val == 4) {
+            $('.port-input1').hide();
+        } else {
+            $('.port-input1').show();
+        }
+        if (val == 3) {
+            $('.host-input1').show();
+        } else {
+            $('.host-input1').hide();
+        }
+        ;
+
+        $("#targetEditHost").val(uuid(8, 16));
+
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['创建实例', 'text-align:left;background:#11a1fd'],
+            area: ['30%', '80%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['2%', '40%'],
+            maxmin: true, //允许全屏最小化
+            content: $('#createOrderLayer'),
+            btn: ["取消", "提交"],
+            yes: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+                let val = $('#targetEditHost').val().trim();
+                let reg = /^[a-z0-9.*]{1,13}$/
+                if (val && !reg.test(val)) {
+                    $.showAlert({title: "提示", options: {backdrop: false}, body: '域名前缀不能大写或包含特殊字符，且长度不超过13个字符'});
+                    $('#targetEditHost').focus();
+                    return;
+                }
+
+                let val1 = $('.form-select-create').children('option:selected').val();
+                if (val1 != 4) {
+                    let val2 = $('#targetIpPort').val().trim();
+                    if (!val2) {
+                        $.showAlert({title: "提示", options: {backdrop: false}, body: '内网服务栏端口号必填'});
+                        $('#targetIpPort').focus();
+                        return;
+                    }
+                }
+
+                let val2 = $('#targetSelfEditHost').val().trim();
+                let reg1 = /^[a-z.0-9.*]{1,30}$/
+                if (val2 && !reg1.test(val2)) {
+                    $.showAlert({title: "提示", options: {backdrop: false}, body: '自定义域名不支持大写及特殊字符，且长度不超过30个字符'});
+                    $('#targetSelfEditHost').focus();
+                    return;
+                }
+
+                $.showConfirm({
+                    title: "应用协议",
+                    body: "● 已使用免费机房测试，能够熟练使用软件</br>" +
+                        "● 承诺不会用于违法违规内容代理，严格遵守本站协议，任何违规行为与本站无关，属个人行为，个人承担相应法律责任",
+                    textTrue: "同意",
+                    textFalse: "拒绝",
+                    onSubmit: function (result) { // callback on confirm
+                        if (result) {
+                            let val = decodeURIComponent($('#createOrderForm').serialize(), true)
+                            let params = {}
+                            let arr = val.split('&').forEach(item => {
+                                let kv = item.split('=')
+                                params[kv[0]] = kv[1]
+                            })
+                            if (params.partitionId == '5' && ((params.ymRadioOptions == 'system' && params.tunnelType == '3') || params.tunnelType != '3')) {
+                                // 香港机房非自定义域名再次确认
+                                $.showConfirm({
+                                    title: "实例建议",
+                                    body: "香港机房仅建议需要使用自己未备案域名的场景,否则建议选择延时性稳定性更优的大陆机房，当然您也可以继续操作",
+                                    textTrue: "继续创建",
+                                    textFalse: "更换机房",
+                                    onSubmit: function (result) { // callback on confirm
+                                        if (result) {
+                                            let item = mealList.find(item => item.id == params.mealId) || {}
+                                            params.amount = item.value
+                                            params.payCycle = item.code
+                                            createOrder(params, function () {
+                                            })
+                                        } else {
+                                            return;
+                                        }
+                                    },
+                                    onDispose: function () {
+                                    }
+                                })
+                            } else {
+                                let item = mealList.find(item => item.id == params.mealId) || {}
+                                params.amount = item.value
+                                params.payCycle = item.code
+                                createOrder(params, function () {
+                                })
+                            }
+                        } else {
+                            return;
+                        }
+                    },
+                    onDispose: function () {
+                    }
+                });
+            }
+        });
+    }
+
+    function createOrder(params, fb) {
+        $.ajax({
+            type: "post",
+            url: baseUrl + "/order/create", //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            data: JSON.stringify(params),
+            success: function (result) {
+                if (0 == result.code) {
+                    if (result.msg != 'success') {
+                        pay(result.msg);
+                    } else {
+                        searchPage();
+                        $.showAlert({title: "提示", body: "操作成功"})
+                    }
+                } else {
+                    searchPage();
+                    $.showAlert({title: "提示", body: result.msg})
+                }
+            }
+        });
+    }
+
+    // 获取优惠券、折扣券列表
+    function getCouponList(isVip) {
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/lottery/coupons?isVip=" + isVip, //url
+            dataType: "json",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            contentType: "application/json;charset=utf-8",
+            success: function (result) {
+                let wrap = $('.coupon-select')
+                if (result.data.length > 0) {
+                    let str = result.data.map(item => {
+                        return `<option value=${item.id}>${item.prizeName} 中奖时间 ${item.createDate}</option>`
+                    }).join('')
+                    wrap.html(`<option value=""></option>` + str);
+                    $("#coupon").attr("style", "display:block;");
+                } else {
+                    wrap.html('');
+                    $("#coupon").attr("style", "display:none;");
+                }
+            }
+        });
+    }
+
+    // 获取机房列表
+    function getEngineList() {
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/nps/partition/list", //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
+                let wrap = $('.form-engine-select')
+                engineList = result.data;
+                let stars = '☆☆☆☆☆'
+                let starf = '★★★★★'
+                let str = result.data.map(item => {
+                    let bl = item.busyDegree >= 5 ? starf : starf.slice(0, item.busyDegree) + stars.slice(item.busyDegree)
+                    return `<option value=${item.id}>${item.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;拥挤程度：${bl}</option>`
+                }).join('');
+                wrap.append(str);
+                getMealListOnSelect();
+            }
+        });
+    }
+
+    // 机房下拉变更
+    $('.form-engine-select').change(function () {
+        getMealListOnSelect();
+    });
+
+    // 实例类型变更
+    $('.form-select-create').change(function () {
+        let val = $(this).children('option:selected').val();
+        let ei = $('.form-engine-select').children('option:selected').val();
+        let item = engineList.find(item => item.id == ei);
+        getCouponList(item.vip);
+        if (val == 4) {
+            $('.port-input1').hide()
+        } else {
+            $('.port-input1').show()
+        }
+        if (val == 3) {
+            $('.host-input1').show()
+        } else {
+            $('.host-input1').hide()
+        }
+    })
+
+    function getMealListOnSelect() {
+        let ei = $('.form-engine-select').children('option:selected').val();
+        let item = engineList.find(item => item.id == ei);
+        $('.address-info').html(item.httpHost.slice(1));
+        getMealList(item.vip);
+        getCouponList(item.vip);
+        isFree(item.vip);
+        isCustom(item.isCustom);
+    }
+
+
+    // 获取套餐列表
+    function getMealList(isVip) {
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/order/selectMealList?isVip=" + isVip, //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (result) {
+                let wrap = $('.meal-select')
+                mealList = result.data;
+                let str = result.data.map(item => {
+                    item.remarks = item.remark ? item.remark.split('-') : []
+                    return `<option value=${item.id}>${item.remarks.slice(1, 4).join("-")}</option>`
+                }).join('')
+                wrap.html(str)
+            }
+        });
+    }
+
+    // 获取流量套餐列表
+    function getFlowMealList() {
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/order/selectFlowMealList",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (result) {
+                let wrap = $('.flow-meal-select')
+                mealList = result.data;
+                let str = result.data.map(item => {
+                    return `<option value=${item.id}>${item.value + "¥ " + item.code + "G"}</option>`
+                }).join('')
+                wrap.html(str)
+            }
+        });
+    }
+
+    // 是否支持自定义域名(0:不支持 1:支持)
+    function isCustom(isCustom) {
+        if (isCustom) {
+            $("#isCustom").attr("style", "visibility:show;");
+        } else {
+            $("#inlineRadio2").prop("checked", true);
+            $('.ym-system-input').show();
+            $('.ym-my-input').hide();
+            ymType = 'system';
+            $("#isCustom").attr("style", "visibility:hidden;");
+        }
+    }
+
+    // 是否需要支付
+    function isFree(vip) {
+        if (vip) {
+            $("#pay").attr("style", "display:block;");
+        } else {
+            $("#pay").attr("style", "display:none;");
+        }
+    }
+
+    // 自定义域名切换
+    $('input[type=radio][name=ymRadioOptions]').change(function () {
+        if (this.value === 'system') {
+            $('.ym-system-input').show()
+            $('.ym-my-input').hide()
+            ymType = 'system'
+        } else {
+            $('.ym-system-input').hide()
+            $('.ym-my-input').show()
+            ymType = 'myself'
+        }
+    });
+
+
+    // 搜索
+    function searchPage() {
+        var param = {
+            "key": $("#search").val(),
+        };
+        table.settings()[0].ajax.data = param;
+        table.ajax.reload();
+    }
+
+    // 删除实例
+    function deleteOrder(id) {
+        $.showConfirm({
+            title: "删除实例",
+            body: "删除后实例不可以恢复,只能重新下单,确认删除吗？",
+            textTrue: "确认",
+            textFalse: "取消",
+            onSubmit: function (result) { // callback on confirm
+                if (result) {
+                    $.ajax({
+                        type: "post",
+                        url: baseUrl + "/nps/myAssets/delete", //url
+                        dataType: "json",
+                        contentType: "application/json;charset=utf-8",
+                        headers: {
+                            token: localStorage.getItem('token')
+                        },
+                        data: JSON.stringify({id: id}),
+                        success: function (result) {
+                            if (result.code) {
+                                $.showAlert({title: "提示", body: result.msg})
+                            } else {
+                                searchPage();
+                                $.showAlert({title: "提示", body: "操作成功"})
+                            }
+                        }
+                    });
+                } else {
+                    return;
+                }
+            },
+            onDispose: function () {
+            }
+        });
+    }
+
+    // 编辑实例
+    function editOrder(row) {
+        $("#targetEditSysHost").val("");
+        $("#targetEditSelfHost").val("");
+        $('#targetEditIpPort').val(row.targetIpPort)
+        $('#targetEditRemarks').val(row.remarks)
+        // $('.form-select-create').val(tunnelType)
+        if (row.tunnelType == 4) {
+            $('.port-input').hide()
+        } else {
+            $('.port-input').show()
+        }
+        $('.edit-instance-select2').hide();
+
+        if (row.tunnelType == 3) {
+            $('#hostLabel').show();
+            if (row.tunnelTypeHttp == 1) {
+                $('.ym-edit-system-input').show();
+                $('.ym-edit-my-input').hide();
+                let arrs = row.serverUrl.replace("http://", "").split(".");
+                let pre = '';
+                for (var i = 0; i < arrs.length - 3; i++) {
+                    pre += arrs[i] + ".";
+                }
+                $("#targetEditSysHost").val(pre.substring(0, pre.length - 1));
+            } else {
+                $('.ym-edit-system-input').hide();
+                $('.ym-edit-my-input').show();
+                $("#targetEditSelfHost").val(row.serverUrl.replace("http://", ""));
+            }
+        } else {
+            $('#hostLabel').hide();
+            $('.ym-edit-system-input').hide();
+            $('.ym-edit-my-input').hide();
+            $("#targetEditSysHost").val("");
+            $("#targetEditSelfHost").val("");
+        }
+
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/nps/myAssets/enableMerge?id=" + row.id, //url
+            dataType: "json",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            contentType: "application/json;charset=utf-8",
+            success: function (result) {
+                if (0 == result.code) {
+                    let wrap = $('.partitionMarge')
+                    mealList = result.data;
+                    let str = `<option value=''>当前实例 ${row.serverUrl} 客户端ID ${row.clientId}</option>`;
+                    str += result.data.map(item => {
+                        return `<option value=${item.id}>合并至实例 ${item.serverUrl} 客户端ID ${item.clientId}</option>`
+                    }).join('');
+                    wrap.html(str);
+                    $('.edit-instance-select3').show();
+                } else {
+                    $.showAlert({title: "提示", body: result.msg});
+                }
+            }
+        });
+
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['编辑实例', 'text-align:left;background:#11a1fd'],
+            area: ['30%', '80%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['2%', '40%'],
+            maxmin: true, //允许全屏最小化
+            content: $('#editLayer'),
+            btn: ["取消", "提交"],
+            yes: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+                let val = decodeURIComponent($('#editForm').serialize(), true)
+                let params = {}
+                let arr = val.split('&').forEach(item => {
+                    let kv = item.split('=')
+                    params[kv[0]] = kv[1]
+                })
+                params.id = row.id;
+
+
+                if (row.tunnelType == 3) {
+                    if (row.tunnelTypeHttp == 1) {
+                        let val1 = $('#targetEditSysHost').val().trim();
+                        let reg = /^[a-z0-9.*]{1,13}$/
+                        if (!val1 || !reg.test(val1)) {
+                            $.showAlert({title: "提示", body: "域名前缀不能大写或包含特殊字符，且长度不超过13个字符"});
+                            $('#targetEditSysHost').focus();
+                            return false;
+                        }
+                    } else {
+                        let val2 = $('#targetEditSelfHost').val().trim();
+                        let reg1 = /^[a-z.0-9.*]{1,30}$/
+                        if (!val2 || !reg1.test(val2)) {
+                            $.showAlert({title: "提示", body: "自定义域名不支持大写及特殊字符，且长度不超过30个字符"});
+                            $('#targetEditSelfHost').focus();
+                            return false;
+                        }
+                    }
+                }
+
+                $.ajax({
+                    type: "post",
+                    url: baseUrl + "/nps/myAssets/update", //url
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    headers: {
+                        token: localStorage.getItem('token')
+                    },
+                    data: JSON.stringify(params),
+                    success: function (result) {
+                        if (0 == result.code) {
+                            searchPage();
+                        } else {
+                            $.showAlert({title: "提示", body: result.msg})
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    // 续费实例
+    function renewOrder(row) {
+        getMealList(row.vip);
+        $('.edit-instance-select1').hide()
+        $('.port-input').hide()
+        $('.host-input1').hide()
+        $('.edit-engine-select1').hide()
+        getCouponList(row.vip);
+        isFree(row.vip);
+
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['实例续费', 'text-align:left;background:#11a1fd'],
+            area: ['30%', '50%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['10%', '40%'],
+            maxmin: true, //允许全屏最小化
+            content: $('#createOrderLayer'),
+            btn: ["取消", "提交"],
+            yes: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+                let val = $('#targetEditHost').val().trim();
+                let reg = /^[a-z0-9.*]{1,13}$/
+                if (val && !reg.test(val)) {
+                    $.showAlert({title: "提示", options: {backdrop: false}, body: '域名前缀不能大写或包含特殊字符，且长度不超过13个字符'});
+                    $('#targetEditHost').focus();
+                    return;
+                }
+
+                let val1 = $('.form-select-create').children('option:selected').val();
+                if (val1 != 4) {
+                    let val2 = $('#targetIpPort').val().trim();
+                    if (!val2) {
+                        $.showAlert({title: "提示", options: {backdrop: false}, body: '内网服务栏端口号必填'});
+                        $('#targetIpPort').focus();
+                        return;
+                    }
+                }
+
+                let val2 = $('#targetSelfEditHost').val().trim();
+                let reg1 = /^[a-z.0-9.*]{1,30}$/
+                if (val2 && !reg1.test(val2)) {
+                    $.showAlert({title: "提示", options: {backdrop: false}, body: '自定义域名不支持大写及特殊字符，且长度不超过30个字符'});
+                    $('#targetSelfEditHost').focus();
+                    return;
+                }
+
+                $.showConfirm({
+                    title: "应用协议",
+                    body: "● 已使用免费机房测试，能够熟练使用软件</br>" +
+                        "● 承诺不会用于违法违规内容代理，严格遵守本站协议，任何违规行为与本站无关，属个人行为，个人承担相应法律责任",
+                    textTrue: "同意",
+                    textFalse: "拒绝",
+                    onSubmit: function (result) { // callback on confirm
+                        if (result) {
+                            let val = decodeURIComponent($('#createOrderForm').serialize(), true)
+                            let params = {}
+                            let arr = val.split('&').forEach(item => {
+                                let kv = item.split('=')
+                                params[kv[0]] = kv[1]
+                            })
+                            if (params.partitionId == '5' && ((params.ymRadioOptions == 'system' && params.tunnelType == '3') || params.tunnelType != '3')) {
+                                // 香港机房非自定义域名再次确认
+                                $.showConfirm({
+                                    title: "实例建议",
+                                    body: "香港机房仅建议需要使用自己未备案域名的场景,否则建议选择延时性稳定性更优的大陆机房，当然您也可以继续操作",
+                                    textTrue: "继续创建",
+                                    textFalse: "更换机房",
+                                    onSubmit: function (result) { // callback on confirm
+                                        if (result) {
+                                            let item = mealList.find(item => item.id == params.mealId) || {};
+                                            params.amount = item.value;
+                                            params.payCycle = item.code;
+                                            params.id = row.id;
+                                            createOrder(params, function () {
+                                            })
+                                        } else {
+                                            return;
+                                        }
+                                    },
+                                    onDispose: function () {
+                                    }
+                                })
+                            } else {
+                                let item = mealList.find(item => item.id == params.mealId) || {};
+                                params.amount = item.value;
+                                params.payCycle = item.code;
+                                params.id = row.id;
+                                createOrder(params, function () {
+                                })
+                            }
+                        } else {
+                            return;
+                        }
+                    },
+                    onDispose: function () {
+                    }
+                });
+            }
+        });
+    }
+
+    // 账户密码设置
+    function safe(row) {
+        document.getElementById('userName').value = row.userName || '';
+        document.getElementById('passWord').value = row.passWord || '';
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['安全密码', 'text-align:left;background:#11a1fd'],
+            area: ['30%', '50%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['10%', '40%'],
+            maxmin: true, //允许全屏最小化
+            content: $('#passWordLayer'),
+            btn: ["取消", "提交"],
+            yes: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+                let val = decodeURIComponent($('#passWordForm').serialize(), true)
+                let params = {}
+                let arr = val.split('&').forEach(item => {
+                    let kv = item.split('=')
+                    params[kv[0]] = kv[1]
+                });
+                params['id'] = row.id;
+                $.ajax({
+                    type: "post",
+                    url: baseUrl + "/safe/save", //url
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    headers: {
+                        token: localStorage.getItem('token')
+                    },
+                    data: JSON.stringify(params),
+                    success: function (result) {
+                        if (0 == result.code) {
+                            searchPage();
+                            $.showAlert({title: "提示", body: '操作成功'});
+                        } else {
+                            $.showAlert({title: "提示", body: result.msg});
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    // 域名证书上传
+    function ssl(row) {
+        document.getElementById('certificate').value = row.certificate || '';
+        document.getElementById('key').value = row.privateKey || '';
+        currentChangeOrderId = row.id;
+
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['证书上传', 'text-align:left;background:#11a1fd'],
+            area: ['40%', '80%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['5%', '30%'],
+            maxmin: true, //允许全屏最小化
+            content: $('#sslLayer'),
+            btn: ["取消", "提交"],
+            yes: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+                let params = {}
+                params['certificate'] = encodeURIComponent(document.getElementById('certificate').value);
+                params['key'] = encodeURIComponent(document.getElementById('key').value);
+                params['id'] = row.id;
+
+                $.ajax({
+                    type: "post",
+                    url: baseUrl + "/ssl/apply", //url
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    headers: {
+                        token: localStorage.getItem('token')
+                    },
+                    data: JSON.stringify(params),
+                    success: function (result) {
+                        if (0 == result.code) {
+                            searchPage();
+                            $.showAlert({title: "提示", body: '操作成功'});
+                        } else {
+                            $.showAlert({title: "提示", body: result.msg});
+                            return false;
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    // 流量充值
+    function flowOrder(row) {
+        currentChangeOrderId = row.id;
+        getFlowMealList();
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['流量充值', 'text-align:left;background:#11a1fd'],
+            area: ['30%', '50%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['10%', '40%'],
+            maxmin: true, //允许全屏最小化
+            content: $('#flowLayer'),
+            btn: ["取消", "提交"],
+            yes: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+                $.showConfirm({
+                    title: "充值协议",
+                    body: "● 流量充值不增加实例时间</br>" +
+                        "● 开票需提前联系管理员确认",
+                    textTrue: "同意",
+                    textFalse: "拒绝",
+                    onSubmit: function (result) { // callback on confirm
+                        if (result) {
+                            let val = decodeURIComponent($('#flowForm').serialize(), true)
+                            let params = {}
+                            let arr = val.split('&').forEach(item => {
+                                let kv = item.split('=')
+                                params[kv[0]] = kv[1]
+                            });
+                            params['lineId'] = row.id;
+
+                            $.ajax({
+                                type: "get",
+                                url: baseUrl + "/order/flowRecharge?payType=" + params['payType'] + "&lineId=" + params['lineId'] + "&mealId=" + params['mealId'],
+                                dataType: "json",
+                                contentType: "application/json;charset=utf-8",
+                                headers: {
+                                    token: localStorage.getItem('token')
+                                },
+                                success: function (result) {
+                                    if (result.code == 0) {
+                                        if (undefined != result.orderUrl && result.orderUrl != '') {
+                                            pay(result.orderUrl);
+                                        }
+                                    } else {
+                                        $.showAlert({title: "提示", body: result.msg});
+                                    }
+                                }
+                            });
+
+                        } else {
+                            return;
+                        }
+                    },
+                    onDispose: function () {
+                    }
+                })
+            }
+        });
+    }
+
+    function recharge() {
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/api/userInfo", //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
+                if (result.code == '0') {
+                    $("#balance").html(result.data.balance);
+                }
+            }
+        });
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['账户充值', 'text-align:left;background:#11a1fd'],
+            area: ['30%', '50%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['10%', '40%'],
+            maxmin: true, //允许全屏最小化
+            content: $('#rechargeLayer'),
+            btn: ["取消", "提交"],
+            yes: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+
+                let val = decodeURIComponent($('#rechargeForm').serialize(), true)
+                let params = {}
+                let arr = val.split('&').forEach(item => {
+                    let kv = item.split('=')
+                    params[kv[0]] = kv[1]
+                });
+                if (null == params['amount'] || '' == params['amount']) {
+                    $.showAlert({title: "提示", body: "充值金额不可为空"});
+                    return;
+                }
+
+                $.showConfirm({
+                    title: "充值协议",
+                    body: "● 充值后余额仅支持本站使用不再支持提现</br>" +
+                        "● 开票需提前联系管理员确认",
+                    textTrue: "同意",
+                    textFalse: "拒绝",
+                    onSubmit: function (result) { // callback on confirm
+                        if (result) {
+                            $.ajax({
+                                type: "get",
+                                url: baseUrl + "/order/recharge?payType=" + params['payType'] + "&amount=" + params['amount'], //url
+                                dataType: "json",
+                                contentType: "application/json;charset=utf-8",
+                                headers: {
+                                    token: localStorage.getItem('token')
+                                },
+                                success: function (result) {
+                                    if (result.code) {
+                                        $.showAlert({title: "提示", body: result.msg})
+                                    } else {
+                                        if (result.msg != 'success') {
+                                            pay(result.msg);
+                                        }
+                                    }
+                                }
+                            });
+                        } else {
+                            return;
+                        }
+                    },
+                    onDispose: function () {
+                    }
+                })
+            }
+        });
+    }
+
+    // 证书拖拽处理
+    var certificate = document.getElementById('certificate');
+
+    certificate.addEventListener("dragenter", function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }, false);
+
+    certificate.addEventListener("dragover", function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }, false);
+
+    function checkSsl() {
+        let params = {}
+        params.id = currentChangeOrderId;
+        params.certificate = certificate.value;
+        $.ajax({
+            type: "post",
+            url: baseUrl + "/ssl/check",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            data: JSON.stringify(params),
+            success: function (result) {
+                if (0 == result.code) {
+
+                } else {
+                    $.showAlert({title: "提示", body: result.msg})
+                }
+            }
+        });
+    }
+
+    certificate.addEventListener("drop", function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        // 得到拖拽过来的文件
+        var dataFile = e.dataTransfer.files[0];
+        // FileReader实例化
+        var fr = new FileReader();
+        // 异步读取文件
+        fr.readAsText(dataFile);
+        // 读取完毕之后执行
+        fr.onload = function () {
+            // 获取得到的结果
+            certificate.value = fr.result;
+            checkSsl();
+        };
+    }, false);
+
+    var key = document.getElementById('key');
+
+    key.addEventListener("dragenter", function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }, false);
+
+    key.addEventListener("dragover", function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }, false);
+
+    key.addEventListener("drop", function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        // 得到拖拽过来的文件
+        var dataFile = e.dataTransfer.files[0];
+        // FileReader实例化
+        var fr = new FileReader();
+        // 异步读取文件
+        fr.readAsText(dataFile);
+        // 读取完毕之后执行
+        fr.onload = function () {
+            // 获取得到的结果
+            key.value = fr.result;
+        };
+    }, false);
+
+
+    // 机房提示
+    $('#partitionTips').hover(function () {
+        let title = `<p>通常建议选择离自己最近的机房,线路延时会更低</p>
+                    <p>建议选择需要实名的机房,用户质量更高,不易违规影响机房运行</p>
+                    <p>香港机房延时会相对偏高,仅建议未阿里云平台备案域名使用</p>
+                    <p>免费机房仅供体验,请选择不限流量和超高带宽机房,性能和带宽更加优异</p>`;
+        layer.tips(title, this, {
+            tips: [3, '#11a1fd'],       // 弹层位置 1-4上右下左， 背景颜色
+            area: ['400px', 'auto'],
+            time: 30000,
+            anim: false,                // 禁用动画
+        });
+    }, function () {
+        layer.closeAll('tips');
+    });
+
+    // 实例类型提示
+    $('#tunnelTips').hover(function () {
+        let title = `<p>⚠️&nbsp;&nbsp;请仔细选择实例类型,后期不支持修改</p>
+                        </p><p><strong>域名</strong> 将内网服务以域名的形式暴露到公网(如127.0.0.1:8080 -> http://www.aeert.com),适用内网建站、微信回调、群晖NAS等</p>
+                        <p><strong>TCP</strong> 将内网服务暴露到公网(如 127.0.0.1:8080 -> 121.41.19.238:1888),适用内网建站、群晖NAS、WSS(套餐需满1年)、远程桌面、远程SSH等</p>
+                        <p><strong>SOCKS5</strong> 将当前网络和局域网网络打通,实现VPN功能,适用于远程办公,在家访问公司内网资源</p>`;
+        layer.tips(title, this, {
+            tips: [3, '#11a1fd'],       // 弹层位置 1-4上右下左， 背景颜色
+            area: ['400px', 'auto'],
+            time: 30000,
+            anim: false,                // 禁用动画
+        });
+    }, function () {
+        layer.closeAll('tips');
+    });
+
+    // 域名提示
+    $('#hostTips').hover(function () {
+        let title = `<p>系统赠送域名自带SSL,支持HTTPS;自定义域名实现HTTPS自行上传证书即可</p>
+                    <p>系统赠送域名微信内访问可能会被拦截,有需要的话建议使用自定义域名或购买年费套餐使用高级域名</p>
+                    <p>自定义域名非香港机房需要根据机房要求备案，如未备案请选择香港机房</p>
+                    <p>使用自定义域名,需域名后台添加CNAME解析到对应机房域名,同时部分机房需联系管理员添加白名单,细节参考说明文档</p>`;
+        layer.tips(title, this, {
+            tips: [3, '#11a1fd'],       // 弹层位置 1-4上右下左， 背景颜色
+            area: ['400px', 'auto'],
+            time: 30000,
+            anim: false,                // 禁用动画
+        });
+    }, function () {
+        layer.closeAll('tips');
+    });
+
+    // 内网设置提示
+    $('#targetIpPortTips').hover(function () {
+        let title = `<p>本机可直接填写端口,例: 8080; 80端口也需要填写, 例：127.0.0.1:80</p><p>支持负载均衡，用逗号隔开即可，例: 127.0.0.1:8080,127.0.0.2:8081</p>`;
+        layer.tips(title, this, {
+            tips: [3, '#11a1fd'],       // 弹层位置 1-4上右下左， 背景颜色
+            area: ['400px', 'auto'],
+            time: 30000,
+            anim: false,                // 禁用动画
+        });
+    }, function () {
+        layer.closeAll('tips');
+    });
+
+    /**
+     * @param len
+     * @param radix
+     * uuid(8, 2)  //  "01001010"
+     * uuid(8, 10) // "47473046"
+     * uuid(8, 16) // "098F4D35"
+     * @returns {string}
+     */
+    function uuid(len, radix) {
+        var chars = '0123456789abcdefghijklmnopqrstuvwxyz'.split('');
+        var uuid = [], i;
+        radix = radix || chars.length;
+
+        if (len) {
+            // Compact form
+            for (i = 0; i < len; i++) uuid[i] = chars[0 | Math.random() * radix];
+        } else {
+            // rfc4122, version 4 form
+            var r;
+
+            // rfc4122 requires these characters
+            uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
+            uuid[14] = '4';
+
+            // Fill in random data.  At i==19 set the high bits of clock sequence as
+            // per rfc4122, sec. 4.1.5
+            for (i = 0; i < 36; i++) {
+                if (!uuid[i]) {
+                    r = 0 | Math.random() * 16;
+                    uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r];
+                }
+            }
+        }
+
+        return uuid.join('');
+    }
+
+    function pay(url) {
+        layer.open({
+            type: 2,
+            area: [`${$("body").width() > 1200 ? "700px" : "80vw"}`, "80vh"],
+            content: url,
+            scrollbar: true,
+            end: function () {
+                searchPage();
+            },
+        });
+    }
+
+</script>
+</body>
+
+</html>

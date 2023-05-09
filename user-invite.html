@@ -1,0 +1,872 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>控制台-推广返利</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description"
+          content="内网穿透 NAT穿透 小蝴蝶内网穿透 高速稳定内网穿透，是一款轻量级、高性能、功能强大的内网穿透代理服务器。目前支持tcp、udp流量转发，可支持任何tcp、udp上层协议（访问内网网站、本地>支付接口调试、ssh访问、远程桌面，内网dns解析等等……），此外还支持内网http代理、内网socks5代理、p2p等，并带有功能强大的web管理端。">
+    <meta name="keywords" content="内网穿透 小蝴蝶内网穿透 NAT穿透 高速稳定内网穿透 映射端口 TCP UDP SOCKS5 内网网站 支付接口调试 SSH 远程桌面 VPN 全平台兼容内网穿透">
+    <meta name="author" content="">
+    <meta name="MobileOptimized" content="320">
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/fonts.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/icofont.min.css">
+    <link rel="stylesheet" href="admin/assets/css/swiper.min.css">
+    <!--Page Specific -->
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/nice-select.min.css">
+    <!--Custom Style -->
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/style.min.css">
+    <!-- Favicon Link -->
+    <link rel="shortcut icon" type="image/png" href="web/images/slider/head-logo.jpg">
+
+    <style>
+        body .demo-class .layui-layer-btn0 {
+            border-color: #E6E3E6;
+            background-color: #FFF;
+            color: black;
+        }
+
+        body .demo-class .layui-layer-btn1 {
+            border-color: #4898d5;
+            background-color: #2e8ded;
+            color: #fff;
+        }
+
+        body .table-responsive {
+            overflow-x: visible;
+        }
+
+        body .label-info {
+            background-color: #11a1fd;
+        }
+
+        .zindex100 {
+            z-index: 100 !important;
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="loader">
+    <div class="spinner">
+        <img src="admin/assets/images/loader.gif" alt=""/>
+    </div>
+</div>
+<!-- Main Body -->
+<div class="page-wrapper">
+    <!-- Header Start -->
+    <header class="header-wrapper main-header">
+        <div class="header-inner-wrapper">
+            <div class="logo-wrapper">
+                <a href="index.html" class="admin-logo">
+                    <img src="admin/static/image/logo.png" alt="">
+                </a>
+            </div>
+            <div class="header-right">
+                <div class="serch-wrapper">
+                    <form>
+                        <input type="text" placeholder="Search Here...">
+                    </form>
+                    <a class="search-close" href="javascript:void(0);"><span class="icofont-close-line"></span></a>
+                </div>
+                <div class="header-left">
+                    <div class="header-links">
+                        <a href="javascript:void(0);" class="toggle-btn">
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="header-links search-link">
+                        <a class="search-toggle" href="javascript:void(0);">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                 x="0px" y="0px" viewBox="0 0 56.966 56.966"
+                                 style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve">
+                                    <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23
+                                    s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92
+                                    c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17
+                                    s-17-7.626-17-17S14.61,6,23.984,6z"/>
+                                </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-controls">
+                    <div id="notification-wrapper" class="notification-wrapper header-links">
+                        <a href="javascript:void(0);" class="notification-info">
+                                <span class="header-icon">
+                                    <svg enable-background="new 0 0 512 512" viewBox="0 0 512 512"
+                                         xmlns="http://www.w3.org/2000/svg"><path
+                                            d="m450.201 407.453c-1.505-.977-12.832-8.912-24.174-32.917-20.829-44.082-25.201-106.18-25.201-150.511 0-.193-.004-.384-.011-.576-.227-58.589-35.31-109.095-85.514-131.756v-34.657c0-31.45-25.544-57.036-56.942-57.036h-4.719c-31.398 0-56.942 25.586-56.942 57.036v34.655c-50.372 22.734-85.525 73.498-85.525 132.334 0 44.331-4.372 106.428-25.201 150.511-11.341 24.004-22.668 31.939-24.174 32.917-6.342 2.935-9.469 9.715-8.01 16.586 1.473 6.939 7.959 11.723 15.042 11.723h109.947c.614 42.141 35.008 76.238 77.223 76.238s76.609-34.097 77.223-76.238h109.947c7.082 0 13.569-4.784 15.042-11.723 1.457-6.871-1.669-13.652-8.011-16.586zm-223.502-350.417c0-14.881 12.086-26.987 26.942-26.987h4.719c14.856 0 26.942 12.106 26.942 26.987v24.917c-9.468-1.957-19.269-2.987-29.306-2.987-10.034 0-19.832 1.029-29.296 2.984v-24.914zm29.301 424.915c-25.673 0-46.614-20.617-47.223-46.188h94.445c-.608 25.57-21.549 46.188-47.222 46.188zm60.4-76.239c-.003 0-213.385 0-213.385 0 2.595-4.044 5.236-8.623 7.861-13.798 20.104-39.643 30.298-96.129 30.298-167.889 0-63.417 51.509-115.01 114.821-115.01s114.821 51.593 114.821 115.06c0 .185.003.369.01.553.057 71.472 10.25 127.755 30.298 167.286 2.625 5.176 5.267 9.754 7.861 13.798z"/></svg>
+                                </span>
+                            <span class="count-notification"></span>
+                        </a>
+                        <div id="notice" class="recent-notification">
+                            <div class="drop-down-header">
+                                <h4>通知</h4>
+                                <p id="noticeCt"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-info-wrapper header-links">
+                        <a href="javascript:void(0);" class="user-info">
+                            <img id="headUrl" src="admin/assets/images/user.jpg" alt="" class="user-img">
+                            <div class="blink-animation">
+                                <span class="blink-circle"></span>
+                                <span class="main-circle"></span>
+                            </div>
+                        </a>
+                        <div class="user-info-box">
+                            <div class="drop-down-header">
+                                <h5 id="mail"></h5>
+                                <p id="vip">客服QQ: 1163363720</p>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a onclick="recharge()">
+                                        <svg t="1683263149600" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="3738" width="16" height="16">
+                                            <path d="M512 750.51c-19.08 0-31.801-12.721-31.801-31.802V432.497c0-19.08 12.72-31.801 31.801-31.801s31.801 12.72 31.801 31.8v286.212c-6.36 19.08-19.08 31.801-31.801 31.801z"
+                                                  p-id="3739" fill="#007bff"></path>
+                                            <path d="M651.925 534.26h-286.21c-19.081 0-31.802-12.72-31.802-31.8 0-19.081 12.72-31.802 31.801-31.802h286.211c19.081 0 31.802 12.72 31.802 31.802 0 19.08-12.72 31.8-31.802 31.8zM651.925 648.745h-286.21c-19.081 0-31.802-12.72-31.802-31.8 0-19.082 12.72-31.802 31.801-31.802h286.211c19.081 0 31.802 12.72 31.802 31.801 0 19.08-12.72 31.801-31.802 31.801zM512 464.298c-6.36 0-19.08 0-25.441-6.36L352.994 324.373c-12.72-12.72-12.72-31.802 0-44.522 12.72-12.72 31.801-12.72 44.522 0L531.08 413.416c12.72 12.72 12.72 31.801 0 44.522-6.36 6.36-12.72 6.36-19.081 6.36z"
+                                                  p-id="3740" fill="#007bff"></path>
+                                            <path d="M512 464.298c-6.36 0-19.08 0-25.441-6.36-12.72-12.72-12.72-31.801 0-44.522l133.565-133.565c12.72-12.72 31.801-12.72 44.522 0 12.72 12.72 12.72 31.801 0 44.522L531.081 457.938c-6.36 6.36-12.72 6.36-19.081 6.36z"
+                                                  p-id="3741" fill="#007bff"></path>
+                                            <path d="M512 1017.64c-279.85 0-508.82-228.97-508.82-508.82S232.15 0 512 0s508.82 228.969 508.82 508.82c0 25.44 0 50.882-6.36 82.683 0 19.08-19.081 31.801-38.162 25.441-19.08 0-31.801-19.08-25.44-38.161 6.36-25.441 6.36-44.522 6.36-69.963C957.217 260.77 760.05 63.602 512 63.602S66.783 267.13 66.783 515.18 263.95 960.398 512 960.398c25.441 0 57.242 0 82.683-6.36 19.081-6.361 31.801 6.36 38.162 25.44 6.36 19.081-6.36 31.802-25.441 38.162H512z"
+                                                  p-id="3742" fill="#007bff"></path>
+                                            <path d="M989.019 864.994H671.006c-19.08 0-31.801-12.72-31.801-31.801s12.72-31.802 31.801-31.802H989.02c19.08 0 31.8 12.72 31.8 31.802s-19.08 31.8-31.8 31.8z"
+                                                  p-id="3743" fill="#007bff"></path>
+                                            <path d="M830.012 1024c-19.08 0-31.8-12.72-31.8-31.801V674.186c0-19.08 12.72-31.8 31.8-31.8s31.802 12.72 31.802 31.8V992.2c0 12.72-19.081 31.801-31.802 31.801z"
+                                                  p-id="3744" fill="#007bff"></path>
+                                        </svg>
+                                        账户充值
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="user-perfect.html">
+                                        <svg t="1683263210564" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="4841" width="16" height="16">
+                                            <path d="M427.985455 526.894545a125.207273 125.207273 0 1 0-157.789091 0A186.181818 186.181818 0 0 0 162.909091 695.389091a23.272727 23.272727 0 0 0 46.545454 0 139.636364 139.636364 0 1 1 279.272728 0 23.272727 23.272727 0 0 0 46.545454 0 186.181818 186.181818 0 0 0-107.287272-168.494546z m-157.556364-96.34909A78.661818 78.661818 0 1 1 349.090909 509.207273a78.894545 78.894545 0 0 1-78.661818-78.661818zM698.181818 372.363636h93.090909a23.272727 23.272727 0 0 0 0-46.545454h-93.090909a23.272727 23.272727 0 0 0 0 46.545454z"
+                                                  p-id="4842" fill="#007bff"></path>
+                                            <path d="M942.545455 548.072727V302.545455a93.090909 93.090909 0 0 0-93.09091-93.09091h-698.181818a93.090909 93.090909 0 0 0-93.090909 93.09091v418.90909a93.090909 93.090909 0 0 0 93.090909 93.09091H651.636364a197.352727 197.352727 0 0 0 290.909091-266.472728zM151.272727 768a46.545455 46.545455 0 0 1-46.545454-46.545455V302.545455a46.545455 46.545455 0 0 1 46.545454-46.545455h698.181818a46.545455 46.545455 0 0 1 46.545455 46.545455v204.8a197.585455 197.585455 0 0 0-302.545455 167.563636 195.258182 195.258182 0 0 0 23.272728 93.090909zM791.272727 826.181818a150.807273 150.807273 0 0 1-112.407272-50.501818 151.272727 151.272727 0 0 1 223.650909-203.403636A151.272727 151.272727 0 0 1 791.272727 826.181818z"
+                                                  p-id="4843" fill="#007bff"></path>
+                                            <path d="M834.094545 628.363636l-57.483636 57.483637-16.523636-16.290909a23.272727 23.272727 0 0 0-33.047273 0 23.272727 23.272727 0 0 0 0 32.814545l33.047273 33.047273a23.272727 23.272727 0 0 0 32.814545 0l74.24-74.24a23.272727 23.272727 0 0 0 0-32.814546 23.272727 23.272727 0 0 0-33.047273 0z"
+                                                  p-id="4844" fill="#007bff"></path>
+                                        </svg>
+                                        账户详情
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onclick="logout()">
+                                        <i class="fas fa-sign-out-alt"></i>登出
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Sidebar Start -->
+    <aside class="sidebar-wrapper">
+        <div class="side-menu-wrap">
+            <ul class="main-menu">
+                <li>
+                    <a href="user-data.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-layers"><polygon
+                                        points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline
+                                        points="2 17 12 22 22 17"></polyline><polyline
+                                        points="2 12 12 17 22 12"></polyline></svg>
+                            </span>
+                        <span class="menu-text">
+                                实例管理
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="user-order.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-truck"><rect x="1" y="3" width="15"
+                                                                                                 height="13"></rect><polygon
+                                        points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5"
+                                                                                                    r="2.5"></circle><circle
+                                        cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                            </span>
+                        <span class="menu-text">
+                                订单管理
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="user-invite.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-users"><path
+                                        d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7"
+                                                                                                     r="4"></circle><path
+                                        d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path
+                                        d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            </span>
+                        <span class="menu-text">
+                                推广返利
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="user-lottery.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-grid nav-icon"><rect x="3" y="3"
+                                                                                                         width="7"
+                                                                                                         height="7"></rect><rect
+                                        x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7"
+                                                                                       height="7"></rect><rect x="3"
+                                                                                                               y="14"
+                                                                                                               width="7"
+                                                                                                               height="7"></rect></svg>
+                            </span>
+                        <span class="menu-text">
+                                积分抽奖
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11"
+                                                                                                y2="13"></line><polygon
+                                        points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </span>
+                        <span class="menu-text">
+                                系统管理
+                            </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="user-perfect.html">
+                                    <span class="icon-dash">
+                                    </span>
+                                <span class="menu-text">
+                                        账户设置
+                                    </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="notice.html">
+                                    <span class="icon-dash">
+                                    </span>
+                                <span class="menu-text">
+                                        系统通知
+                                    </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <!-- Container Start -->
+    <div class="page-wrapper">
+        <div class="main-content">
+            <div class="row">
+                <div class="colxl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-title-wrapper">
+                        <div class="ad-breadcrumb">
+                            <ul>
+                                <li style="float: left">
+                                    <div class="add-group">
+                                        <p>⚠️ 通过您的链接注册的用户将会与您的账户绑定，用户首单可额外获得18天体验时间，用户每笔订单您将永久获得佣金为订单的 <span
+                                                class="invite-get"
+                                                style="font-size: 20px">20%</span>，提现后当天即可到账（节假日顺延）</p>
+                                    </div>
+                                </li>
+                                <li style="float: left">
+                                    <div class="add-group">
+                                        <a class="ad-btn" href="javascript:void(0);" onclick="shareBtn()">
+                                            <svg t="1683523857202" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                                 xmlns="http://www.w3.org/2000/svg" p-id="2606" width="16" height="16">
+                                                <path d="M384 64l-249.6 0c-51.2 0-89.6 41.6-89.6 89.6l0 227.2c0 51.2 41.6 89.6 89.6 89.6l249.6 0c51.2 0 89.6-41.6 89.6-89.6l0-227.2C473.6 105.6 435.2 64 384 64zM428.8 380.8c0 25.6-19.2 44.8-44.8 44.8l-249.6 0c-25.6 0-44.8-19.2-44.8-44.8l0-227.2c0-25.6 19.2-44.8 44.8-44.8l249.6 0c25.6 0 44.8 19.2 44.8 44.8L428.8 380.8z"
+                                                      p-id="2607" fill="#ffffff"></path>
+                                                <path d="M192 192l134.4 0 0 134.4-134.4 0 0-134.4Z" p-id="2608"
+                                                      fill="#ffffff"></path>
+                                                <path d="M377.6 544l-243.2 0c-48 0-86.4 38.4-86.4 89.6l0 220.8c0 48 38.4 89.6 86.4 89.6l243.2 0c48 0 86.4-38.4 86.4-89.6l0-220.8C467.2 582.4 425.6 544 377.6 544zM422.4 851.2c0 25.6-19.2 44.8-44.8 44.8l-243.2 0c-25.6 0-44.8-19.2-44.8-44.8l0-220.8c0-25.6 19.2-44.8 44.8-44.8l243.2 0c25.6 0 44.8 19.2 44.8 44.8L422.4 851.2z"
+                                                      p-id="2609" fill="#ffffff"></path>
+                                                <path d="M192 668.8l131.2 0 0 131.2-131.2 0 0-131.2Z" p-id="2610"
+                                                      fill="#ffffff"></path>
+                                                <path d="M633.6 470.4l249.6 0c51.2 0 89.6-41.6 89.6-89.6l0-227.2c0-51.2-41.6-89.6-89.6-89.6l-249.6 0c-51.2 0-89.6 41.6-89.6 89.6l0 227.2C544 432 585.6 470.4 633.6 470.4zM588.8 153.6c0-25.6 19.2-44.8 44.8-44.8l249.6 0c25.6 0 44.8 19.2 44.8 44.8l0 227.2c0 25.6-19.2 44.8-44.8 44.8l-249.6 0c-25.6 0-44.8-19.2-44.8-44.8L588.8 153.6z"
+                                                      p-id="2611" fill="#ffffff"></path>
+                                                <path d="M700.8 192l134.4 0 0 134.4-134.4 0 0-134.4Z" p-id="2612"
+                                                      fill="#ffffff"></path>
+                                                <path d="M572.8 716.8l137.6 0c12.8 0 22.4-9.6 22.4-22.4l0-137.6c0-12.8-9.6-22.4-22.4-22.4l-137.6 0c-12.8 0-22.4 9.6-22.4 22.4l0 137.6C550.4 707.2 560 716.8 572.8 716.8z"
+                                                      p-id="2613" fill="#ffffff"></path>
+                                                <path d="M886.4 563.2l0 38.4c0 12.8 12.8 25.6 25.6 25.6l38.4 0c12.8 0 25.6-12.8 25.6-25.6l0-38.4c0-12.8-12.8-25.6-25.6-25.6l-38.4 0C899.2 537.6 886.4 547.2 886.4 563.2z"
+                                                      p-id="2614" fill="#ffffff"></path>
+                                                <path d="M582.4 944l48 0c12.8 0 22.4-9.6 22.4-22.4l0-48c0-12.8-9.6-22.4-22.4-22.4l-48 0c-12.8 0-22.4 9.6-22.4 22.4l0 48C560 934.4 569.6 944 582.4 944z"
+                                                      p-id="2615" fill="#ffffff"></path>
+                                                <path d="M944 704l-99.2 0c-16 0-28.8 12.8-28.8 28.8l0 44.8-48 0c-19.2 0-32 12.8-32 32l0 99.2c0 16 12.8 28.8 28.8 28.8l179.2 3.2c16 0 28.8-12.8 28.8-28.8l0-179.2C972.8 716.8 960 704 944 704z"
+                                                      p-id="2616" fill="#ffffff"></path>
+                                            </svg>
+                                            专属推广码
+                                        </a>
+                                    </div>
+                                </li>
+                                <li style="float: left; padding-left: 3px;">
+                                    <div class="add-group">
+                                        <a class="ad-btn" href="javascript:void(0);" onclick="widthModal()">
+                                            <svg t="1683522533957" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                                 xmlns="http://www.w3.org/2000/svg" p-id="2438" width="16" height="16">
+                                                <path d="M806.8864 374.562133c-22.2976-23.483733-46.114133-44.433067-69.956267-62.660267-3.575467-2.722133-6.306133-4.6336-9.472-6.946133 44.270933-15.214933 75.229867-51.618133 75.229867-94.72 0-58.026667-55.082667-102.4256-120.4992-102.4256-15.061333 0-28.936533 2.824533-41.361067 7.560533-5.777067 2.2016-10.103467 4.4288-13.687467 6.510933-2.295467 0.955733-7.168-0.119467-8.507733-1.792l-0.0512 0.0512c-5.000533-7.483733-12.5184-16.750933-23.458133-26.248533-20.821333-18.082133-45.4656-29.243733-73.608533-29.243733-28.1344 0-52.7872 11.1616-73.6 29.243733-10.692267 9.284267-18.0224 18.286933-23.031467 25.685333l-0.034133-0.034133c-1.8944 2.244267-6.801067 3.413333-8.516267 2.594133-3.6352-2.141867-8.1152-4.462933-14.122667-6.7584-12.424533-4.736-26.299733-7.560533-41.361067-7.560533-65.416533 0-120.4992 44.398933-120.4992 102.4256 0 36.846933 22.7328 68.744533 56.9344 86.792533-3.396267 2.414933-7.031467 5.0432-10.9312 7.9616-23.808 17.757867-47.581867 38.468267-69.853867 62.011733-64.6656 68.394667-103.936 146.602667-103.936 233.4208 0 240.768 179.4304 355.259733 395.562667 355.259733 90.5728 0 179.1232-18.065067 250.769067-60.7232 97.237333-57.898667 152.533333-155.170133 152.533333-294.536533C911.4368 518.8096 871.901867 443.016533 806.8864 374.562133L806.8864 374.562133zM508.1344 901.905067c-190.250667 0-342.016-96.8448-342.016-301.4912 0-71.0656 33.169067-137.122133 89.224533-196.411733 19.9936-21.1456 41.480533-39.850667 62.9504-55.876267 7.483733-5.5808 14.404267-10.4192 20.573867-14.464 3.592533-2.363733 6.0672-3.899733 7.210667-4.573867 30.190933-19.950933 27.332267-55.108267-2.210133-70.109867 0.068267-0.221867 0.093867-0.315733 0.068267-0.3328-0.110933-0.0512-0.110933-0.0512-0.1792-0.085333-0.1536-0.068267-0.1536-0.068267-0.341333-0.162133-0.469333-0.221867-0.469333-0.221867-1.032533-0.4864l0 0c-1.066667-0.503467-1.066667-0.503467-1.416533-0.6656l-0.008533 0.008533c-0.315733-0.1536-0.324267-0.162133-0.759467-0.3584l-0.580267-0.221867c-0.0512-0.017067-0.085333-0.042667-0.119467-0.059733l-0.017067 0.017067-3.0976-1.1776c-26.103467-7.637333-42.478933-26.1376-42.478933-45.2352 0-25.412267 28.842667-48.657067 66.944-48.657067 8.200533 0 15.7184 1.536 22.3488 4.061867 3.677867 1.399467 5.9392 2.619733 6.485333 2.986667l3.2512 1.885867c24.226133 11.8016 55.415467 4.360533 72.772267-16.196267l2.261333-3.106133c2.2528-3.584 7.4496-10.103467 14.984533-16.631467 11.8528-10.2912 24.772267-16.1536 38.570667-16.1536 13.7984 0 26.734933 5.8624 38.5792 16.1536 7.517867 6.536533 12.731733 13.047467 14.967467 16.631467l1.8176 2.56c16.896 21.137067 48.401067 28.168533 72.6784 17.006933l3.797333-2.141867c0.5376-0.366933 2.807467-1.5872 6.4768-2.986667 6.6304-2.525867 14.165333-4.061867 22.3488-4.061867 38.1184 0 66.952533 23.253333 66.952533 48.657067 0 19.0976-16.375467 37.597867-42.4704 45.2352l-3.831467 1.442133c-7.517867 3.515733-12.501333 5.1712-14.353067 5.572267-37.546667 11.613867-43.9296 49.9456-13.508267 71.355733 2.491733 1.604267 5.0176 3.242667 8.6784 5.7344 6.2464 4.266667 13.269333 9.3184 20.829867 15.112533 21.717333 16.5888 43.434667 35.712 63.6416 56.977067 56.405333 59.400533 89.762133 123.323733 89.762133 188.757333C857.873067 815.658667 713.028267 901.905067 508.1344 901.905067L508.1344 901.905067z"
+                                                      fill="#ffffff" p-id="2439"></path>
+                                                <path d="M619.6992 585.224533c12.330667 0 22.314667-10.205867 22.314667-22.8096s-9.984-22.818133-22.314667-22.818133L528.5376 539.5968l84.6336-86.519467c8.712533-8.9088 8.712533-23.3472 0-32.256s-22.843733-8.9088-31.556267 0l-73.472 75.1104-73.480533-75.1104c-8.712533-8.9088-22.852267-8.9088-31.5648 0-8.712533 8.9088-8.712533 23.3472 0 32.256l84.650667 86.519467L396.552533 539.5968c-12.3136 0-22.314667 10.2144-22.314667 22.818133s10.001067 22.8096 22.314667 22.8096l89.2672 0 0 22.818133L396.552533 608.042667c-12.3136 0-22.314667 10.205867-22.314667 22.8096s10.001067 22.818133 22.314667 22.818133l89.2672 0 0 65.698133c0 9.634133 9.984 17.442133 22.314667 17.442133 12.3136 0 22.306133-7.808 22.306133-17.442133l0-65.698133 89.258667 0c12.330667 0 22.314667-10.2144 22.314667-22.818133s-9.984-22.8096-22.314667-22.8096l-89.258667 0 0-22.818133L619.6992 585.224533 619.6992 585.224533z"
+                                                      fill="#ffffff" p-id="2440"></path>
+                                            </svg>
+                                            立即提现
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Styled Table Card-->
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card table-card">
+                        <div class="card-body">
+                            <table id="example" class="table table-striped table-bordered dt-responsive nowrap"
+                                   style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th>用户</th>
+                                    <th>注册时间</th>
+                                    <th>下单时间</th>
+                                    <th>到账时间</th>
+                                    <th>返利金额</th>
+                                    <th>提现进度</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-footer-btm">
+                <p>本平台所有技术产品仅供个人学习、测试使用，不得用于违法违规内容，如有违反和本平台无关，平台将依法积极配合公安部门追责 &nbsp;&nbsp;&nbsp;
+                    友链: <a style="color: #f56108;" target="_blank"
+                           href="https://www.downdemo.com">前端模板</a>
+                    <a style="color: #f56108;" target="_blank"
+                       href="https://pay.npsvip.cn">免签支付</a>
+                    <a style="color: #f56108;" target="_blank"
+                       href="https://www.zwapi.cn">HTTPS证书</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 账户充值 -->
+<div id="rechargeLayer" style="display: none;">
+    <form action="" id="rechargeForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><br/>
+            <div class="form-group has-feedback">
+                <h5>
+                    <svg t="1683357211967" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="2451" width="16" height="16">
+                        <path d="M512.512 47.616c-254.464 0-460.8 206.336-460.8 460.8s206.336 460.8 460.8 460.8 460.8-206.336 460.8-460.8-206.336-460.8-460.8-460.8z m144.896 445.952v46.592h-114.176v64.512h114.176v47.616h-114.176v93.696H484.352v-93.696H365.568v-47.616h118.272v-64.512H365.568v-46.592h100.864l-122.88-211.456H409.6c57.856 104.96 92.672 172.032 104.96 200.192h1.024c4.096-11.776 15.872-34.816 34.304-70.144l70.656-130.048h62.464l-124.416 211.968h98.816z"
+                              fill="#FE9C01" p-id="2452"></path>
+                    </svg>
+                    账户余额 &nbsp; <i id="balance"></i></h5>
+            </div>
+            <br/>
+            <div class="form-group has-feedback">
+                <label class="col-form-label" for="amount">充值金额</label>
+                <input type="text" autocomplete='off' onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')"
+                       class="form-control createContainer" list="amountSelect" name="amount"
+                       placeholder="支持手输或选择">
+                <datalist id="amountSelect">
+                    <option value="100">100</option>
+                    <option value="300">300</option>
+                    <option value="500">500</option>
+                    <option value="1000">1000</option>
+                </datalist>
+            </div>
+
+            <div class="form-group has-feedback">
+                <label for="payType">支付方式</label>
+                <div class="input-group" style="width: 100%;">
+                        <span class="btn-group" style="margin-left: 20px;">
+                                <label title="支付宝" class="radio-inline">
+                                    <input checked type="radio" name="payType" value="2">
+                                   <svg t="1625817310203" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="11153" width="64" height="64"><path
+                                           d="M902.095 652.871l-250.96-84.392s19.287-28.87 39.874-85.472c20.59-56.606 23.539-87.689 23.539-87.689l-162.454-1.339v-55.487l196.739-1.387v-39.227H552.055v-89.29h-96.358v89.294H272.133v39.227l183.564-1.304v59.513h-147.24v31.079h303.064s-3.337 25.223-14.955 56.606c-11.615 31.38-23.58 58.862-23.58 58.862s-142.3-49.804-217.285-49.804c-74.985 0-166.182 30.123-175.024 117.55-8.8 87.383 42.481 134.716 114.728 152.139 72.256 17.513 138.962-0.173 197.04-28.607 58.087-28.391 115.081-92.933 115.081-92.933l292.486 142.041c-11.932 69.3-72.067 119.914-142.387 119.844H266.37c-79.714 0.078-144.392-64.483-144.466-144.194V266.374c-0.074-79.72 64.493-144.399 144.205-144.47h491.519c79.714-0.073 144.396 64.49 144.466 144.203v386.764z m-365.76-48.895s-91.302 115.262-198.879 115.262c-107.623 0-130.218-54.767-130.218-94.155 0-39.34 22.373-82.144 113.943-88.333 91.519-6.18 215.2 67.226 215.2 67.226h-0.047z"
+                                           fill="#02A9F1" p-id="11154"></path></svg>
+                                </label>
+                                <label title="微信" class="radio-inline">
+                                    <input type="radio" name="payType" value="1">
+                                <svg t="1625817180424" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg" p-id="9001" width="64" height="64"><path
+                                        d="M683.058 364.695c11 0 22 1.016 32.943 1.976C686.564 230.064 538.896 128 370.681 128c-188.104 0.66-342.237 127.793-342.237 289.226 0 93.068 51.379 169.827 136.725 229.256L130.72 748.43l119.796-59.368c42.918 8.395 77.37 16.79 119.742 16.79 11 0 21.46-0.48 31.914-1.442a259.168 259.168 0 0 1-10.455-71.358c0.485-148.002 128.744-268.297 291.403-268.297l-0.06-0.06z m-184.113-91.992c25.99 0 42.913 16.79 42.913 42.575 0 25.188-16.923 42.579-42.913 42.579-25.45 0-51.38-16.85-51.38-42.58 0-25.784 25.93-42.574 51.38-42.574z m-239.544 85.154c-25.384 0-51.374-16.85-51.374-42.58 0-25.784 25.99-42.574 51.374-42.574 25.45 0 42.918 16.79 42.918 42.575 0 25.188-16.924 42.579-42.918 42.579z m736.155 271.655c0-135.647-136.725-246.527-290.983-246.527-162.655 0-290.918 110.88-290.918 246.527 0 136.128 128.263 246.587 290.918 246.587 33.972 0 68.423-8.395 102.818-16.85l93.809 50.973-25.93-84.677c68.907-51.93 120.286-119.815 120.286-196.033z m-385.275-42.58c-16.923 0-34.452-16.79-34.452-34.179 0-16.79 17.529-34.18 34.452-34.18 25.99 0 42.918 16.85 42.918 34.18 0 17.39-16.928 34.18-42.918 34.18z m188.165 0c-16.984 0-33.972-16.79-33.972-34.179 0-16.79 16.927-34.18 33.972-34.18 25.93 0 42.913 16.85 42.913 34.18 0 17.39-16.983 34.18-42.913 34.18z"
+                                        fill="#09BB07" p-id="9002"></path></svg>
+                                </label>
+                            </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 分享 -->
+<div id="shareLayer" style="display: none;">
+    <form action="" id="shareForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><br/>
+            <p>您可以下方二维码分享，也可以通过下方邀请链接分享</p>
+            <div id="qrcode" class="modal-body" style="height: 300px;width: 300px;;padding: 0;margin: 10px auto;">
+            </div>
+            <p>邀请链接: <span class="share-ml">--</span>
+                <button class="btn btn-sm btn-primary share-copy"
+                        type="button">复制
+                </button>
+            </p>
+        </div>
+    </form>
+</div>
+
+
+<!-- Script Start -->
+<script src="admin/assets/js/jquery.min.js"></script>
+<script src="admin/assets/js/popper.min.js"></script>
+<script src="admin/assets/js/datatables.min.js"></script>
+<script src="admin/assets/js/dataTables.responsive.min.js"></script>
+<script src="admin/assets/js/bootstrap.min.js"></script>
+<script src="admin/assets/js/swiper.min.js"></script>
+<!-- Page Specific -->
+<script src="admin/assets/js/nice-select.min.js"></script>
+<!-- Custom Script -->
+<script src="admin/assets/js/custom.min.js"></script>
+<script src="admin/assets/js/dataTables.fixedColumns.min.js"></script>
+<script src="admin/static/plugins/layer/layer.min.js"></script>
+<script src="admin/static/js/bootstrap-show-modal.min.js"></script>
+<script src="admin/static/js/dbg.min.js"></script>
+<script src="admin/static/js/qrcode.min.js"></script>
+
+
+<script>
+    // 头像
+    if (null != localStorage.getItem('headUrl') && '' !== localStorage.getItem('headUrl')) {
+        $('#headUrl').attr('src', localStorage.getItem('headUrl'));
+    }
+    // 邮箱
+    if (null != localStorage.getItem('mail') && '' !== localStorage.getItem('mail')) {
+        $('#mail').html(localStorage.getItem('mail'));
+    }
+
+    var table;
+
+    $(document).ready(function () {
+        notice();
+
+        table = $('#example').DataTable({
+            language: {  //将英文转换为中文
+                "sProcessing": "数据加载中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            processing: false,      //
+            searching: false,       //去掉search
+            pageLength: 5,          //页大小
+            bLengthChange: false,   //页大小调整
+            lengthMenu: [[5, 10, 20, -1], [5, 10, 20, "ALL"]],
+            bSort: false,           //排序
+            paging: true,           //分页
+            info: true,             //分页文字
+            autoWidth: true,        //自动计算宽度
+            deferRender: true,      //延迟渲染
+            serverSide: true,       //开启服务器模式
+            bAutoWidth: true,       //自动宽度
+
+            // responsive: false,      //关闭响应拓展
+            // scrollX: true,          //设置X轴滚动
+            // scrollCollapse: true,   //滚动折叠
+            // fixedColumns:   {       //固定列
+            //     left: 0,
+            //     right: 1
+            // },
+
+            ajax: {
+                url: baseUrl + "/nps/myShare",
+                type: 'POST',
+                // contentType: 'application/json;charset=utf-8',
+                headers: {
+                    token: localStorage.getItem('token')
+                },
+                data: {
+                    // 'key': '123'
+                },
+                dataSrc: function (data) {
+                    if (data.code == 500) {
+                        window.location.href = "login.html";
+                    }
+                    return data.data;
+                }
+            },
+            fnRowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $('td:eq(0)', nRow).attr('style', 'text-align: right;');
+            },
+            columns: [
+                {
+                    data: null,
+                    sDefaultContent: "",
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return '<svg t="1682780926244" class="icon" viewBox="0 0 1158 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4599" width="16" height="16"><path d="M1024 1024l-1157.44527 0L-133.44527 889.931778 1024 889.931778 1024 1024z m-391.214009-324.469126l-766.231261 0L-133.44527 565.106679 632.785991 565.106679 632.785991 699.57537z m0-253.897536l-766.231261 0L-133.44527 311.476122 632.785991 311.476122l0 134.201712zM1024 0l0 134.246209-1157.44527 0L-133.44527 0M762.404554 736.374049L1024 540.010603l-261.595446-257.724243L762.404554 736.374049z m0 0" p-id="4600" fill="#5cb85c"></path></svg>' +
+                            '&nbsp;&nbsp;' + (row.mail || '--');
+                    }
+                },
+                {
+                    data: null,
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return null != data.registerTime ? formatterDate(new Date(data.registerTime)) : '--';
+                    }
+                },
+                {
+                    data: "createTime",
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return formatterDate(new Date(data));
+                    }
+                },
+                {
+                    data: null,
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return row.updateTime ? formatterDate(new Date(row.updateTime)) : '--';
+                    }
+                },
+                {
+                    data: "amount",
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return data;
+                    }
+                },
+                {
+                    data: "status",
+                    sClass: "text-center",
+                    render: function (data, type, row, meta) {
+                        return data == 0 ? '待提现' : (data == 1 ? '处理中' : '已到账');
+                    }
+                }
+            ],
+        });
+
+    });
+
+    function formatterDate(date) {
+        var seperator = "-";
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        return date.getFullYear() + seperator + month + seperator + strDate;
+    }
+
+    // 搜索
+    function searchPage() {
+        var param = {
+            "key": $("#search").val(),
+        };
+        table.settings()[0].ajax.data = param;
+        table.ajax.reload();
+    }
+
+    function recharge() {
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/api/userInfo", //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
+                if (result.code == '0') {
+                    $("#balance").html(result.data.balance);
+                }
+            }
+        });
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['账户充值', 'text-align:left;background:#11a1fd'],
+            area: ['30%', '50%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['10%', '40%'],
+            maxmin: true, //允许全屏最小化
+            content: $('#rechargeLayer'),
+            btn: ["取消", "提交"],
+            yes: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+
+                let val = decodeURIComponent($('#rechargeForm').serialize(), true)
+                let params = {}
+                let arr = val.split('&').forEach(item => {
+                    let kv = item.split('=')
+                    params[kv[0]] = kv[1]
+                });
+                if (null == params['amount'] || '' == params['amount']) {
+                    $.showAlert({title: "提示", body: "充值金额不可为空"});
+                    return;
+                }
+
+                $.showConfirm({
+                    title: "充值协议",
+                    body: "● 充值后余额仅支持本站使用不再支持提现</br>" +
+                        "● 开票需提前联系管理员确认",
+                    textTrue: "同意",
+                    textFalse: "拒绝",
+                    onSubmit: function (result) { // callback on confirm
+                        if (result) {
+                            $.ajax({
+                                type: "get",
+                                url: baseUrl + "/order/recharge?payType=" + params['payType'] + "&amount=" + params['amount'], //url
+                                dataType: "json",
+                                contentType: "application/json;charset=utf-8",
+                                headers: {
+                                    token: localStorage.getItem('token')
+                                },
+                                success: function (result) {
+                                    if (result.code) {
+                                        $.showAlert({title: "提示", body: result.msg})
+                                    } else {
+                                        if (result.msg != 'success') {
+                                            pay(result.msg);
+                                        }
+                                    }
+                                }
+                            });
+                        } else {
+                            return;
+                        }
+                    },
+                    onDispose: function () {
+                    }
+                })
+            }
+        });
+    }
+
+    function pay(url) {
+        layer.open({
+            type: 2,
+            area: [`${$("body").width() > 1200 ? "700px" : "80vw"}`, "80vh"],
+            content: url,
+            scrollbar: true,
+            end: function () {
+                searchPage();
+            },
+        });
+    }
+
+    function widthModal() {
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/api/userInfo",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (results) {
+                if (0 == results.code) {
+                    if (null == results.data.zfbUrl || '' == results.data.zfbUrl) {
+                        $.showAlert({title: "提示", body: "提现地址未设置，请 <a href=\"user-perfect.html\">前往设置</a>"})
+                    }
+                    $.showConfirm({
+                        title: "提现确认",
+                        body: "工作日内当天即可提现到账,节假日顺延,超时未到账可联系网站管理员",
+                        textTrue: "确认",
+                        textFalse: "取消",
+                        onSubmit: function (result) { // callback on confirm
+                            if (result) {
+                                $.ajax({
+                                    type: "post",
+                                    url: baseUrl + "/nps/myZfb?zfbUrl=" + results.data.zfbUrl, //url
+                                    dataType: "json",
+                                    contentType: "application/json;charset=utf-8",
+                                    headers: {
+                                        token: localStorage.getItem('token')
+                                    },
+                                    success: function (result1) {
+                                        searchPage();
+                                        if (result1.code == 0) {
+                                            $.showAlert({title: "提示", body: '提现发起成功'})
+                                        } else {
+                                            $.showAlert({title: "提示", body: result1.msg});
+                                        }
+                                    }
+                                });
+                            } else {
+                                return;
+                            }
+                        },
+                        onDispose: function () {
+                        }
+                    });
+                } else {
+                    $.showAlert({title: "提示", body: results.msg});
+                }
+            }
+        });
+    }
+
+    var qrcodeInstance = null;
+
+    function shareBtn() {
+        if (qrcodeInstance) {
+            $('#qrcode').html('');
+        }
+
+        var url = `${window.location.protocol}//${window.location.host}/share.html?code=${localStorage.getItem('userId')}`;
+        qrcodeInstance = new QRCode('qrcode', {
+            text: url,
+            width: 300,
+            height: 300,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        $('.share-ml').html(url);
+
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['专属推广码', 'text-align:left;background:#11a1fd'],
+            area: ['30%', '60%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['20%', '40%'],
+            maxmin: true, //允许全屏最小化
+            content: $('#shareLayer'),
+            // btn: ["取消", "提交"],
+            // yes: function (index) {
+            //     layer.close(index);
+            // },
+            // btn2: function (index) {
+            //
+            // }
+        });
+
+
+        /* var url = `${window.location.protocol}//${window.location.host}/share.html?code=${localStorage.getItem('userId')}`;
+         qrcodeInstance = new QRCode('qrcode', {
+             text: url,
+             width: 300,
+             height: 300,
+             colorDark: '#000000',
+             colorLight: '#ffffff',
+             correctLevel: QRCode.CorrectLevel.H
+         });
+
+         $.ajax({
+             type: "get",
+             url: baseUrl + `/nps/shareNotice`, //url
+             dataType: "json",
+             contentType: "application/json;charset=utf-8",
+             headers: {
+                 token: localStorage.getItem('token')
+             },
+             success: function (result) {
+
+             },
+         });*/
+    }
+
+    $(".share-copy").click(function () {
+        copyText($(".share-ml").text());
+    });
+
+    // 复制文本内容到剪切板
+    function copyText(obj) {
+        if (!obj) {
+            return false;
+        }
+        var text;
+        if (typeof (obj) == 'object') {
+            if (obj.nodeType) { // DOM node
+                obj = $(obj); // to jQuery object
+            }
+            try {
+                text = obj.text();
+                if (!text) { // Maybe <textarea />
+                    text = obj.val();
+                }
+            } catch (err) { // as JSON
+                text = JSON.stringify(obj);
+            }
+        } else {
+            text = obj;
+        }
+        //var $temp = $('<input>'); // Line feed is not supported
+        var $temp = $('<textarea>');
+        $('body').append($temp);
+        $temp.val(text).select();
+        var res = document.execCommand('copy');
+        $temp.remove();
+        return res;
+    }
+
+</script>
+</body>
+
+</html>

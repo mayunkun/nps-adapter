@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>控制台-重置密码</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description"
+          content="内网穿透 NAT穿透 小蝴蝶内网穿透 高速稳定内网穿透，是一款轻量级、高性能、功能强大的内网穿透代理服务器。目前支持tcp、udp流量转发，可支持任何tcp、udp上层协议（访问内网网站、本地>支付接口调试、ssh访问、远程桌面，内网dns解析等等……），此外还支持内网http代理、内网socks5代理、p2p等，并带有功能强大的web管理端。">
+    <meta name="keywords" content="内网穿透 小蝴蝶内网穿透 NAT穿透 高速稳定内网穿透 映射端口 TCP UDP SOCKS5 内网网站 支付接口调试 SSH 远程桌面 VPN 全平台兼容内网穿透">
+    <meta name="author" content="">
+    <meta name="MobileOptimized" content="320">
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/fonts.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/css/auth.min.css">
+    <!-- Favicon Link -->
+    <link rel="shortcut icon" type="image/png" href="web/images/slider/head-logo.jpg">
+
+    <style>
+        body .demo-class .layui-layer-btn0 {
+            border-color: #E6E3E6;
+            background-color: #FFF;
+            color: black;
+        }
+
+        body .demo-class .layui-layer-btn1 {
+            border-color: #4898d5;
+            background-color: #2e8ded;
+            color: #fff;
+        }
+
+        body .table-responsive {
+            overflow-x: visible;
+        }
+
+        body .label-info {
+            background-color: #11a1fd;
+        }
+
+        .zindex100 {
+            z-index: 100 !important;
+        }
+
+        .fileInput, .sfz2, .sfz1 {
+            display: block;
+            height: 1px;
+            overflow: hidden;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+
+        .previewBox {
+            margin: 15px 0;
+        }
+
+        .previewBox img {
+            margin-right: 10px;
+        }
+
+        .prevclass1 img {
+            margin-right: 10px;
+        }
+
+        .prevclass2 img {
+            margin-right: 10px;
+        }
+
+        .uploadBtn {
+            border: 1px solid #eee;
+            background: #fff;
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            padding: 6px 15px;
+
+        }
+
+
+        .slider {
+            background-color: #fff;
+            width: 278px;
+            height: 285px;
+            z-index: 999;
+            box-sizing: border-box;
+            padding: 9px;
+            border-radius: 6px;
+            box-shadow: 0 0 11px 0 #999999;
+        }
+
+        .slider .content {
+            width: 100%;
+            height: 159px;
+            position: relative;
+        }
+
+        .bg-img-div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform: translate(0px, 0px);
+        }
+
+        .slider-img-div {
+            height: 100%;
+            position: absolute;
+            transform: translate(0px, 0px);
+        }
+
+        .bg-img-div img {
+            width: 100%;
+        }
+
+        .slider-img-div img {
+            height: 100%;
+        }
+
+        .slider .slider-move {
+            height: 60px;
+            width: 100%;
+            margin: 11px 0;
+            position: relative;
+        }
+
+        .slider .bottom {
+            height: 19px;
+            width: 100%;
+        }
+
+        .refresh-btn, .close-btn, .slider-move-track, .slider-move-btn {
+            background: url(https://static.geetest.com/static/ant/sprite.1.2.4.png) no-repeat;
+        }
+
+        .refresh-btn, .close-btn {
+            display: inline-block;
+        }
+
+        .slider-move .slider-move-track {
+            line-height: 38px;
+            font-size: 14px;
+            text-align: center;
+            white-space: nowrap;
+            color: #88949d;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .slider {
+            user-select: none;
+        }
+
+        .slider-move .slider-move-btn {
+            transform: translate(0px, 0px);
+            background-position: -5px 11.79625%;
+            position: absolute;
+            top: -12px;
+            left: 0;
+            width: 66px;
+            height: 66px;
+        }
+
+        .slider-move-btn:hover, .close-btn:hover, .refresh-btn:hover {
+            cursor: pointer
+        }
+
+        .bottom .close-btn {
+            width: 20px;
+            height: 20px;
+            background-position: 0 44.86874%;
+        }
+
+        .bottom .refresh-btn {
+            width: 20px;
+            height: 20px;
+            background-position: 0 81.38425%;
+        }
+    </style>
+</head>
+
+<body>
+<div class="ad-auth-wrapper">
+    <div class="ad-auth-box">
+        <div class="row align-items-center">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="ad-auth-img">
+                    <img src="admin/assets/images/auth-img1.png" alt=""/>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="ad-auth-content">
+                    <form id="register-form">
+                        <a href="index.html" class="ad-auth-logo">
+                            <img src="admin/assets/images/logo2.png" alt=""/>
+                        </a>
+                        <div class="ad-auth-form">
+                            <div class="ad-auth-feilds mb-30">
+                                <input type="text" id="mail" name="mail" placeholder="请输入数字QQ邮箱" class="ad-input"/>
+                                <div class="ad-auth-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 483.3 483.3">
+                                        <path d="M424.3,57.75H59.1c-32.6,0-59.1,26.5-59.1,59.1v249.6c0,32.6,26.5,59.1,59.1,59.1h365.1c32.6,0,59.1-26.5,59.1-59.1    v-249.5C483.4,84.35,456.9,57.75,424.3,57.75z M456.4,366.45c0,17.7-14.4,32.1-32.1,32.1H59.1c-17.7,0-32.1-14.4-32.1-32.1v-249.5    c0-17.7,14.4-32.1,32.1-32.1h365.1c17.7,0,32.1,14.4,32.1,32.1v249.5H456.4z"
+                                              data-original="#000000" class="active-path" data-old_color="#000000"
+                                              fill="#9abeed"></path>
+                                        <path d="M304.8,238.55l118.2-106c5.5-5,6-13.5,1-19.1c-5-5.5-13.5-6-19.1-1l-163,146.3l-31.8-28.4c-0.1-0.1-0.2-0.2-0.2-0.3    c-0.7-0.7-1.4-1.3-2.2-1.9L78.3,112.35c-5.6-5-14.1-4.5-19.1,1.1c-5,5.6-4.5,14.1,1.1,19.1l119.6,106.9L60.8,350.95    c-5.4,5.1-5.7,13.6-0.6,19.1c2.7,2.8,6.3,4.3,9.9,4.3c3.3,0,6.6-1.2,9.2-3.6l120.9-113.1l32.8,29.3c2.6,2.3,5.8,3.4,9,3.4    c3.2,0,6.5-1.2,9-3.5l33.7-30.2l120.2,114.2c2.6,2.5,6,3.7,9.3,3.7c3.6,0,7.1-1.4,9.8-4.2c5.1-5.4,4.9-14-0.5-19.1L304.8,238.55z"
+                                              data-original="#000000" class="active-path" data-old_color="#000000"
+                                              fill="#9abeed"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="ad-auth-btn">
+                            <input class="form-control ad-btn btn-primary" onclick="getSms()" id="submit"
+                                   value="发送邮件" type="button">
+                        </div>
+                        <p class="ad-register-text">返回登录? <a href="login.html">立即登录</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 滑块验证码 -->
+<div class="modal fade" id="captchaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content slider" id="captchaModal" tabindex="-1" role="dialog" style="margin:0 auto"
+             aria-labelledby="myModalLabel">
+            <div class="content">
+                <div class="bg-img-div">
+                    <img id="bg-img" src="" alt/>
+                </div>
+                <div class="slider-img-div" id="slider-img-div">
+                    <img id="slider-img" src="" alt/>
+                </div>
+            </div>
+            <div class="slider-move">
+                <div class="slider-move-track">
+                    拖动滑块完成拼图
+                </div>
+                <div class="slider-move-btn" id="slider-move-btn"></div>
+            </div>
+            <div class="bottom">
+                <div class="close-btn" id="slider-close-btn"></div>
+                <div class="refresh-btn" id="slider-refresh-btn"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="admin/assets/js/jquery.min.js"></script>
+<script src="admin/static/js/dbg.min.js"></script>
+<script src="admin/assets/js/bootstrap.min.js"></script>
+<script src="admin/static/js/bootstrap-show-modal.min.js"></script>
+<script src="admin/static/js/captcha.min.js"></script>
+
+
+<script type="application/javascript">
+    function getSms() {
+        clearAllPreventDefault($(".slider"));
+        refreshCaptcha();
+        $('#captchaModal').modal('toggle');
+    }
+
+    function refreshCaptcha() {
+        $.get(baseUrl + "/api/captcha", function (data) {
+            $("#slider-move-btn").css("background-position", "-5px 11.79625%")
+            $("#slider-move-btn").css("transform", "translate(0px, 0px)")
+            $("#slider-img-div").css("transform", "translate(0px, 0px)")
+            currentCaptchaId = data.id;
+            const bgImg = $("#bg-img");
+            const sliderImg = $("#slider-img");
+            bgImg.attr("src", data.captcha.backgroundImage);
+            sliderImg.attr("src", data.captcha.sliderImage);
+            initConfig(bgImg.width(), bgImg.height(), sliderImg.width(), sliderImg.height(), 206);
+        })
+    }
+
+    function getPicSms() {
+        var url = baseUrl + "/api/captchaJpg"
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = "blob";
+        xhr.onload = function (response) {
+            if (this.status == 200) {
+                let blob = new Blob([this.response], {type: 'image/jpeg'})
+                let url = URL.createObjectURL(blob)
+                $(".captchaPic").attr('src', url);
+                $(".captchaPic").show()
+            }
+        }
+        xhr.send();
+    }
+
+    let currentCaptchaId = null;
+    var timer = null;
+    $("#slider-move-btn").mousedown(down);
+    $("#slider-move-btn").on("touchstart", down);
+
+    $("#slider-close-btn").click(() => {
+
+    });
+
+    $("#slider-refresh-btn").click(() => {
+        refreshCaptcha();
+    });
+
+    function valid(captchaConfig) {
+        let data = {
+            bgImageWidth: captchaConfig.bgImageWidth,
+            bgImageHeight: captchaConfig.bgImageHeight,
+            sliderImageWidth: captchaConfig.sliderImageWidth,
+            sliderImageHeight: captchaConfig.sliderImageHeight,
+            startSlidingTime: captchaConfig.startTime,
+            entSlidingTime: captchaConfig.stopTime,
+            trackList: captchaConfig.trackArr
+        };
+        $.ajax({
+            type: "POST",
+            url: baseUrl + "/api/check?id=" + currentCaptchaId,
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(data),
+            success: function (res) {
+                if (res) {
+                    $('#captchaModal').modal('hide');
+
+                    let val = decodeURIComponent($('#register-form').serialize(), true);
+                    let params = {}
+                    let arr = val.split('&').forEach(item => {
+                        let kv = item.split('=')
+                        params[kv[0]] = kv[1];
+                    })
+                    params['mail'] = $('#mail').val();
+                    if (null == params['mail'] || '' == params['mail']) {
+                        $.showAlert({title: "提示", body: 'QQ数字邮箱不可为空'});
+                        return;
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: baseUrl + "/api/resetPassWdEmail?mail="+params['mail'],
+                        success: function (result) {
+                            if (0 == result.code) {
+                                $.showAlert({title: "提示", body: '邮件发送成功'})
+                            } else {
+                                $.showAlert({title: "提示", body: result.msg})
+                            }
+                        }
+                    });
+                }
+                refreshCaptcha();
+            }
+
+        })
+    }
+
+    function refreshCaptcha() {
+        $.get(baseUrl + "/api/captcha", function (data) {
+            reset();
+            currentCaptchaId = data.id;
+            const bgImg = $("#bg-img");
+            const sliderImg = $("#slider-img");
+            bgImg.attr("src", data.captcha.backgroundImage);
+            sliderImg.attr("src", data.captcha.sliderImage);
+            initConfig(bgImg.width(), bgImg.height(), sliderImg.width(), sliderImg.height(), 206);
+        })
+    }
+
+    function doDown() {
+        $("#slider-move-btn").css("background-position", "-5px 31.0092%")
+    }
+
+    function doMove(currentCaptchaConfig) {
+        const moveX = currentCaptchaConfig.moveX;
+        $("#slider-move-btn").css("transform", "translate(" + moveX + "px, 0px)")
+        $("#slider-img-div").css("transform", "translate(" + moveX + "px, 0px)")
+    }
+
+    function reset() {
+        $("#slider-move-btn").css("background-position", "-5px 11.79625%")
+        $("#slider-move-btn").css("transform", "translate(0px, 0px)")
+        $("#slider-img-div").css("transform", "translate(0px, 0px)")
+        currentCaptchaId = null;
+    }
+
+</script>
+
+</body>
+</html>
