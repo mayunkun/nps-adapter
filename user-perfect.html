@@ -750,6 +750,7 @@
 <script src="admin/static/plugins/layer/layer.min.js"></script>
 <script src="admin/static/js/dbg.min.js"></script>
 <script src="admin/static/js/uploadImg.min.js"></script>
+<script src="admin/static/js/bootstrap-show-modal.min.js"></script>
 <script src="admin/static/js/captcha.min.js"></script>
 
 
@@ -1223,6 +1224,17 @@
         });
     }
 
+    function pay(url) {
+        layer.open({
+            type: 2,
+            area: [`${$("body").width() > 1200 ? "700px" : "80vw"}`, "80vh"],
+            content: url,
+            scrollbar: true,
+            end: function () {
+                searchPage();
+            },
+        });
+    }
 
 </script>
 </body>
