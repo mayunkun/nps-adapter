@@ -296,7 +296,12 @@
                                 </li>
                                 <li>
                                     <a onclick="logout()">
-                                        <svg t="1683644543971" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2735" id="mx_n_1683644543972" width="16" height="16"><path d="M959.488 512L704 256.448V448H448v128h256v191.552L959.488 512zM192 192h512V128H128v768h576v-64H192V192z" fill="#007bff" p-id="2736"></path></svg>
+                                        <svg t="1683644543971" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="2735" id="mx_n_1683644543972"
+                                             width="16" height="16">
+                                            <path d="M959.488 512L704 256.448V448H448v128h256v191.552L959.488 512zM192 192h512V128H128v768h576v-64H192V192z"
+                                                  fill="#007bff" p-id="2736"></path>
+                                        </svg>
                                         登出
                                     </a>
                                 </li>
@@ -969,7 +974,12 @@
             },
             success: function (result) {
                 if (0 == result.code) {
-                    $.showAlert({title: "提示", body: "已提交后台审核，工作日内约10min即可审核完毕"});
+                    localStorage.setItem('token', result.token);
+                    localStorage.setItem('userId', result.userId);
+                    localStorage.setItem('phone', result.userName);
+                    localStorage.setItem('headUrl', result.headUrl || '');
+                    localStorage.setItem('mail', result.mail || '');
+                    localStorage.setItem('consumptionPoints', result.consumptionPoints || '');
                     window.location.reload();
                 } else {
                     $.showAlert({title: "提示", body: result.msg});
@@ -1011,9 +1021,7 @@
                         token: localStorage.getItem('token')
                     },
                     success: function (result) {
-                        if (result.code) {
-                            $.showAlert({title: "提示", body: result.msg});
-                        } else {
+                        if (0 == result.code) {
                             localStorage.setItem('token', result.token);
                             localStorage.setItem('userId', result.userId);
                             localStorage.setItem('phone', result.userName);
@@ -1021,6 +1029,8 @@
                             localStorage.setItem('mail', result.mail || '');
                             localStorage.setItem('consumptionPoints', result.consumptionPoints || '');
                             window.location.reload();
+                        } else {
+                            $.showAlert({title: "提示", body: result.msg});
                         }
                     }
                 });
