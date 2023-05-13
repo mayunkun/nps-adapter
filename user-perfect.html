@@ -1014,11 +1014,12 @@
                         if (result.code) {
                             $.showAlert({title: "提示", body: result.msg});
                         } else {
-                            localStorage.setItem('token', result.token)
-                            localStorage.setItem('userId', result.userId)
-                            localStorage.setItem('phone', result.userName)
-                            localStorage.setItem('headUrl', result.headUrl || '')
-                            localStorage.setItem('enterprise', result.enterprise || false)
+                            localStorage.setItem('token', result.token);
+                            localStorage.setItem('userId', result.userId);
+                            localStorage.setItem('phone', result.userName);
+                            localStorage.setItem('headUrl', result.headUrl || '');
+                            localStorage.setItem('mail', result.mail || '');
+                            localStorage.setItem('consumptionPoints', result.consumptionPoints || '');
                             window.location.reload();
                         }
                     }
