@@ -831,29 +831,18 @@
             // }
         });
 
+        $.ajax({
+            type: "get",
+            url: baseUrl + `/nps/shareNotice`, //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
 
-        /* var url = `${window.location.protocol}//${window.location.host}/share.html?code=${localStorage.getItem('userId')}`;
-         qrcodeInstance = new QRCode('qrcode', {
-             text: url,
-             width: 300,
-             height: 300,
-             colorDark: '#000000',
-             colorLight: '#ffffff',
-             correctLevel: QRCode.CorrectLevel.H
-         });
-
-         $.ajax({
-             type: "get",
-             url: baseUrl + `/nps/shareNotice`, //url
-             dataType: "json",
-             contentType: "application/json;charset=utf-8",
-             headers: {
-                 token: localStorage.getItem('token')
-             },
-             success: function (result) {
-
-             },
-         });*/
+            },
+        });
     }
 
     $(".share-copy").click(function () {
