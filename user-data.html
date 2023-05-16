@@ -1737,30 +1737,48 @@
                 layer.close(index);
             },
             btn2: function (index) {
-                let params = {}
-                params['certificate'] = encodeURIComponent(document.getElementById('certificate').value);
-                params['key'] = encodeURIComponent(document.getElementById('key').value);
-                params['id'] = row.id;
+                $.showConfirm({
+                    title: "证书审核",
+                    body: "证书上传后，需管理员审核并发布，需要一定生效时间(通常情况下当天可生效),若长时间未生效，可联系管理员加急处理",
+                    textTrue: "同意",
+                    textFalse: "拒绝",
+                    onSubmit: function (result) { // callback on confirm
+                        if (result) {
+                            let params = {}
+                            params['certificate'] = encodeURIComponent(document.getElementById('certificate').value);
+                            params['key'] = encodeURIComponent(document.getElementById('key').value);
+                            params['id'] = row.id;
 
-                $.ajax({
-                    type: "post",
-                    url: baseUrl + "/ssl/apply", //url
-                    dataType: "json",
-                    contentType: "application/json;charset=utf-8",
-                    headers: {
-                        token: localStorage.getItem('token')
-                    },
-                    data: JSON.stringify(params),
-                    success: function (result) {
-                        if (0 == result.code) {
-                            searchPage();
-                            $.showAlert({title: "提示", body: '操作成功'});
+                            $.ajax({
+                                type: "post",
+                                url: baseUrl + "/ssl/apply", //url
+                                dataType: "json",
+                                contentType: "application/json;charset=utf-8",
+                                headers: {
+                                    token: localStorage.getItem('token')
+                                },
+                                data: JSON.stringify(params),
+                                success: function (result) {
+                                    if (0 == result.code) {
+                                        searchPage();
+                                        $.showAlert({title: "提示", body: '操作成功'});
+                                    } else {
+                                        $.showAlert({title: "提示", body: result.msg});
+                                        return false;
+                                    }
+                                }
+                            });
+
                         } else {
-                            $.showAlert({title: "提示", body: result.msg});
-                            return false;
+                            return;
                         }
+                    },
+                    onDispose: function () {
                     }
-                });
+                })
+
+
+
             }
         });
     }
