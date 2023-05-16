@@ -162,7 +162,12 @@
                                 </li>
                                 <li>
                                     <a onclick="logout()">
-                                        <svg t="1683644543971" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2735" id="mx_n_1683644543972" width="16" height="16"><path d="M959.488 512L704 256.448V448H448v128h256v191.552L959.488 512zM192 192h512V128H128v768h576v-64H192V192z" fill="#007bff" p-id="2736"></path></svg>
+                                        <svg t="1683644543971" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="2735" id="mx_n_1683644543972"
+                                             width="16" height="16">
+                                            <path d="M959.488 512L704 256.448V448H448v128h256v191.552L959.488 512zM192 192h512V128H128v768h576v-64H192V192z"
+                                                  fill="#007bff" p-id="2736"></path>
+                                        </svg>
                                         登出
                                     </a>
                                 </li>
@@ -1739,7 +1744,7 @@
             btn2: function (index) {
                 $.showConfirm({
                     title: "证书审核",
-                    body: "证书上传后，需管理员审核并发布，需要一定生效时间(通常情况下当天可生效),若长时间未生效，可联系管理员加急处理",
+                    body: "证书上传后，平台会采取机器+人工审核机制，需要一定生效时间(通常情况下当天可生效),此期间HTTP请求不受影响，若长时间未生效，可联系管理员加急处理",
                     textTrue: "同意",
                     textFalse: "拒绝",
                     onSubmit: function (result) { // callback on confirm
@@ -1776,7 +1781,6 @@
                     onDispose: function () {
                     }
                 })
-
 
 
             }
