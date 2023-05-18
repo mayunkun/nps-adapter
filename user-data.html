@@ -1150,9 +1150,9 @@
                 }
 
                 let val2 = $('#targetSelfEditHost').val().trim();
-                let reg1 = /^[a-z.0-9.*]{1,30}$/
+                let reg1 = /^[a-z0-9.-]{0,63}$/i;
                 if (val2 && !reg1.test(val2)) {
-                    $.showAlert({title: "提示", options: {backdrop: false}, body: '自定义域名不支持大写及特殊字符，且长度不超过30个字符'});
+                    $.showAlert({title: "提示", options: {backdrop: false}, body: '自定义域名不支持大写及特殊字符，且长度不超过64个字符'});
                     $('#targetSelfEditHost').focus();
                     return;
                 }
@@ -1536,9 +1536,9 @@
                         }
                     } else {
                         let val2 = $('#targetEditSelfHost').val().trim();
-                        let reg1 = /^[a-z.0-9.*]{1,30}$/
+                        let reg1 = /^[a-z0-9.-]{0,63}$/i;
                         if (!val2 || !reg1.test(val2)) {
-                            $.showAlert({title: "提示", body: "自定义域名不支持大写及特殊字符，且长度不超过30个字符"});
+                            $.showAlert({title: "提示", body: "自定义域名不支持大写及特殊字符，且长度不超过64个字符"});
                             $('#targetEditSelfHost').focus();
                             return false;
                         }
@@ -1611,9 +1611,9 @@
                 }
 
                 let val2 = $('#targetSelfEditHost').val().trim();
-                let reg1 = /^[a-z.0-9.*]{1,30}$/
+                let reg1 = /^[a-z0-9.-]{0,63}$/i;
                 if (val2 && !reg1.test(val2)) {
-                    $.showAlert({title: "提示", options: {backdrop: false}, body: '自定义域名不支持大写及特殊字符，且长度不超过30个字符'});
+                    $.showAlert({title: "提示", options: {backdrop: false}, body: '自定义域名不支持大写及特殊字符，且长度不超过64个字符'});
                     $('#targetSelfEditHost').focus();
                     return;
                 }
