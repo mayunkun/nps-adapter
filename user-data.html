@@ -901,9 +901,10 @@
                     data: "packageFlow",
                     sClass: "text-center",
                     render: function (data, type, row, meta) {
+                        var remainingPercentage = (null == row.remainingPercentage || '' == row.remainingPercentage || row.remainingPercentage.indexOf('-') != -1) ? '0%' : row.remainingPercentage;
                         return '' + data + '<br/><br/>' + '                <div class="progress" style="height: 25px;width: 50px;">\n' +
                             '                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70"\n' +
-                            '                  aria-valuemin="0" aria-valuemax="100" style="width:' + row.remainingPercentage + ';color: #333;">' + row.remainingPercentage + '</div>\n' +
+                            '                  aria-valuemin="0" aria-valuemax="100" style="width:' + remainingPercentage + ';color: #333;">' + row.remainingPercentage + '</div>\n' +
                             '                </div>';
                     }
                 },
