@@ -1521,6 +1521,10 @@
                 })
                 params.id = row.id;
 
+                if (null != row.tunnelType && row.tunnelType != 4 && (null == params.targetIpPort || '' == params.targetIpPort)) {
+                    $.showAlert({title: "提示", options: {backdrop: false}, body: '内网服务栏端口号必填'});
+                    return false;
+                }
 
                 if (row.tunnelType == 3) {
                     if (row.tunnelTypeHttp == 1) {
