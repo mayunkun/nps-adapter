@@ -26,6 +26,25 @@
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="admin/static/js/html5shiv.min.js"></script>
     <script src="admin/static/js/respond.min.js"></script><![endif]-->
+
+    <style type="text/css">
+        .ad-btn1 {
+            min-width: 170px;
+            padding: 0 15px;
+            height: 50px;
+            line-height: 52px;
+            display: inline-block;
+            text-align: center;
+            color: var(--main-white);
+            background: var(--main-color);
+            text-transform: capitalize;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            border: 0;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -82,7 +101,7 @@
                             <a class="forgot-pws-btn" href="forgot-pws.html">忘记密码?</a>
                         </div>
                         <div class="ad-auth-btn">
-                            <button type="button" class="form-control ad-btn btn-primary" onclick="login()">登录</button>
+                            <button type="button" class="form-control ad-btn1 btn-primary" onclick="login()">登录</button>
                             <br/>
                             <br/>
                             <a style="border-style: solid;border-color: #909090 ;" class="btn btn-default btn-block"
