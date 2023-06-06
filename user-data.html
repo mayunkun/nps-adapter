@@ -937,10 +937,10 @@
                     }
                 },
                 {
-                    data: "online",
+                    data: null,
                     sClass: "text-center",
                     render: function (data, type, row, meta) {
-                        return data ? "<div class='online-circle'><div>" : "<div class='under-circle'><div>";
+                        return row.online ? "<div class='online-circle'><div>" : "<div class='under-circle'><div>";
                     }
                 },
                 {
