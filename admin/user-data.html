@@ -724,7 +724,7 @@
                             '                aria-expanded="false">\n' +
                             '            下载\n' +
                             '        </button>                    ' +
-                            '        <ul class="dropdown-menu download-dropdown-menu" style="padding-top: 100px;">' +
+                            '        <ul class="dropdown-menu download-dropdown-menu" style="">' +
                             downloadTypes.map(type => `<li onclick="ondownload('${row.status}','${type}', ${row.partitionId}, ${row.clientId})"><a href="javascript:;">${type}</a></li>`).join('')
                             + '</ul>\n' +
                             '    </div>';
@@ -1386,7 +1386,7 @@
             area: ['30%', '50%'],
             shadeClose: false,
             shade: 0,
-            offset: ['10%', '40%'],
+            offset: ['5%', '30%'],
             // maxmin: true, //允许全屏最小化
             content: $('#passWordLayer'),
             btn: ["取消", "提交"],
