@@ -458,6 +458,7 @@
         }
     }
 
+    var rechargelayer;
     function recharge() {
         $.ajax({
             type: "get",
@@ -473,7 +474,7 @@
                 }
             }
         });
-        layer.open({
+        rechargelayer = layer.open({
             type: 1,
             skin: 'demo-class zindex100',
             title: ['账户充值', 'text-align:left;background:#11a1fd'],
@@ -586,6 +587,7 @@
     }
 
     function lottery() {
+        rechargelayer.close();
         $('.lottery').click();
     }
 
