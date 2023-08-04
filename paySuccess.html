@@ -87,7 +87,10 @@
     };
 
     document.getElementById("go").onclick = function () {
-        window.parent.location.href = "admin/index.html?forward=lottery";
+        console.log(rechargelayer)
+        console.log(index)
+        rechargelayer.close(index);
+        // window.parent.location.href = "admin/index.html?forward=lottery";
     };
 
 </script>
