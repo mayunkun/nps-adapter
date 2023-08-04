@@ -1,0 +1,491 @@
+﻿<head>
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <!--Custom Style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.min.css">
+    <!-- Favicon Link -->
+    <link rel="shortcut icon" type="image/png" href="../web/images/slider/head-logo.jpg">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+    <script src="static/js/respond.min.js"></script><![endif]-->
+
+    <style type="text/css">
+        #lottery {
+            min-width: 570px;
+            display: inline-block;
+            padding: 38px 45px;
+            background: url(static/image/bg.jpg) no-repeat;
+            background-size: cover;
+        }
+
+        #lottery table td {
+            width: 119px;
+            height: 120px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 14px;
+            color: #333;
+            z-index: -999;
+            overflow: hidden;
+        }
+
+        #lottery table td img {
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+        }
+
+        #lottery table td a {
+            width: 100%;
+            height: 100%;
+            line-height: 150px;
+            display: block;
+            text-decoration: none;
+        }
+
+        #lottery table td.active {
+            background-color: #ea0000;
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="loader">
+    <div class="spinner">
+        <img src="assets/images/loader.gif" alt=""/>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Styled Table Card-->
+    <div class="col-xl-6 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h4>积分抽奖</h4>
+            </div>
+            <div class="card-body">
+                <div class="chart-holder">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div id="lottery">
+                                <table border="0" cellpadding="0" cellspacing="0" style="font-size: 12px;">
+                                    <tr>
+                                        <td class="lottery-unit lottery-unit-0"><img></td>
+                                        <td class="lottery-unit lottery-unit-1"><img></td>
+                                        <td class="lottery-unit lottery-unit-2"><img></td>
+                                        <td class="lottery-unit lottery-unit-3"><img></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="lottery-unit lottery-unit-11"><img></td>
+                                        <td colspan="2" rowspan="2"><a href="#"></a></td>
+                                        <td class="lottery-unit lottery-unit-4"><img></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="lottery-unit lottery-unit-10"><img></td>
+                                        <td class="lottery-unit lottery-unit-5"><img></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="lottery-unit lottery-unit-9"><img></td>
+                                        <td class="lottery-unit lottery-unit-8"><img></td>
+                                        <td class="lottery-unit lottery-unit-7"><img></td>
+                                        <td class="lottery-unit lottery-unit-6"><img></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+        <div class="card table-card ">
+            <div class="card-header pb-0">
+                <div class="d-flex">
+                    <h4 style="flex:1;">抽奖规则</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart-holder">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <p>抽奖积分获取方式：每日登录、<a href="user-invite.html">推广返利</a>、<a href="user-data.html">订单创建</a>
+                            </p>
+                            <p style="font-size:13px;font-weight:300;text-align:left;">
+                                ● 活动综合中奖率20%,每次抽奖消耗 10 积分,积分月底清零，请及时使用
+                            </p>
+                            <p style="font-size:13px;font-weight:300;text-align:left;">
+                                ● 奖品主要包含实物、免费会员、代金券、折扣券，其中非实物券可用于下次购买使用，免费会员券限3天内使用
+                            </p>
+                            <p style="font-size:13px;font-weight:300;text-align:left;">
+                                ● 实物中奖后 <a class="chat-qq-group" target="_blank"
+                                           href="https://qm.qq.com/cgi-bin/qm/qr?k=My1ghEmV73WgzXP7P-2Y4LuEYer4eFZs&jump_from=webapi"><img
+                                    class="chat-qq-group-img" border="0" src="../web/images/slider/group.png"
+                                    alt="小蝴蝶内网穿透" title="小蝴蝶内网穿透">132378718</a> 将中奖记录截图@管理员领取即可, 逾期三天作废
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card table-card ">
+            <div class="card-header pb-0">
+                <div class="d-flex">
+                    <h4 style="flex:1;">抽奖记录</h4>
+                    <span>可用积分：<span class="myjf" style="font-size: 24px;color: green;">0</span></span>
+                </div>
+                <div class="card-body">
+                    <div class="chart-holder">
+                        <div class="table-responsive">
+                            <table class="table table-striped mb-0">
+                                <thead>
+                                <tr>
+                                    <th scope="col">抽奖时间</th>
+                                    <th scope="col">奖品类型</th>
+                                    <th scope="col">奖品名称</th>
+                                    <th scope="col">是否消费</th>
+                                </tr>
+                                </thead>
+                                <tbody id="lotteryRecord">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart-holder">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script Start -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/datatables.min.js"></script>
+<script src="assets/js/dataTables.responsive.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- Custom Script -->
+<script src="assets/js/custom.min.js"></script>
+<script src="static/plugins/layer/layer.min.js"></script>
+<script src="static/js/bootstrap-show-modal.min.js"></script>
+<script src="static/js/dbg.min.js"></script>
+
+
+<script>
+    // 头像
+    if (null != localStorage.getItem('headUrl') && '' !== localStorage.getItem('headUrl')) {
+        $('#headUrl').attr('src', localStorage.getItem('headUrl'));
+    }
+    // 邮箱
+    if (null != localStorage.getItem('mail') && '' !== localStorage.getItem('mail')) {
+        $('#mail').html(localStorage.getItem('mail'));
+    }
+    // 等级
+    if (null != localStorage.getItem('consumptionPoints') && '' !== localStorage.getItem('consumptionPoints')) {
+        var crown = parseInt(localStorage.getItem('consumptionPoints') / 1000);                         //  皇冠
+        var sun = parseInt((localStorage.getItem('consumptionPoints') % 1000) / 300);                   //  太阳
+        var moon = parseInt((localStorage.getItem('consumptionPoints') % 1000 % 300) / 100);            //  月亮
+        var star = parseInt((localStorage.getItem('consumptionPoints') % 1000 % 300 % 100) / 30);       //  星星
+        $('#vip').html('');
+        let vip = '会员等级: ';
+        for (var i = 0; i < crown; i++) {
+            vip += '<svg t="1683614781534" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8228" width="16" height="16"><path d="M886.5 748c30.4-35.9 62.4-80.5 71.3-147.5 11.2-82.1-20.7-144.9-85.6-114-13.2 5.7-25.3 11.4-36.7 17.1-16.5-61.4-62.3-94.8-122.9-58.9-59.2 32.4-99.9 62.5-135.8 85.9-4.5-1.1-9.2-2.1-13.9-3-7.6-39.2-17.8-71.4-29.9-98.9 35.3-29.8 52.9-19.1 46.3 47.1 52.3-54.5 59.3-88.1 16.4-98.6-20.1 0.1-43 9.2-67.3 22.8 23.1-16 41.7-42.9 39.3-64.8-0.6-16.4-7.2-21.5-18.4-17.1-8.8 3.4-14.6-1.1-19.1-9.5 4.6-4.5 7.6-10.9 7.6-18.1 0-13.8-11.1-25-24.7-25-13.7 0-24.7 11.2-24.7 25 0 6.3 2.4 12 6.2 16.5-4.6 9.3-10.7 14.7-20 11.1-11.2-4.4-17.8 0.7-18.4 17.1-2.4 22 16.3 48.7 39.3 64.8-24.2-13.7-47.2-22.7-67.3-22.8-42.9 10.5-35.9 44.1 16.4 98.6-6.5-66.2 11.1-76.9 46.3-47.1-12 27.5-22.3 59.5-29.9 98.9-4.6 0.8-9.3 1.9-13.8 3-35.9-23.5-76.6-53.5-135.8-85.9-60.6-35.9-106.4-2.6-122.9 58.9-11.4-5.6-23.5-11.4-36.7-17.1-64.8-30.8-96.8 31.9-85.6 114 8.9 67.1 41 111.6 71.3 147.5 7.8 9.3 16.9 17.1 26.1 24.4h-0.1c-14.5 0-26.3 32.6-26.3 72.6 0 40.2 11.8 72.7 26.3 72.7h696.8c14.5 0 26.3-32.6 26.3-72.7 0-40.2-11.8-72.6-26.3-72.6 9.3-7.3 18.4-15.2 26.2-24.4zM702.8 480c47.3 0.2 48.2 37.9 46.9 89.2 1 21.3-4 46-11.8 70.5-35.3-49.1-85.6-86.3-144.1-104.5 44.5-23.1 88.2-53.9 109-55.2z m-189.3-16.7c9.9 0 17.9 8.1 17.9 18.1 0 10.1-8.1 18.2-17.9 18.2s-17.9-8.1-17.9-18.2c-0.1-10 8-18.1 17.9-18.1z m0 61.8c9.9 0 17.9 8.2 17.9 18.2 0 10.1-8.1 18.3-17.9 18.3s-17.9-8.2-17.9-18.3c-0.1-10 8-18.2 17.9-18.2z m0 61.9c9.9 0 17.9 8.2 17.9 18.3 0 10-8.1 18.2-17.9 18.2s-17.9-8.2-17.9-18.2c-0.1-10.1 8-18.3 17.9-18.3z m0 61.9c9.9 0 17.9 8.2 17.9 18.3 0 10-8.1 18.2-17.9 18.2s-17.9-8.2-17.9-18.2c-0.1-10.1 8-18.3 17.9-18.3z m0 61.9c9.9 0 17.9 8.2 17.9 18.2 0 10.1-8.1 18.3-17.9 18.3s-17.9-8.2-17.9-18.3c-0.1-10.1 8-18.2 17.9-18.2zM321.2 480c20.8 1.3 64.5 32.1 108.9 55.3-58.6 18.2-108.9 55.4-144.1 104.5-7.6-24.5-12.6-49.2-11.8-70.5-1.2-51.4-0.3-89 47-89.3zM220.8 768.4c0.7 4.2-71.7-94.7-80-163.8-8.4-46.5-13.1-80.9 23.8-87.2 4.9-0.5 11.9 1.4 20.2 4.4-1.5 9.5-2.6 19.3-2.9 29.6-2.3 73.3 29 126.7 59.8 170.4 0.8 1.1 1.7 2.1 2.5 3.2-4.5 15.2-7.6 31-9.6 47.3h-10.9c-1-1.2-1.8-2.4-2.9-3.9zM332.9 873h-69c-18.1 0-32.7-13.2-32.7-29.5s14.6-29.6 32.7-29.6h69c18.1 0 32.7 13.2 32.7 29.6-0.1 16.3-14.7 29.5-32.7 29.5z m145.5-14.2l-28.6 15-28.8-14.9-28.7-14.9 28.6-15 28.6-15 28.8 14.9 28.6 14.9-28.5 15z m124.4 0.1L574 873.8l-28.6-15-28.5-15 28.6-14.9 28.8-14.9 28.6 15 28.6 15-28.7 14.9zM760.2 873h-69c-18.1 0-32.7-13.2-32.7-29.5s14.6-29.6 32.7-29.6h69c18.1 0 32.7 13.2 32.7 29.6 0 16.3-14.7 29.5-32.7 29.5z m29.2-100.6c-1.9-16.2-5.1-32.1-9.6-47.3 0.8-1.1 1.7-2.1 2.5-3.2 30.9-43.7 62-97.1 59.8-170.4-0.2-10.3-1.3-20.2-2.9-29.6 8.2-2.9 15.3-4.8 20.2-4.4 36.8 6.3 32.2 40.8 23.8 87.2-8.3 69-80.8 167.9-80.1 163.8-1 1.3-1.9 2.6-2.9 3.9h-10.8zM514.1 156.3c13.7 0 24.7-11.3 24.7-25.1s-11.1-25-24.7-25c-13.7 0-24.7 11.2-24.7 25s11 25.1 24.7 25.1zM513.1 208.9c13.7 0 24.7-11.3 24.7-25.1s-11.1-25-24.7-25c-13.7 0-24.7 11.2-24.7 25s11.1 25.1 24.7 25.1zM460.5 208.9c13.7 0 24.7-11.3 24.7-25.1s-11.1-25-24.7-25c-13.7 0-24.7 11.2-24.7 25s11 25.1 24.7 25.1zM565.8 208.9c13.7 0 24.7-11.3 24.7-25.1s-11.1-25-24.7-25-24.7 11.2-24.7 25c0.1 13.8 11.1 25.1 24.7 25.1zM513.1 262.3c13.7 0 24.7-11.3 24.7-25.1s-11.1-25-24.7-25c-13.7 0-24.7 11.2-24.7 25s11.1 25.1 24.7 25.1z" p-id="8229" fill="#f4ea2a"></path></svg>';
+        }
+        for (var i = 0; i < sun; i++) {
+            vip += '<svg t="1683614850374" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9591" width="16" height="16"><path d="M505.34 221.87c-9.91 0-17.93-8.04-17.93-17.95V96.25c0-9.91 8.02-17.94 17.93-17.94 9.93 0 17.95 8.03 17.95 17.94v107.67c0 9.91-8.02 17.95-17.95 17.95zM505.34 939.67s0.02 0 0 0c-9.88 0-17.93-8.03-17.93-17.94V814.06c0-9.91 8.04-17.95 17.95-17.95s17.93 8.04 17.93 17.95v107.67c0 9.91-8.02 17.94-17.95 17.94z" fill="#F6BB42" p-id="9592"></path><path d="M302.32 305.96c-7.02 7.01-18.37 7.01-25.37 0l-76.15-76.14c-6.99-7-6.99-18.36 0-25.37 7.02-7.02 18.37-7.02 25.39 0l76.13 76.13c7.02 7.01 7.02 18.38 0 25.38zM809.9 813.52c-7.02 7.02-18.38 7.02-25.39 0l-76.13-76.13c-7.02-7.01-7.02-18.38 0-25.38 7.02-7.01 18.37-7.01 25.39 0l76.13 76.14c6.99 7 6.99 18.36 0 25.37z" fill="#FFCE54" p-id="9593"></path><path d="M218.23 508.99c0 9.91-8.04 17.94-17.95 17.94H92.61c-9.91 0-17.93-8.03-17.95-17.94 0-9.91 8.04-17.94 17.95-17.94h107.67c9.91 0 17.95 8.02 17.95 17.94zM936.02 508.99c0 9.91-8.02 17.94-17.93 17.94H810.42c-9.91 0-17.95-8.03-17.95-17.94 0-9.91 8.04-17.94 17.95-17.94h107.67c9.91 0 17.93 8.02 17.93 17.94z" fill="#F6BB42" p-id="9594"></path><path d="M302.32 712.01c7.02 7 7.02 18.37 0 25.38l-76.13 76.13c-7.02 7.02-18.37 7.02-25.39 0-6.99-7.01-6.99-18.36 0-25.37l76.15-76.14c7-7.01 18.36-7.01 25.37 0zM809.9 204.44c0 0.01 0 0 0 0 6.99 7.02 6.99 18.38 0 25.38l-76.15 76.14c-6.99 7.01-18.35 7.01-25.37 0-7.02-7-7.02-18.37 0-25.38l76.13-76.14c7.01-7 18.37-7 25.39 0z" fill="#FFCE54" p-id="9595"></path><path d="M505.34 742.27c-128.62 0-233.27-104.65-233.27-233.28S376.72 275.7 505.34 275.7c128.65 0 233.29 104.65 233.29 233.28S633.98 742.27 505.34 742.27z" fill="#FFCE54" p-id="9596"></path><path d="M505.34 257.75c-138.74 0-251.22 112.48-251.22 251.24S366.6 760.22 505.34 760.22c138.77 0 251.25-112.48 251.25-251.23S644.1 257.75 505.34 257.75z m152.27 403.5c-40.66 40.68-94.74 63.08-152.28 63.08-57.52 0-111.59-22.4-152.25-63.08C312.42 620.59 290 566.5 290 508.99s22.42-111.6 63.09-152.26c40.66-40.68 94.74-63.08 152.25-63.08 57.54 0 111.61 22.4 152.28 63.08 40.67 40.66 63.06 94.75 63.06 152.26s-22.4 111.6-63.07 152.26z" fill="#F6BB42" p-id="9597"></path></svg>';
+        }
+        for (var i = 0; i < moon; i++) {
+            vip += '<svg t="1683614896073" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12439" width="16" height="16"><path d="M565 200.4c25.6 44.6 40.4 96.2 40.4 151.3 0 167.9-136.1 304-304 304-22.9 0-45.2-2.6-66.7-7.4C284.5 760.7 397 839.2 527.8 839.2c177 0 320.5-143.5 320.5-320.5 0-164.4-123.8-299.8-283.3-318.3zM312.9 243.6h-39.2v-39.2c0-10.8-8.8-19.6-19.6-19.6s-19.6 8.8-19.6 19.6v39.2h-39.2c-10.8 0-19.6 8.8-19.6 19.6s8.8 19.6 19.6 19.6h39.2V322c0 10.8 8.8 19.6 19.6 19.6s19.6-8.8 19.6-19.6v-39.2h39.2c10.8 0 19.6-8.8 19.6-19.6s-8.8-19.6-19.6-19.6z" fill="#FFF0C2" p-id="12440"></path><path d="M306.9 245.6h-35.2v-35.2c0-9.7-7.9-17.6-17.6-17.6-9.7 0-17.6 7.9-17.6 17.6v35.2h-35.2c-9.7 0-17.6 7.9-17.6 17.6 0 9.7 7.9 17.6 17.6 17.6h35.2V316c0 9.7 7.9 17.6 17.6 17.6 9.7 0 17.6-7.9 17.6-17.6v-35.2h35.2c9.7 0 17.6-7.9 17.6-17.6 0-9.7-7.9-17.6-17.6-17.6z" fill="#FFC445" p-id="12441"></path><path d="M427.8 475.3h-27.5v-27.5c0-7.6-6.2-13.8-13.8-13.8-7.6 0-13.8 6.2-13.8 13.8v27.5h-27.5c-7.6 0-13.8 6.2-13.8 13.8 0 7.6 6.2 13.8 13.8 13.8h27.5v27.5c0 7.6 6.2 13.8 13.8 13.8 7.6 0 13.8-6.2 13.8-13.8v-27.5h27.5c7.6 0 13.8-6.2 13.8-13.8 0-7.6-6.2-13.8-13.8-13.8z" fill="#FFF0C2" p-id="12442"></path><path d="M423.6 476.7h-24.7V452c0-6.8-5.5-12.4-12.4-12.4-6.8 0-12.4 5.5-12.4 12.4v24.7h-24.7c-6.8 0-12.4 5.5-12.4 12.4 0 6.8 5.5 12.4 12.4 12.4h24.7v24.7c0 6.8 5.5 12.4 12.4 12.4 6.8 0 12.4-5.5 12.4-12.4v-24.7h24.7c6.8 0 12.4-5.5 12.4-12.4 0-6.8-5.5-12.4-12.4-12.4z" fill="#FFC445" p-id="12443"></path><path d="M563.4 223c23.8 41.4 37.5 89.4 37.5 140.6 0 156-126.5 282.5-282.5 282.5-21.3 0-42-2.4-62-6.9 46.3 104.5 150.8 177.4 272.4 177.4 164.5 0 297.9-133.4 297.9-297.9 0-152.7-115.1-278.6-263.3-295.7z" fill="#FFB948" p-id="12444"></path></svg>';
+        }
+        for (var i = 0; i < star; i++) {
+            vip += '<svg t="1683614909533" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="13456" width="16" height="16"><path d="M313.991837 914.285714c-20.37551 0-40.228571-6.269388-56.946939-18.808163-30.302041-21.942857-44.930612-58.514286-38.661225-95.085714l24.032654-141.061225c3.134694-18.285714-3.134694-36.571429-16.195919-49.110204L123.297959 509.910204c-26.644898-26.122449-36.04898-64.261224-24.555102-99.787755 11.493878-35.526531 41.795918-61.126531 78.889796-66.35102l141.583674-20.375511c18.285714-2.612245 33.959184-14.106122 41.795918-30.30204l63.216326-128.522449C440.946939 130.612245 474.383673 109.714286 512 109.714286s71.053061 20.897959 87.24898 54.334694L662.987755 292.571429c8.359184 16.195918 24.032653 27.689796 41.795918 30.30204l141.583674 20.375511c37.093878 5.22449 67.395918 30.82449 78.889796 66.35102 11.493878 35.526531 2.089796 73.665306-24.555102 99.787755l-102.4 99.787755c-13.061224 12.538776-19.330612 31.346939-16.195919 49.110204l24.032654 141.061225c6.269388 37.093878-8.359184 73.142857-38.661225 95.085714-30.302041 21.942857-69.485714 24.555102-102.4 7.314286L538.122449 836.440816c-16.195918-8.359184-35.526531-8.359184-51.722449 0l-126.955102 66.87347c-14.628571 7.314286-30.302041 10.971429-45.453061 10.971428z m162.481632-96.653061z" fill="#F2CB51" p-id="13457"></path></svg>';
+        }
+        $('#vip').html('会员等级: ' == vip ? '' : vip);
+    }
+
+    $(document).ready(function () {
+        notice();
+
+        $("#lottery a").click(function () {
+            if (click) {
+                return false;
+            } else {
+                getAward((res) => {
+                    let reg = /lottery-unit-[0-9]{1,2}/
+                    lottery.speed = 100;
+                    prizeId = res.prizeId
+                    prizeName = res.prizeName
+                    let prize = $('.lottery-unit-id-' + res.prizeId)
+                    let idx = prize.attr('class').match(reg)[0].split('-unit-')[1]
+                    prizeIndex = Number(idx);
+                    roll();
+                    click = true;
+                });
+                return false;
+            }
+        });
+        getAwardInfo();
+        getmyAwardInfo();
+    });
+
+    var type = 'system'
+    var prizeIndex = -1
+    var prizeId = ''
+    var prizeName = ''
+    var lottery = {
+        index: -1,	//当前转动到哪个位置，起点位置
+        count: 0,	//总共有多少个位置
+        timer: 0,	//setTimeout的ID，用clearTimeout清除
+        speed: 20,	//初始转动速度
+        times: 0,	//转动次数
+        cycle: 20,	//转动基本次数：即至少需要转动多少次再进入抽奖环节
+        prize: -1,	//中奖位置
+        init: function (id, list) {
+            if ($("#" + id).find(".lottery-unit").length > 0) {
+                $lottery = $("#" + id);
+                $units = $lottery.find(".lottery-unit");
+                $units.each((a, b) => {
+                    let item = list[a]
+                    $(b).addClass('lottery-unit-id-' + item.id)
+                    $(b).find('img').attr('src', item.imgUrl).attr('alt', item.name)
+                })
+                this.obj = $lottery;
+                this.count = $units.length;
+                $lottery.find(".lottery-unit-" + this.index).addClass("active");
+            }
+            ;
+        },
+        roll: function () {
+            var index = this.index;
+            var count = this.count;
+            var lottery = this.obj;
+            $(lottery).find(".lottery-unit-" + index).removeClass("active");
+            index += 1;
+            if (index > count - 1) {
+                index = 0;
+            }
+            ;
+            $(lottery).find(".lottery-unit-" + index).addClass("active");
+            this.index = index;
+            return false;
+        },
+        stop: function (index) {
+            this.prize = index;
+            return false;
+        }
+    };
+
+    function roll() {
+        lottery.times += 1;
+        lottery.roll();
+        if (lottery.times > lottery.cycle + 10 && lottery.prize == lottery.index) {
+            clearTimeout(lottery.timer);
+            lottery.prize = -1;
+            lottery.times = 0;
+            click = false;
+            if (prizeId != 4) {
+                $('#payOrderModal').modal('toggle');
+                $('.jpmc').text(prizeName)
+                if (prizeId == 1 || prizeId == 3 || prizeId == 5 || prizeId == 8 || prizeId == 9 || prizeId == 16) {
+                    $.showAlert({
+                        title: "提示",
+                        body: "恭喜中奖啦！是否立即 <a href=\"user-data.html\" style=\"text-decoration:underline;\">前往使用</a>"
+                    });
+                } else {
+                    $.showAlert({
+                        title: "提示", body: "恭喜中奖啦！是否立即 <a class=\"prize-chat-qq-group\" target=\"_blank\"\n" +
+                            "   href=\"https://qm.qq.com/cgi-bin/qm/qr?k=My1ghEmV73WgzXP7P-2Y4LuEYer4eFZs&jump_from=webapi\">\n" +
+                            "    <button style=\"padding: 10px 0;outline: none;\" type=\"button\" class=\"btn btn-default\">联系领取</button>\n" +
+                            "</a>"
+                    });
+                }
+
+            }
+            getmyAwardInfo();
+        } else {
+            if (lottery.times < lottery.cycle) {
+                lottery.speed -= 10;
+            } else if (lottery.times == lottery.cycle) {
+                // var id = Math.random()*(lottery.count)|0;
+                lottery.prize = prizeIndex;
+            } else {
+                if (lottery.times > lottery.cycle + 10 && ((lottery.prize == 0 && lottery.index == 7) || lottery.prize == lottery.index + 1)) {
+                    lottery.speed += 110;
+                } else {
+                    lottery.speed += 20;
+                }
+            }
+            if (lottery.speed < 40) {
+                lottery.speed = 40;
+            }
+            ;
+            lottery.timer = setTimeout(roll, lottery.speed);
+        }
+        return false;
+    }
+
+    var click = false;
+
+    // 时间格式化
+    function formatDate(value, hasTime) {
+        if (!value) return '';
+        value = new Date(value);
+        let result = '';
+        let year = value.getFullYear();
+        let month = value.getMonth() + 1;
+        let day = value.getDate();
+
+        month = plusZero(month);
+        day = plusZero(day);
+
+        result = year + '-' + month + '-' + day;
+
+        if (hasTime) {
+            let hour = value.getHours();
+            let minute = value.getMinutes();
+            let seconds = value.getSeconds();
+            hour = plusZero(hour);
+            minute = plusZero(minute);
+            seconds = plusZero(seconds);
+            result += ' ' + hour + ':' + minute + ':' + seconds
+        }
+        return result;
+    }
+
+    function plusZero(value) {
+        return value < 10 ? '0' + value : value;
+    }
+
+    function closeModal() {
+        $('#payOrderModal').modal('toggle')
+        prizeId = ''
+        prizeName = ''
+    }
+
+    function toOrder() {
+        $('#payOrderModal').modal('toggle')
+        prizeId = ''
+        prizeName = ''
+        window.location.href = "/user.html";
+    }
+
+    function getAwardInfo() {
+        // let item = orderList.find(item => item.id == id)
+        $.ajax({
+            type: "get",
+            url: baseUrl + `/lottery/info`, //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
+                if (result.code) {
+                    $.showAlert({title: "提示", body: result.msg});
+                } else {
+                    // getShareList(null, true)
+                    // $('.gz-content').text(result.luckDrawRule)
+                    // $('.jfhq-content').html(result.integralAcquisitionRule)
+                    // let str = '<p>暂无抽奖记录</p>'
+                    // if (result.prizeRecordEntityList.length) {
+                    //     str = result.prizeRecordEntityList.map(item => {
+                    //         return '<p style="display:flex">恭喜<span style="margin-right:10px">'
+                    //             + item.userMail + '</span>抽中<span class="label label-info" style="margin:0 10px;line-height: 16px;">' +
+                    //             item.prizeName + '</span><span>' +
+                    //             item.createDate + '</span></p>'
+                    //     }).join('')
+                    //     str += '<p>......</p>'
+                    // }
+                    // $('.systemzjjl').html(str)
+                    lottery.init('lottery', result.prizeEntityList);
+                    // result.prizeEntityList.forEach((item) => {
+                    //     $('.lottery-unit-' + item.id).find('img').attr('src', item.imgUrl).attr('alt', item.name)
+                    // })
+                }
+            },
+        });
+    }
+
+    // 中奖记录
+    function getmyAwardInfo() {
+        if (undefined == localStorage.getItem('token') || '' == localStorage.getItem('token')) {
+            return;
+        }
+
+        $.ajax({
+            type: "get",
+            url: baseUrl + `/lottery/myInfo`, //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
+                if (0 == result.code) {
+                    if (result.prizeRecordEntityList.length > 0) {
+                        let str = result.prizeRecordEntityList.map(item => {
+                            return `                                            <tr>
+                                                <th scope="row">${item.createDate}</th>
+                                                <td>${item.type == 0 ? "其他" : item.type == 1 ? "优惠券" : item.type == 2 ? "折扣券" : item.type == 2 ? "减免券" : "未知"}</td>
+                                                <td>${item.prizeName}</td>
+                                                <td>${item.isGrant ? "已核销" : "未核销"}</td>
+                                            </tr>`
+                        }).join('');
+                        $('#lotteryRecord').html('');
+                        $('#lotteryRecord').append(str);
+                        $('.myjf').text(result.integral);
+                    }
+                } else {
+                    $.showAlert({title: "提示", body: result.msg});
+                }
+            },
+        });
+    }
+
+    function getAward(cb) {
+        // let item = orderList.find(item => item.id == id)
+        $.ajax({
+            type: "post",
+            url: baseUrl + `/lottery/luckDraw`, //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
+                if (result.code) {
+                    $.showAlert({title: "提示", body: result.msg})
+                } else {
+                    cb && cb(result)
+                }
+            },
+        });
+    }
+
+    function pay(url) {
+        layer.open({
+            type: 2,
+            area: [`${$("body").width() > 1200 ? "700px" : "80vw"}`, "80vh"],
+            content: url,
+            scrollbar: true,
+            end: function () {
+                searchPage();
+            },
+        });
+    }
+
+</script>
+</body>

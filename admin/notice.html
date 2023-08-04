@@ -1,0 +1,275 @@
+﻿<head>
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <!--Custom Style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/icofont.min.css">
+    <!-- Favicon Link -->
+    <link rel="shortcut icon" type="image/png" href="web/images/slider/head-logo.jpg">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+    <script src="static/js/respond.min.js"></script><![endif]-->
+</head>
+
+
+<body>
+<div class="loader">
+    <div class="spinner">
+        <img src="assets/images/loader.gif" alt=""/>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-title-wrapper">
+            <div class="page-title-box">
+                <h4 class="page-title">系统通知</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Products view Start -->
+
+
+<!--===Products Details===-->
+<div class="product-detail-wrapper product-detail-wrapper22">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="product-detail-tab">
+                <ul class="nav nav-tabs">
+                    <li><a data-toggle="tab" class="active" href="#description">系统公告 <i
+                            class="fas fa-question"></i></a></li>
+                    <li><a data-toggle="tab" href="#info">联系我们 <i class="fas fa-headset"></i></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="description" class="tab-pane fade show active">
+                        <div class="int-tab-peragraph" id="noticeTable">
+                        </div>
+                    </div>
+                    <div id="info" class="tab-pane fade">
+                        <div class="int-tab-peragraph">
+                            <h4><span><i class="far fa-question-circle"></i></span> 客服QQ</h4>
+                            <p>1163363720</p>
+                            <h4><span><i class="far fa-question-circle"></i></span> QQ交流群</h4>
+                            <p>群① 132378718 &nbsp;&nbsp;&nbsp;&nbsp; 群② 469758036</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 账户充值 -->
+<div id="rechargeLayer" style="display: none;">
+    <form action="" id="rechargeForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><br/>
+            <div class="form-group has-feedback">
+                <h5>
+                    <svg t="1683357211967" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="2451" width="16" height="16">
+                        <path d="M512.512 47.616c-254.464 0-460.8 206.336-460.8 460.8s206.336 460.8 460.8 460.8 460.8-206.336 460.8-460.8-206.336-460.8-460.8-460.8z m144.896 445.952v46.592h-114.176v64.512h114.176v47.616h-114.176v93.696H484.352v-93.696H365.568v-47.616h118.272v-64.512H365.568v-46.592h100.864l-122.88-211.456H409.6c57.856 104.96 92.672 172.032 104.96 200.192h1.024c4.096-11.776 15.872-34.816 34.304-70.144l70.656-130.048h62.464l-124.416 211.968h98.816z"
+                              fill="#FE9C01" p-id="2452"></path>
+                    </svg>
+                    账户余额 &nbsp; <i id="balance"></i></h5>
+            </div>
+            <br/>
+            <div class="form-group has-feedback">
+                <label class="col-form-label" for="amount">充值金额</label>
+                <input type="text" autocomplete='off' onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')"
+                       class="form-control createContainer" list="amountSelect" name="amount"
+                       placeholder="支持手输或选择">
+                <datalist id="amountSelect">
+                    <option value="100">100</option>
+                    <option value="300">300</option>
+                    <option value="500">500</option>
+                    <option value="1000">1000</option>
+                </datalist>
+            </div>
+
+            <div class="form-group has-feedback">
+                <label for="payType">支付方式</label>
+                <div class="input-group" style="width: 100%;">
+                        <span class="btn-group" style="margin-left: 20px;">
+                                <label title="支付宝" class="radio-inline">
+                                    <input checked type="radio" name="payType" value="2">
+                                   <svg t="1625817310203" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="11153" width="64" height="64"><path
+                                           d="M902.095 652.871l-250.96-84.392s19.287-28.87 39.874-85.472c20.59-56.606 23.539-87.689 23.539-87.689l-162.454-1.339v-55.487l196.739-1.387v-39.227H552.055v-89.29h-96.358v89.294H272.133v39.227l183.564-1.304v59.513h-147.24v31.079h303.064s-3.337 25.223-14.955 56.606c-11.615 31.38-23.58 58.862-23.58 58.862s-142.3-49.804-217.285-49.804c-74.985 0-166.182 30.123-175.024 117.55-8.8 87.383 42.481 134.716 114.728 152.139 72.256 17.513 138.962-0.173 197.04-28.607 58.087-28.391 115.081-92.933 115.081-92.933l292.486 142.041c-11.932 69.3-72.067 119.914-142.387 119.844H266.37c-79.714 0.078-144.392-64.483-144.466-144.194V266.374c-0.074-79.72 64.493-144.399 144.205-144.47h491.519c79.714-0.073 144.396 64.49 144.466 144.203v386.764z m-365.76-48.895s-91.302 115.262-198.879 115.262c-107.623 0-130.218-54.767-130.218-94.155 0-39.34 22.373-82.144 113.943-88.333 91.519-6.18 215.2 67.226 215.2 67.226h-0.047z"
+                                           fill="#02A9F1" p-id="11154"></path></svg>
+                                </label>
+                                <label title="微信" class="radio-inline">
+                                    <input type="radio" name="payType" value="1">
+                                <svg t="1625817180424" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg" p-id="9001" width="64" height="64"><path
+                                        d="M683.058 364.695c11 0 22 1.016 32.943 1.976C686.564 230.064 538.896 128 370.681 128c-188.104 0.66-342.237 127.793-342.237 289.226 0 93.068 51.379 169.827 136.725 229.256L130.72 748.43l119.796-59.368c42.918 8.395 77.37 16.79 119.742 16.79 11 0 21.46-0.48 31.914-1.442a259.168 259.168 0 0 1-10.455-71.358c0.485-148.002 128.744-268.297 291.403-268.297l-0.06-0.06z m-184.113-91.992c25.99 0 42.913 16.79 42.913 42.575 0 25.188-16.923 42.579-42.913 42.579-25.45 0-51.38-16.85-51.38-42.58 0-25.784 25.93-42.574 51.38-42.574z m-239.544 85.154c-25.384 0-51.374-16.85-51.374-42.58 0-25.784 25.99-42.574 51.374-42.574 25.45 0 42.918 16.79 42.918 42.575 0 25.188-16.924 42.579-42.918 42.579z m736.155 271.655c0-135.647-136.725-246.527-290.983-246.527-162.655 0-290.918 110.88-290.918 246.527 0 136.128 128.263 246.587 290.918 246.587 33.972 0 68.423-8.395 102.818-16.85l93.809 50.973-25.93-84.677c68.907-51.93 120.286-119.815 120.286-196.033z m-385.275-42.58c-16.923 0-34.452-16.79-34.452-34.179 0-16.79 17.529-34.18 34.452-34.18 25.99 0 42.918 16.85 42.918 34.18 0 17.39-16.928 34.18-42.918 34.18z m188.165 0c-16.984 0-33.972-16.79-33.972-34.179 0-16.79 16.927-34.18 33.972-34.18 25.93 0 42.913 16.85 42.913 34.18 0 17.39-16.983 34.18-42.913 34.18z"
+                                        fill="#09BB07" p-id="9002"></path></svg>
+                                </label>
+                            </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Script Start -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/datatables.min.js"></script>
+<script src="assets/js/dataTables.responsive.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- Custom Script -->
+<script src="assets/js/custom.min.js"></script>
+<script src="static/js/dbg.min.js"></script>
+<script src="static/plugins/layer/layer.min.js"></script>
+<script src="static/js/bootstrap-show-modal.min.js"></script>
+
+
+<script>
+    // 头像
+    if (null != localStorage.getItem('headUrl') && '' !== localStorage.getItem('headUrl')) {
+        $('#headUrl').attr('src', localStorage.getItem('headUrl'));
+    }
+    // 邮箱
+    if (null != localStorage.getItem('mail') && '' !== localStorage.getItem('mail')) {
+        $('#mail').html(localStorage.getItem('mail'));
+    }
+
+    $(document).ready(function () {
+        notice();
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/nps/notice/list", //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
+                if (0 == result.code) {
+                    if (result.data.length > 0) {
+                        let str = result.data.map((item, idx) => {
+                            let temStr = '<h4><span><i class="far fa-question-circle"></i></span> ' + item.title + '</h4>\n' +
+                                '                                        <p>' + item.content + '</p>';
+                            return temStr;
+                        }).join('');
+                        $('#noticeTable').append(str);
+                        allRead();
+                    }
+                }
+            }
+        });
+    });
+
+    function allRead() {
+        var token = localStorage.getItem('token');
+        if (null != token && '' != token) {
+            $.ajax({
+                type: "get",
+                url: baseUrl + "/nps/notice/allRead", //url
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                headers: {
+                    token: localStorage.getItem('token')
+                },
+                success: function (result) {
+                }
+            });
+        }
+    }
+
+    function recharge() {
+        $.ajax({
+            type: "get",
+            url: baseUrl + "/api/userInfo", //url
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            success: function (result) {
+                if (result.code == '0') {
+                    $("#balance").html(result.data.balance);
+                }
+            }
+        });
+        layer.open({
+            type: 1,
+            skin: 'demo-class zindex100',
+            title: ['账户充值', 'text-align:left;background:#11a1fd'],
+            area: ['30%', '53%'],
+            shadeClose: false,
+            shade: 0,
+            offset: ['10%', '40%'],
+            // maxmin: true, //允许全屏最小化
+            content: $('#rechargeLayer'),
+            btn: ["取消", "提交"],
+            yes: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+
+                let val = decodeURIComponent($('#rechargeForm').serialize(), true)
+                let params = {}
+                let arr = val.split('&').forEach(item => {
+                    let kv = item.split('=')
+                    params[kv[0]] = kv[1]
+                });
+                if (null == params['amount'] || '' == params['amount']) {
+                    $.showAlert({title: "提示", body: "充值金额不可为空"});
+                    return;
+                }
+
+                $.showConfirm({
+                    title: "充值协议",
+                    body: "● 充值后余额仅支持本站使用不再支持提现</br>" +
+                        "● 开票需提前联系管理员确认",
+                    textTrue: "同意",
+                    textFalse: "拒绝",
+                    onSubmit: function (result) { // callback on confirm
+                        if (result) {
+                            $.ajax({
+                                type: "get",
+                                url: baseUrl + "/order/recharge?payType=" + params['payType'] + "&amount=" + params['amount'], //url
+                                dataType: "json",
+                                contentType: "application/json;charset=utf-8",
+                                headers: {
+                                    token: localStorage.getItem('token')
+                                },
+                                success: function (result) {
+                                    if (result.code) {
+                                        $.showAlert({title: "提示", body: result.msg})
+                                    } else {
+                                        if (result.msg != 'success') {
+                                            pay(result.msg);
+                                        }
+                                    }
+                                }
+                            });
+                        } else {
+                            return;
+                        }
+                    },
+                    onDispose: function () {
+                    }
+                })
+            }
+        });
+    }
+
+    function pay(url) {
+        layer.open({
+            type: 2,
+            area: [`${$("body").width() > 1200 ? "700px" : "80vw"}`, "80vh"],
+            content: url,
+            scrollbar: true,
+            end: function () {
+                searchPage();
+            },
+        });
+    }
+</script>
+</body>

@@ -423,7 +423,7 @@ function notice() {
                     str += result.data.map((item, idx) => {
                         if (idx < 2) {
                             let temStr = '                                <li>\n' +
-                                '                                    <a href="notice.html">\n' +
+                                '                                    <a onclick="noticeInfo()">\n' +
                                 '                                        <h5><i class="fas fa-exclamation-circle mr-2"></i>前往查看</h5>\n' +
                                 '                                        <p>'+item.title+'</p>\n' +
                                 '                                    </a>\n' +
@@ -432,7 +432,7 @@ function notice() {
                         }
                     }).join('');
                     str += '</ul><div class="drop-down-footer">\n' +
-                        '                                <a href="notice.html" class="btn sm-btn">\n' +
+                        '                                <a onclick="noticeInfo()" class="btn sm-btn">\n' +
                         '                                    查看全部\n' +
                         '                                </a>\n' +
                         '                            </div>';

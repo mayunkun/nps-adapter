@@ -44,7 +44,7 @@
         // var html = '<input type="file" class="fileInput" id="file" >'
         // 			+'<div class="previewBox" id="previewBox" style="position: absolute; z-index:-1; width: '+this.options.maxwidth+'; height: '+this.options.maxheight+';" ><img id="uploadImg" src="uploadImg.jpg"  width='+ this.options.width +' height='+ this.options.height +'></div>';
         var html = '<input type="file" name="multipartFile" class="' + this.options.classname + '" id="file" >'
-            + '<div class="' + this.options.prevclass + '" id="previewBox" style="position: absolute; display: inline-block; z-index:1;max-width: ' + this.options.maxwidth + '; max-height: ' + this.options.maxheight + ';" ><img id="uploadImg" src="admin/static/image/uploadImg.png"  width=' + this.options.width + ' height=' + this.options.height + '>';
+            + '<div class="' + this.options.prevclass + '" id="previewBox" style="position: absolute; display: inline-block; z-index:1;max-width: ' + this.options.maxwidth + '; max-height: ' + this.options.maxheight + ';" ><img id="uploadImg" src="static/image/uploadImg.png"  width=' + this.options.width + ' height=' + this.options.height + '>';
         // +'<div class="picBox" id="picBox"><img id="uploadImg" src="uploadImg.png"></div>';
         this.$obj.append($(html));
         this.bindEvent(this.options.classname);

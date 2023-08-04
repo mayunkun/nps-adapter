@@ -9,7 +9,7 @@
 <!-- Begin Head -->
 
 <head>
-    <title class="documentTitle">控制台-系统通知</title>
+    <title>控制台</title>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="description"
@@ -18,24 +18,44 @@
     <meta name="author" content="">
     <meta name="MobileOptimized" content="320">
     <!--Start Style -->
-    <link rel="stylesheet" type="text/css" href="admin/assets/css/datatables.min.css">
-    <link rel="stylesheet" type="text/css" href="admin/assets/css/bootstrap.min.css">
-    <!--Custom Style -->
-    <link rel="stylesheet" type="text/css" href="admin/assets/css/style.min.css">
-    <link rel="stylesheet" type="text/css" href="admin/static/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="admin/static/css/icofont.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/fonts.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/icofont.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.min.css">
+    <link rel="stylesheet" id="theme-change" type="text/css" href="assets/css/color.css">
+
     <!-- Favicon Link -->
-    <link rel="shortcut icon" type="image/png" href="web/images/slider/head-logo.jpg">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-    <script src="admin/static/js/html5shiv.min.js"></script>
-    <script src="admin/static/js/respond.min.js"></script><![endif]-->
+    <link rel="shortcut icon" type="image/png" href="../web/images/slider/head-logo.jpg">
+
+    <style>
+        body .demo-class .layui-layer-btn0 {
+            border-color: #E6E3E6;
+            background-color: #FFF;
+            color: black;
+        }
+
+        body .demo-class .layui-layer-btn1 {
+            border-color: #4898d5;
+            background-color: #2e8ded;
+            color: #fff;
+        }
+
+        body .table-responsive {
+            overflow-x: visible;
+        }
+
+        body .label-info {
+            background-color: #11a1fd;
+        }
+    </style>
 </head>
 
 
 <body>
 <div class="loader">
     <div class="spinner">
-        <img src="admin/assets/images/loader.gif" alt=""/>
+        <img src="assets/images/loader.gif" alt=""/>
     </div>
 </div>
 <!-- Main Body -->
@@ -45,7 +65,7 @@
         <div class="header-inner-wrapper">
             <div class="logo-wrapper">
                 <a href="index.html" class="admin-logo">
-                    <img src="admin/static/image/logo.png" alt="">
+                    <img src="static/image/logo.png" alt="">
                 </a>
             </div>
             <div class="header-right">
@@ -93,7 +113,7 @@
                     </div>
                     <div class="user-info-wrapper header-links">
                         <a href="javascript:void(0);" class="user-info">
-                            <img id="headUrl" src="admin/assets/images/user.jpg" alt="" class="user-img">
+                            <img id="headUrl" src="assets/images/user.jpg" alt="" class="user-img">
                             <div class="blink-animation">
                                 <span class="blink-circle"></span>
                                 <span class="main-circle"></span>
@@ -126,7 +146,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="user-perfect.html">
+                                    <a onclick="userInfo()">
                                         <svg t="1683263210564" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                              xmlns="http://www.w3.org/2000/svg" p-id="4841" width="16" height="16">
                                             <path d="M427.985455 526.894545a125.207273 125.207273 0 1 0-157.789091 0A186.181818 186.181818 0 0 0 162.909091 695.389091a23.272727 23.272727 0 0 0 46.545454 0 139.636364 139.636364 0 1 1 279.272728 0 23.272727 23.272727 0 0 0 46.545454 0 186.181818 186.181818 0 0 0-107.287272-168.494546z m-157.556364-96.34909A78.661818 78.661818 0 1 1 349.090909 509.207273a78.894545 78.894545 0 0 1-78.661818-78.661818zM698.181818 372.363636h93.090909a23.272727 23.272727 0 0 0 0-46.545454h-93.090909a23.272727 23.272727 0 0 0 0 46.545454z"
@@ -141,7 +161,12 @@
                                 </li>
                                 <li>
                                     <a onclick="logout()">
-                                        <svg t="1683644543971" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2735" id="mx_n_1683644543972" width="16" height="16"><path d="M959.488 512L704 256.448V448H448v128h256v191.552L959.488 512zM192 192h512V128H128v768h576v-64H192V192z" fill="#007bff" p-id="2736"></path></svg>
+                                        <svg t="1683644543971" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="2735" id="mx_n_1683644543972"
+                                             width="16" height="16">
+                                            <path d="M959.488 512L704 256.448V448H448v128h256v191.552L959.488 512zM192 192h512V128H128v768h576v-64H192V192z"
+                                                  fill="#007bff" p-id="2736"></path>
+                                        </svg>
                                         登出
                                     </a>
                                 </li>
@@ -157,14 +182,16 @@
         <div class="side-menu-wrap">
             <ul class="main-menu">
                 <li>
-                    <a href="user-data.html">
+                    <a href="user-data.html" class="menu">
                             <span class="icon-menu feather-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                      stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" class="feather feather-layers"><polygon
-                                        points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline
-                                        points="2 17 12 22 22 17"></polyline><polyline
-                                        points="2 12 12 17 22 12"></polyline></svg>
+                                     stroke-linejoin="round" class="feather feather-package"><line x1="16.5" y1="9.4"
+                                                                                                   x2="7.5"
+                                                                                                   y2="4.21"></line><path
+                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline
+                                        points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08"
+                                                                                                x2="12" y2="12"></line></svg>
                             </span>
                         <span class="menu-text">
                                 实例管理
@@ -172,7 +199,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user-order.html">
+                    <a href="user-order.html" class="menu">
                             <span class="icon-menu feather-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                      stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -188,7 +215,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user-invite.html">
+                    <a href="user-invite.html" class="menu">
                             <span class="icon-menu feather-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                      stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -204,8 +231,23 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user-lottery.html">
+                    <a href="user-lottery.html" class="menu">
                             <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-pie-chart"><path
+                                        d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path
+                                        d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                            </span>
+                        <span class="menu-text">
+                                积分抽奖
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+
+                        <span class="icon-menu feather-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                      stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                      stroke-linejoin="round" class="feather feather-grid nav-icon"><rect x="3" y="3"
@@ -218,26 +260,12 @@
                                                                                                                height="7"></rect></svg>
                             </span>
                         <span class="menu-text">
-                                积分抽奖
-                            </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                            <span class="icon-menu feather-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11"
-                                                                                                y2="13"></line><polygon
-                                        points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                            </span>
-                        <span class="menu-text">
                                 系统管理
                             </span>
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="user-perfect.html">
+                            <a href="user-perfect.html" class="menu userInfo">
                                     <span class="icon-dash">
                                     </span>
                                 <span class="menu-text">
@@ -246,7 +274,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="notice.html" class="active">
+                            <a href="notice.html" class="menu noticeInfo">
                                     <span class="icon-dash">
                                     </span>
                                 <span class="menu-text">
@@ -262,63 +290,59 @@
     <!-- Container Start -->
     <div class="page-wrapper">
         <div class="main-content">
-            <!-- Page Title Start -->
-            <div class="row">
-                <div class="col xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="page-title-wrapper">
-                        <div class="page-title-box">
-                            <h4 class="page-title">系统通知</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Products view Start -->
+            <iframe id="content" name="content" style="height: 800px;" src="user-data.html"></iframe>
 
-
-            <!--===Products Details===-->
-            <div class="product-detail-wrapper product-detail-wrapper22">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="product-detail-tab">
-                            <ul class="nav nav-tabs">
-                                <li><a data-toggle="tab" class="active" href="#description">系统公告 <i
-                                        class="fas fa-question"></i></a></li>
-                                <li><a data-toggle="tab" href="#info">联系我们 <i class="fas fa-headset"></i></a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div id="description" class="tab-pane fade show active">
-                                    <div class="int-tab-peragraph" id="noticeTable">
-                                    </div>
-                                </div>
-                                <div id="info" class="tab-pane fade">
-                                    <div class="int-tab-peragraph">
-                                        <h4><span><i class="far fa-question-circle"></i></span> 客服QQ</h4>
-                                        <p>1163363720</p>
-                                        <h4><span><i class="far fa-question-circle"></i></span> QQ交流群</h4>
-                                        <p>群① 132378718 &nbsp;&nbsp;&nbsp;&nbsp; 群② 469758036</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--===Products Details===-->
             <div class="ad-footer-btm">
-                <p>本平台所有技术产品仅供个人学习、测试使用，不得用于违法违规内容，如有违反和本平台无关，平台将依法积极配合公安部门追责 &nbsp;&nbsp;&nbsp;
-                    友链: <a style="color: #f56108;" target="_blank"
-                           href="https://www.downdemo.com">前端模板</a>
-                    <a style="color: #f56108;" target="_blank"
-                       href="https://pay.npsvip.cn">免签支付</a>
-                    <a style="color: #f56108;" target="_blank"
-                       href="https://www.zwapi.cn">HTTPS证书</a>
-                    <a style="color: #f56108;" target="_blank"
-                       href="https://www.ddosblacklist.com">威胁情报</a>
+                <p>
+                    友链
+                    <a href="https://www.npsvip.com" target="_blank">小蝴蝶内网穿透</a>
+                    <a href="https://www.downdemo.com" target="_blank">DOWN源码</a>
+                    <a href="https://pay.npsvip.cn" target="_blank">蓝鲸支付</a>
+                    <a href="https://www.zwapi.cn" target="_blank">ZW-API证书平台</a>
                 </p>
             </div>
         </div>
     </div>
+    <!-- Container End -->
 </div>
+
+<!-- Color Setting -->
+<div id="style-switcher">
+    <div>
+        <ul class="colors">
+            <li>
+                <p class='colorchange' id='color' onclick="colorChange(this.id)">
+                </p>
+            </li>
+            <li>
+                <p class='colorchange' id='color2' onclick="colorChange(this.id)">
+                </p>
+            </li>
+            <li>
+                <p class='colorchange' id='color3' onclick="colorChange(this.id)">
+                </p>
+            </li>
+            <li>
+                <p class='colorchange' id='color4' onclick="colorChange(this.id)">
+                </p>
+            </li>
+            <li>
+                <p class='colorchange' id='color5' onclick="colorChange(this.id)">
+                </p>
+            </li>
+            <li>
+                <p class='colorchange' id='style' onclick="colorChange(this.id)">
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div class="bottom">
+        <a href="" class="settings">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+<!-- Color Setting -->
 
 <!-- 账户充值 -->
 <div id="rechargeLayer" style="display: none;">
@@ -373,19 +397,15 @@
 </div>
 
 <!-- Script Start -->
-<script src="admin/assets/js/jquery.min.js"></script>
-<script src="admin/assets/js/popper.min.js"></script>
-<script src="admin/assets/js/datatables.min.js"></script>
-<script src="admin/assets/js/dataTables.responsive.min.js"></script>
-<script src="admin/assets/js/bootstrap.min.js"></script>
-<!-- Custom Script -->
-<script src="admin/assets/js/custom.min.js"></script>
-<script src="admin/static/js/dbg.min.js"></script>
-<script src="admin/static/plugins/layer/layer.min.js"></script>
-<script src="admin/static/js/bootstrap-show-modal.min.js"></script>
+<script src="assets/js/jquery.min.js "></script>
+<script src="assets/js/popper.min.js "></script>
+<script src="assets/js/bootstrap.min.js "></script>
+<script src="assets/js/custom.min.js"></script>
+<script src="static/plugins/layer/layer.min.js"></script>
+<script src="static/js/bootstrap-show-modal.min.js"></script>
+<script src="static/js/dbg.min.js"></script>
 
-
-<script>
+<script type="application/javascript">
     // 头像
     if (null != localStorage.getItem('headUrl') && '' !== localStorage.getItem('headUrl')) {
         $('#headUrl').attr('src', localStorage.getItem('headUrl'));
@@ -461,7 +481,7 @@
             shadeClose: false,
             shade: 0,
             offset: ['10%', '40%'],
-            maxmin: true, //允许全屏最小化
+            // maxmin: true, //允许全屏最小化
             content: $('#rechargeLayer'),
             btn: ["取消", "提交"],
             yes: function (index) {
@@ -524,11 +544,47 @@
             content: url,
             scrollbar: true,
             end: function () {
-                searchPage();
+                // searchPage();
             },
         });
     }
+
+    // localStorage.setItem('colorId', 'style');
+    setTimeout("colorChange(localStorage.getItem('colorId') ? localStorage.getItem('colorId') : 'style')", "100");
+
+    function colorChange(id) {
+        localStorage.setItem('colorId', id);
+        var new_style = 'assets/css/' + localStorage.getItem('colorId') + '.min.css';
+        $('#theme-change').attr('href', new_style);
+
+        var obj = window.frames["content"].document.getElementById("theme-change");
+        jQuery(obj).attr('href', new_style);
+    }
+
+    $('.menu').on('click', function () {
+        $('.main-menu li').each(function () {
+            this.removeAttribute("class", "active");
+        });
+        this.parentElement.setAttribute("class", "active");
+        $('#content').attr("src", this.href.split("/")[this.href.split("/").length - 1]);
+
+        setTimeout("colorChange(localStorage.getItem('colorId') ? localStorage.getItem('colorId') : 'style')", "100");
+        return false;
+    });
+
+    function toLogin() {
+        window.location.href = "login.html";
+    }
+
+    function userInfo() {
+        $('.userInfo').click();
+    }
+
+    function noticeInfo() {
+        $('.noticeInfo').click();
+        notice();
+    }
+
 </script>
 </body>
-
 </html>
