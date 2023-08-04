@@ -490,7 +490,7 @@
             $('#qrcode').html('');
         }
 
-        var url = `${window.location.protocol}//${window.location.host}/share.html?code=${localStorage.getItem('userId')}`;
+        var url = `${window.location.protocol}//${window.location.host}/admin/share.html?code=${localStorage.getItem('userId')}`;
         qrcodeInstance = new QRCode('qrcode', {
             text: url,
             width: 300,
