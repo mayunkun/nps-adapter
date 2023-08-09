@@ -1,4 +1,5 @@
-﻿<head>
+﻿﻿
+<head>
     <!--Start Style -->
     <link rel="stylesheet" type="text/css" href="assets/css/datatables.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -756,51 +757,94 @@
             return;
         } else {
             if (type != 'Synology_群晖' && type != 'Android_安卓' && type != 'Socks5_windows' && type != 'Socks5_mac') {
-                let a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = baseUrl + `/file/down?partitionId=${partitionId}&clientId=${id}&typeEnum=${type}&token=${localStorage.getItem('token')}`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
+                parent.openShandow();
+                $.ajax({
+                    url: baseUrl + `/file/down?partitionId=${partitionId}&clientId=${id}&typeEnum=${type}&token=${localStorage.getItem('token')}`,
+                    type: "GET",
+                    xhrFields: {responseType: "blob"},
+                    success: function (response, status) {
+                        const url = window.URL.createObjectURL(new Blob([response]));
+                        var a = document.createElement("a");
+                        a.download = type + '.zip';
+                        a.href = url;
+                        a.target = '_blank';
+                        $("body").append(a);
+                        a.click();
+                        $(a).remove();
+                        URL.revokeObjectURL(url);
+                        parent.closeShandow();
+                    },
+                    error: function (xhr, status, error) {
+                        $.showAlert({title: "提示", body: error})
+                    }
+                });
             } else {
-                var xhr = new XMLHttpRequest()
-                xhr.open('GET', baseUrl + "/file/down?typeEnum=" + type + "&clientId=" + id + "&partitionId=" + partitionId + "&token=" + localStorage.getItem('token'), true);
-                xhr.responseType = 'blob';
-                xhr.setRequestHeader("token", localStorage.getItem('token')); // 请求头中的验证信息等（如果有）
-                xhr.onload = function (res) {
-                    if (this.status === 200) {
-                        if (this.response.type.indexOf('application/json') != -1) {
-                            let reader = new FileReader();
-                            reader.addEventListener('loadend', function (e) {
-                                let data = JSON.parse(e.target.result);
-                                if (data.msg.indexOf("http") != -1) {
-                                    var a = document.createElement("a");
-                                    a.href = data.msg;
-                                    a.target = '_blank';
-                                    $("body").append(a);
-                                    a.click();
-                                    $(a).remove();
-                                } else {
-                                    $.showAlert({title: "提示", body: data.msg})
-                                }
-                            });
-                            reader.readAsText(xhr.response);
-                        } else if (this.response.type.indexOf('application/octet-stream') != -1) {
-                            const url = window.URL.createObjectURL(new Blob([this.response]));
+                $.ajax({
+                    type: "get",
+                    url: baseUrl + `/file/down?partitionId=${partitionId}&clientId=${id}&typeEnum=${type}&token=${localStorage.getItem('token')}`, //url
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    success: function (result) {
+                        if (result.msg.indexOf("http") != -1) {
                             var a = document.createElement("a");
-                            a.download = type + '.zip';
-                            a.href = url;
+                            a.href = result.msg;
                             a.target = '_blank';
                             $("body").append(a);
                             a.click();
                             $(a).remove();
-                            URL.revokeObjectURL(url);
+                        } else {
+                            $.showAlert({title: "提示", body: data.msg})
                         }
-
                     }
-                }
-                xhr.send()
+                });
             }
+
+            /*            if (type != 'Synology_群晖' && type != 'Android_安卓' && type != 'Socks5_windows' && type != 'Socks5_mac') {
+                            let a = document.createElement('a');
+                            a.style.display = 'none';
+                            a.href = baseUrl + `/file/down?partitionId=${partitionId}&clientId=${id}&typeEnum=${type}&token=${localStorage.getItem('token')}`;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                        } else {
+                            var xhr = new XMLHttpRequest()
+                            xhr.open('GET', baseUrl + "/file/down?typeEnum=" + type + "&clientId=" + id + "&partitionId=" + partitionId + "&token=" + localStorage.getItem('token'), true);
+                            xhr.responseType = 'blob';
+                            xhr.setRequestHeader("token", localStorage.getItem('token')); // 请求头中的验证信息等（如果有）
+                            xhr.onload = function (res) {
+                                if (this.status === 200) {
+                                    if (this.response.type.indexOf('application/json') != -1) {
+                                        let reader = new FileReader();
+                                        reader.addEventListener('loadend', function (e) {
+                                            let data = JSON.parse(e.target.result);
+                                            if (data.msg.indexOf("http") != -1) {
+                                                var a = document.createElement("a");
+                                                a.href = data.msg;
+                                                a.target = '_blank';
+                                                $("body").append(a);
+                                                a.click();
+                                                $(a).remove();
+                                            } else {
+                                                $.showAlert({title: "提示", body: data.msg})
+                                            }
+                                        });
+                                        reader.readAsText(xhr.response);
+                                    } else if (this.response.type.indexOf('application/octet-stream') != -1) {
+                                        const url = window.URL.createObjectURL(new Blob([this.response]));
+                                        var a = document.createElement("a");
+                                        a.download = type + '.zip';
+                                        a.href = url;
+                                        a.target = '_blank';
+                                        $("body").append(a);
+                                        a.click();
+                                        $(a).remove();
+                                        URL.revokeObjectURL(url);
+                                    }
+
+                                }
+                            }
+                            xhr.send()
+                        }*/
         }
     }
 
