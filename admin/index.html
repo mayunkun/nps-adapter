@@ -596,6 +596,19 @@
         return null; //返回参数值
     }
 
+    var shandowIndex;
+
+    function openShandow() {
+        shandowIndex = layer.load(1, {
+            shade: [0.5, '#000']
+        });
+    }
+
+    function closeShandow() {
+        layer.close(shandowIndex);
+    }
+
+
 </script>
 </body>
 </html>
